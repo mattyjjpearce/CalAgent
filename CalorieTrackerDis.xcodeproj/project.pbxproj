@@ -10,6 +10,7 @@
 		4D80DF34257299F10033D5B0 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF33257299F10033D5B0 /* UserInfo.swift */; };
 		4D80DF3E25751E660033D5B0 /* ColourManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF3D25751E660033D5B0 /* ColourManager.swift */; };
 		4D80DF4625752CF20033D5B0 /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF4525752CF20033D5B0 /* HealthStore.swift */; };
+		4D80DF6B257550EF0033D5B0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D80DF6A257550EF0033D5B0 /* HealthKit.framework */; };
 		4DBB3126256FC61A00E973EF /* navigationPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3125256FC61A00E973EF /* navigationPracticeApp.swift */; };
 		4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3127256FC61A00E973EF /* ContentView.swift */; };
 		4DBB312A256FC61E00E973EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB3129256FC61E00E973EF /* Assets.xcassets */; };
@@ -45,6 +46,8 @@
 		4D80DF33257299F10033D5B0 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		4D80DF3D25751E660033D5B0 /* ColourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourManager.swift; sourceTree = "<group>"; };
 		4D80DF4525752CF20033D5B0 /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
+		4D80DF68257550EF0033D5B0 /* CalorieTrackerDis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalorieTrackerDis.entitlements; sourceTree = "<group>"; };
+		4D80DF6A257550EF0033D5B0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieTrackerDis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBB3125256FC61A00E973EF /* navigationPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationPracticeApp.swift; sourceTree = "<group>"; };
 		4DBB3127256FC61A00E973EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D80DF6B257550EF0033D5B0 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,14 +103,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4D80DF69257550EF0033D5B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D80DF6A257550EF0033D5B0 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4DBB3119256FC61A00E973EF = {
 			isa = PBXGroup;
 			children = (
+				4D80DF68257550EF0033D5B0 /* CalorieTrackerDis.entitlements */,
 				4D80DF29257299AC0033D5B0 /* Model */,
 				4DBB3124256FC61A00E973EF /* CalorieTracking */,
 				4DBB313B256FC61E00E973EF /* navigationPracticeTests */,
 				4DBB3146256FC61E00E973EF /* navigationPracticeUITests */,
 				4DBB3123256FC61A00E973EF /* Products */,
+				4D80DF69257550EF0033D5B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -461,6 +475,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CalorieTrackerDis.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CalorieTracking/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
@@ -482,6 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CalorieTrackerDis.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CalorieTracking/Preview Content\"";
 				ENABLE_PREVIEWS = YES;

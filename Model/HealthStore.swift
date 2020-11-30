@@ -1,4 +1,4 @@
-//
+ //
 //  HealthStore.swift
 //  navigationPractice
 //
@@ -22,4 +22,37 @@ class HealthStore {
             healthStore = HKHealthStore()
         }
     }
+    
+    //Function determining if we have authorization to the HealthKit data
+    func requestAuthorization(completion: @escaping (Bool) -> Void ){
+        
+        
+        //Basic requirements for the app
+        let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
+        
+        
+        let heightType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!
+        
+        
+        let weightType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
+        
+        
+        
+        //If user has apple watch, can use this data
+//        let activeEnergyType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
+//
+//        let restingEnergyType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.basalEnergyBurned)!
+//
+        
+        //unwrapping health store to get access to unwrapped version of the health store
+        guard let healthStore = self.healthStore else { return completion(false) }
+        
+        healthStore.requestAuthorization(toShare: [], read: [stepType, heightType, weightType]) { (success, error) in
+            completion(success)
+        }
+        
+    }
+    
 }
+ 
+ 

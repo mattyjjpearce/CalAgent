@@ -20,6 +20,16 @@ struct ProfileView: View {
     
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            
+            //When the tab appears
+            .onAppear(){
+                if let healthStore = healthStore{
+                    healthStore.requestAuthorization{
+                        success in
+                    }
+                }
+                
+            }
     }
 }
 
