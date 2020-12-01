@@ -11,13 +11,13 @@ import HealthKit
 struct ProfileView: View {
     
     
-    
+    @ObservedObject var person = UserInfoModel()
     
     
     var body: some View {
-        
-            Text("Welcome")
-            
+        VStack{
+            Text(person.person1.gender)
+        }
     }
 }
 

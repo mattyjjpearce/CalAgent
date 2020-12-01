@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D80DF3E25751E660033D5B0 /* ColourManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF3D25751E660033D5B0 /* ColourManager.swift */; };
 		4D80DF6B257550EF0033D5B0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D80DF6A257550EF0033D5B0 /* HealthKit.framework */; };
+		4D80DF862576CB2B0033D5B0 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */; };
 		4DBB3126256FC61A00E973EF /* navigationPracticeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3125256FC61A00E973EF /* navigationPracticeApp.swift */; };
 		4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3127256FC61A00E973EF /* ContentView.swift */; };
 		4DBB312A256FC61E00E973EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB3129256FC61E00E973EF /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		4D80DF3D25751E660033D5B0 /* ColourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourManager.swift; sourceTree = "<group>"; };
 		4D80DF68257550EF0033D5B0 /* CalorieTrackerDis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalorieTrackerDis.entitlements; sourceTree = "<group>"; };
 		4D80DF6A257550EF0033D5B0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieTrackerDis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBB3125256FC61A00E973EF /* navigationPracticeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationPracticeApp.swift; sourceTree = "<group>"; };
 		4DBB3127256FC61A00E973EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		4D80DF29257299AC0033D5B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */,
 				4DBB3159256FDCFF00E973EF /* ProfileView.swift in Sources */,
 				4D80DF3E25751E660033D5B0 /* ColourManager.swift in Sources */,
+				4D80DF862576CB2B0033D5B0 /* UserInfoModel.swift in Sources */,
 				4DBB3163256FDF6E00E973EF /* MealView.swift in Sources */,
 				4DBB3132256FC61E00E973EF /* navigationPractice.xcdatamodeld in Sources */,
 				4DBB3168256FDF8600E973EF /* ProgressView.swift in Sources */,
