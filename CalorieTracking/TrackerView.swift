@@ -13,17 +13,13 @@ struct TrackerView: View {
 
     
     var body: some View {
-        Button(action: {
-                print(person.person1.weight)
-            
-        }) {
-            Text("Button")
-        }
-        .foregroundColor(ColourManager.Colour1)
+        HStack {
+            Text("\(person.personUserInfo.weight)")
+            Text("\(person.personDailyCalorieGoals.calorieGoal)")
+            }
 
         
-        
-        
+
     }
 }
 

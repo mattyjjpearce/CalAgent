@@ -17,9 +17,9 @@ struct ProfileView: View {
     
     var body: some View {
         Button(action: {
-            print(self.person.person1.weight)
-            self.person.person1.weight = 100
-            print(self.person.person1.weight)
+            print(self.person.personUserInfo.weight)
+            self.person.personUserInfo.weight = 100
+            print(self.person.personUserInfo.weight)
         }) {
             Text("Button")
         }
