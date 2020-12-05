@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct TrackerView: View {
+    
+    @EnvironmentObject var person: UserInfoModel
+
+    
     var body: some View {
-        Text("This is the Tracker View :)")
+        HStack {
+            Text("\(person.personUserInfo.weight)")
+            Text("\(person.personDailyCalorieGoals.calorieGoal)")
+            }
+
+        
+
     }
 }
 
