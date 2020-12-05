@@ -9,6 +9,7 @@ import Foundation
 
 class UserInfoModel: ObservableObject {
     
+    
     struct UserInfo: Identifiable {
         var id = UUID()
         var height: Int
@@ -34,6 +35,6 @@ class UserInfoModel: ObservableObject {
         var proteinGoal: Int
     }
     
-    @Published var person1 = UserInfo.init(height: 20, weight: 30, gender: "male", age: 5)
+    @Published var person1 = UserInfo.init(height: 0, weight: 0, gender: "", age: 0)
     
 }

@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+
     
+    //Instantiating an object of UserInfo Model (referenced in App.swift too 
+    @EnvironmentObject var person: UserInfoModel
+
     
     
     init() {
-        
         //Setting appearance of UI colour
         UITabBar.appearance().backgroundColor = ColourManager.UIColour1
-        
-        
-        
     }
     
     var body: some View {
+        
         
         TabView {
             ProfileView().tabItem ({
@@ -29,7 +30,9 @@ struct ContentView: View {
             
             TrackerView().tabItem ({
                 Text("Tracker")
-            }).tag(1)
+            }
+            ).tag(1)
+
             
             ProgressView().tabItem ({
                 Text("Progress")
@@ -39,6 +42,7 @@ struct ContentView: View {
                 Text("Meals")
             }).tag(3)
         }.accentColor(ColourManager.Colour3)
+
         
         }
 

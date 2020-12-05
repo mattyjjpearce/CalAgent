@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct TrackerView: View {
+    
+    @EnvironmentObject var person: UserInfoModel
+
+    
     var body: some View {
-        Text("This is the Tracker View :)")
+        Button(action: {
+                print(person.person1.weight)
+            
+        }) {
+            Text("Button")
+        }
+        .foregroundColor(ColourManager.Colour1)
+
+        
+        
+        
     }
 }
 
