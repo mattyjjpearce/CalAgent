@@ -134,18 +134,14 @@
 		4DBB3124256FC61A00E973EF /* CalorieTracking */ = {
 			isa = PBXGroup;
 			children = (
+				4DE7A9C925BC7011003D5865 /* Views */,
 				4DBB3125256FC61A00E973EF /* App.swift */,
-				4DBB3127256FC61A00E973EF /* ContentView.swift */,
 				4DBB3129256FC61E00E973EF /* Assets.xcassets */,
 				4DBB312E256FC61E00E973EF /* Persistence.swift */,
 				4DBB3133256FC61E00E973EF /* Info.plist */,
 				4DBB3130256FC61E00E973EF /* navigationPractice.xcdatamodeld */,
 				4DBB312B256FC61E00E973EF /* Preview Content */,
-				4DBB3158256FDCFF00E973EF /* ProfileView.swift */,
-				4DBB315D256FDD1D00E973EF /* TrackerView.swift */,
-				4DBB3162256FDF6E00E973EF /* MealView.swift */,
 				4D80DF3D25751E660033D5B0 /* ColourManager.swift */,
-				4DBB3167256FDF8600E973EF /* ProgressView.swift */,
 			);
 			path = CalorieTracking;
 			sourceTree = "<group>";
@@ -174,6 +170,18 @@
 				4DBB3149256FC61E00E973EF /* Info.plist */,
 			);
 			path = navigationPracticeUITests;
+			sourceTree = "<group>";
+		};
+		4DE7A9C925BC7011003D5865 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4DBB3127256FC61A00E973EF /* ContentView.swift */,
+				4DBB3158256FDCFF00E973EF /* ProfileView.swift */,
+				4DBB315D256FDD1D00E973EF /* TrackerView.swift */,
+				4DBB3162256FDF6E00E973EF /* MealView.swift */,
+				4DBB3167256FDF8600E973EF /* ProgressView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
