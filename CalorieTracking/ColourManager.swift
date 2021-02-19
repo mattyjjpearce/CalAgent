@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColourManager{
     
-    static let UIColour1 = UIColor.red
+    static let UIColour1 = UIColor.blue
     static let UIColour2 = UIColor.red.withAlphaComponent(0.25)
     static let UIColour3 = UIColor.white
     

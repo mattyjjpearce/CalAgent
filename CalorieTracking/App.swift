@@ -13,7 +13,6 @@ struct navigationPracticeApp: App {
     //make an instance of user model data as a property
     var person = UserInfoModel()
 
-
     var body: some Scene {
 
         WindowGroup {
