@@ -99,14 +99,14 @@ struct ProfileView: View {
                     let weightDouble: Double! = Double(weightInputString)
                     person.personUserInfo.weight = weightDouble
                     
-                        if(selectedGender == 1){
+                        if(selectedGender == 0){
                             person.personUserInfo.gender = "Male"
                         }else{
                             person.personUserInfo.gender = "Female"
                         }
                     
                     
-                    print(selectedGender)
+                        print(person.personUserInfo)
                     }
                 
 
