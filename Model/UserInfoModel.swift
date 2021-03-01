@@ -13,10 +13,10 @@ class UserInfoModel: ObservableObject {
     struct UserInfo: Identifiable {
         var id = UUID()
         var firstName: String
-        var height: Int
-        var weight: Int
+        var height: Double
+        var weight: Double
         var gender: String
-        var age: Int
+        var age: Double
         
     }
     

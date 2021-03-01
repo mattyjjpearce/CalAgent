@@ -12,8 +12,8 @@ struct ContentView: View {
     
     //Instantiating an object of UserInfo Model (referenced in App.swift too 
     @EnvironmentObject var person: UserInfoModel
-
     
+
     
     init() {
         //Setting appearance of UI colour
