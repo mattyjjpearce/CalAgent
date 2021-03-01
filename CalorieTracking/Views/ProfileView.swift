@@ -23,12 +23,11 @@ struct ProfileView: View {
     @State private var weightInputString = ""
 
 
-    
     @State var selectedGender = 0
     let genders = ["Male", "Female"]
 
-
-
+    var activityLevel = ["Low", "Medium", "High"]
+    @State var selectedActivityLevel = 0
 
 
 
@@ -88,6 +87,19 @@ struct ProfileView: View {
                             }
                         }.pickerStyle(SegmentedPickerStyle())
                     }
+                    HStack {
+                        Text("Activity Level")
+                        Picker("", selection: $selectedActivityLevel) {
+
+                            ForEach(0..<activityLevel.count) { index in
+                                Text(self.activityLevel[index]).tag(index).font(.title)
+                            }
+                        }.pickerStyle(SegmentedPickerStyle())
+                    }
+                    
+                    
+
+         
                 Button(action: {
                         //Checking that the textFields are not empty
                     if(ageInputString != "" || heightInputString != "" || weightInputString != "" ){
@@ -104,10 +116,22 @@ struct ProfileView: View {
                         }else{
                             person.personUserInfo.gender = "Female"
                         }
+                        
+                        switch selectedActivityLevel {
+                        case 0:
+                            person.personUserInfo.activityLevel = "Low"
+                        case 1:
+                            person.personUserInfo.activityLevel = "Medium"
+                        case 2:
+                            person.personUserInfo.activityLevel = "High"
+                        default:
+                            ""
+                        }
+                        
+                     }
                     
-                    
-                        print(person.personUserInfo)
-                    }
+                
+                    print(person.personUserInfo)
                 
 
                 }) {
@@ -116,6 +140,10 @@ struct ProfileView: View {
                 }
                 
             }
+                
+                
+                
+                
                         Section(header: Text("Macro Goals")){
                         VStack{ //manual input (fat)
                         HStack {
