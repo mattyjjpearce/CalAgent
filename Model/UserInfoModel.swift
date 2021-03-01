@@ -13,10 +13,12 @@ class UserInfoModel: ObservableObject {
     struct UserInfo: Identifiable {
         var id = UUID()
         var firstName: String
-        var height: Int
-        var weight: Int
+        var height: Double
+        var weight: Double
         var gender: String
-        var age: Int
+        var age: Double
+        var activityLevel: String
+        
         
     }
     
@@ -36,7 +38,7 @@ class UserInfoModel: ObservableObject {
         var carbProgress: Int
     }
     
-    @Published var personUserInfo = UserInfo.init(firstName: "",  height: 0, weight: 0, gender: "", age: 0)
+    @Published var personUserInfo = UserInfo.init(firstName: "",  height: 0, weight: 0, gender: "", age: 0, activityLevel: "")
     @Published var personDailyCalorieGoals = DailyCalorieGoals.init(calorieGoal: 2400, fatGoal: 40, proteinGoal: 0, carbGoal: 0)
     @Published var personCurrentCalorieProgress = CurrentCalorieProgress.init(calorieProgress: 0, fatProgress: 0, carbProgress: 0)
     
