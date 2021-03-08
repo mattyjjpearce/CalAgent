@@ -28,6 +28,9 @@ struct ProfileView: View {
 
     var activityLevel = ["Low", "Medium", "High"]
     @State var selectedActivityLevel = 0
+   
+    @State var BMR = 0.00
+
 
 
 
@@ -42,7 +45,8 @@ struct ProfileView: View {
             Form{
                 Section{
                 TextField("Name ", text: $person.personUserInfo.firstName)
-            }.frame(width: 100, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Text("Caloric needs: \(self.person.personUserInfo.BMR, specifier: "%.0f") Kcal")
+            }
                
                 
 
@@ -113,25 +117,40 @@ struct ProfileView: View {
                     
                         if(selectedGender == 0){
                             person.personUserInfo.gender = "Male"
+                            let weightBMR = (weightDouble * 10)
+                            let heightBMR = (heightDouble *  6.25)
+                            let ageBMR = (ageDouble * 5)
+                            let bmr = 5 + weightBMR + heightBMR - ageBMR
+                            BMR = bmr
+                                
+                            
+                            
                         }else{
                             person.personUserInfo.gender = "Female"
-                        }
+                            let weightBMR = (weightDouble * 10)
+                            let heightBMR = (heightDouble *  6.25)
+                            let ageBMR = (ageDouble * 5)
+                            let bmr = weightBMR + heightBMR - ageBMR - 161
+                            BMR = bmr
+                            }
                         
                         switch selectedActivityLevel {
                         case 0:
                             person.personUserInfo.activityLevel = "Low"
+                            BMR = 1.2 * BMR
                         case 1:
                             person.personUserInfo.activityLevel = "Medium"
+                            BMR = 1.55 * BMR
                         case 2:
                             person.personUserInfo.activityLevel = "High"
+                            BMR = 1.725 * BMR
                         default:
                             ""
                         }
-                        
                      }
                     
                 
-                    print(person.personUserInfo)
+                    person.personUserInfo.BMR = BMR
                 
 
                 }) {
@@ -194,6 +213,14 @@ struct ProfileView: View {
                             fatInputString = "0" //resetting the local variable
                             carbInputString = "0"
                             proteinInputString = "0"
+                            
+                            let fatCalories = fatDouble * 9
+                            let carbCalories = carbDouble * 4
+                            let proteinCalories = proteinDouble * 4
+                            let totalCalorieGoal = fatCalories + carbCalories + proteinCalories
+                            
+                            person.personDailyCalorieGoals.calorieGoal = totalCalorieGoal
+                            
 
                         }) {
                             Text("Enter").multilineTextAlignment(.center)
