@@ -45,7 +45,7 @@ struct ProfileView: View {
             Form{
                 Section{
                 TextField("Name ", text: $person.personUserInfo.firstName)
-                    Text("BMR (estimated calories burnt a day: \(self.person.personUserInfo.BMR, specifier: "%.0f") Kcal")
+                    Text("Caloric needs: \(self.person.personUserInfo.BMR, specifier: "%.0f") Kcal")
             }
                
                 
@@ -117,11 +117,22 @@ struct ProfileView: View {
                     
                         if(selectedGender == 0){
                             person.personUserInfo.gender = "Male"
-                            BMR = 66 + (13.75 * weightDouble) + (5.0003 * heightDouble) - (6.755 * ageDouble)
+                            let weightBMR = (weightDouble * 10)
+                            let heightBMR = (heightDouble *  6.25)
+                            let ageBMR = (ageDouble * 5)
+                            let bmr = 5 + weightBMR + heightBMR - ageBMR
+                            BMR = bmr
+                                
+                            
+                            
                         }else{
                             person.personUserInfo.gender = "Female"
-                            BMR = 665.1 + (9.563 * weightDouble) + (1.85 * heightDouble) - (4.676 * ageDouble)
-                        }
+                            let weightBMR = (weightDouble * 10)
+                            let heightBMR = (heightDouble *  6.25)
+                            let ageBMR = (ageDouble * 5)
+                            let bmr = weightBMR + heightBMR - ageBMR - 161
+                            BMR = bmr
+                            }
                         
                         switch selectedActivityLevel {
                         case 0:
@@ -202,6 +213,14 @@ struct ProfileView: View {
                             fatInputString = "0" //resetting the local variable
                             carbInputString = "0"
                             proteinInputString = "0"
+                            
+                            let fatCalories = fatDouble * 9
+                            let carbCalories = carbDouble * 4
+                            let proteinCalories = proteinDouble * 4
+                            let totalCalorieGoal = fatCalories + carbCalories + proteinCalories
+                            
+                            person.personDailyCalorieGoals.calorieGoal = totalCalorieGoal
+                            
 
                         }) {
                             Text("Enter").multilineTextAlignment(.center)
