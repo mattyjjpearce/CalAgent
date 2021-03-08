@@ -28,6 +28,9 @@ struct ProfileView: View {
 
     var activityLevel = ["Low", "Medium", "High"]
     @State var selectedActivityLevel = 0
+   
+    @State var BMR = 0.00
+
 
 
 
@@ -42,7 +45,8 @@ struct ProfileView: View {
             Form{
                 Section{
                 TextField("Name ", text: $person.personUserInfo.firstName)
-            }.frame(width: 100, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Text("BMR (estimated calories burnt a day: \(self.person.personUserInfo.BMR, specifier: "%.0f") Kcal")
+            }
                
                 
 
@@ -113,25 +117,29 @@ struct ProfileView: View {
                     
                         if(selectedGender == 0){
                             person.personUserInfo.gender = "Male"
+                            BMR = 66 + (13.75 * weightDouble) + (5.0003 * heightDouble) - (6.755 * ageDouble)
                         }else{
                             person.personUserInfo.gender = "Female"
+                            BMR = 665.1 + (9.563 * weightDouble) + (1.85 * heightDouble) - (4.676 * ageDouble)
                         }
                         
                         switch selectedActivityLevel {
                         case 0:
                             person.personUserInfo.activityLevel = "Low"
+                            BMR = 1.2 * BMR
                         case 1:
                             person.personUserInfo.activityLevel = "Medium"
+                            BMR = 1.55 * BMR
                         case 2:
                             person.personUserInfo.activityLevel = "High"
+                            BMR = 1.725 * BMR
                         default:
                             ""
                         }
-                        
                      }
                     
                 
-                    print(person.personUserInfo)
+                    person.personUserInfo.BMR = BMR
                 
 
                 }) {
