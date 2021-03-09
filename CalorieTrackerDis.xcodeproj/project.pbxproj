@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D072FE325F77D320012876D /* FoodAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D072FE225F77D320012876D /* FoodAddModel.swift */; };
 		4D80DF3E25751E660033D5B0 /* ColourManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF3D25751E660033D5B0 /* ColourManager.swift */; };
 		4D80DF6B257550EF0033D5B0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D80DF6A257550EF0033D5B0 /* HealthKit.framework */; };
 		4D80DF862576CB2B0033D5B0 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */; };
@@ -21,7 +22,7 @@
 		4DBB3159256FDCFF00E973EF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3158256FDCFF00E973EF /* ProfileView.swift */; };
 		4DBB315E256FDD1D00E973EF /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB315D256FDD1D00E973EF /* TrackerView.swift */; };
 		4DBB3163256FDF6E00E973EF /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3162256FDF6E00E973EF /* MealView.swift */; };
-		4DBB3168256FDF8600E973EF /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3167256FDF8600E973EF /* ProgressView.swift */; };
+		4DBB3168256FDF8600E973EF /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3167256FDF8600E973EF /* AddView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D072FE225F77D320012876D /* FoodAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodAddModel.swift; sourceTree = "<group>"; };
 		4D80DF3D25751E660033D5B0 /* ColourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourManager.swift; sourceTree = "<group>"; };
 		4D80DF68257550EF0033D5B0 /* CalorieTrackerDis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CalorieTrackerDis.entitlements; sourceTree = "<group>"; };
 		4D80DF6A257550EF0033D5B0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -63,7 +65,7 @@
 		4DBB3158256FDCFF00E973EF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4DBB315D256FDD1D00E973EF /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
 		4DBB3162256FDF6E00E973EF /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
-		4DBB3167256FDF8600E973EF /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		4DBB3167256FDF8600E973EF /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */,
+				4D072FE225F77D320012876D /* FoodAddModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,7 +182,7 @@
 				4DBB3158256FDCFF00E973EF /* ProfileView.swift */,
 				4DBB315D256FDD1D00E973EF /* TrackerView.swift */,
 				4DBB3162256FDF6E00E973EF /* MealView.swift */,
-				4DBB3167256FDF8600E973EF /* ProgressView.swift */,
+				4DBB3167256FDF8600E973EF /* AddView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,11 +319,12 @@
 				4DBB312F256FC61E00E973EF /* Persistence.swift in Sources */,
 				4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */,
 				4DBB3159256FDCFF00E973EF /* ProfileView.swift in Sources */,
+				4D072FE325F77D320012876D /* FoodAddModel.swift in Sources */,
 				4D80DF3E25751E660033D5B0 /* ColourManager.swift in Sources */,
 				4D80DF862576CB2B0033D5B0 /* UserInfoModel.swift in Sources */,
 				4DBB3163256FDF6E00E973EF /* MealView.swift in Sources */,
 				4DBB3132256FC61E00E973EF /* navigationPractice.xcdatamodeld in Sources */,
-				4DBB3168256FDF8600E973EF /* ProgressView.swift in Sources */,
+				4DBB3168256FDF8600E973EF /* AddView.swift in Sources */,
 				4DBB3126256FC61A00E973EF /* App.swift in Sources */,
 				4DBB315E256FDD1D00E973EF /* TrackerView.swift in Sources */,
 			);

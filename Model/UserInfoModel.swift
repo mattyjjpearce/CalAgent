@@ -20,7 +20,16 @@ class UserInfoModel: ObservableObject {
         var activityLevel: String
         var BMR: Double
         
-        
+    }
+    
+    struct AddedFoods:Identifiable{
+        var name: String = ""
+        var totalCals: Double = 0
+        var totalProtein: Double = 0
+        var totalCarbs: Double = 0
+        var totalFat: Double = 0
+        var id = UUID().uuidString
+       //Your other properties
     }
     
     struct DailyCalorieGoals: Identifiable{
