@@ -52,9 +52,15 @@ struct myView:View{
         NavigationView{
         List{
         ForEach(unwrappedFoods) {obj in
+            let x = obj.totalCals
+            let b: String = String(x)
+            HStack{
             Text(obj.name)
-        }
+            Text(b)
+            }
+                }
         }
     }
     }
 }
+
