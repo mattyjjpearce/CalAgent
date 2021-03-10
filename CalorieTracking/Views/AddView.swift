@@ -18,28 +18,14 @@ struct AddView: View{
             _foods = StateObject(wrappedValue: FoodAddModel())
         }
 
-    
- 
-    
-    
+
     var body: some View {
         VStack{
-            HStack{
         myView().environmentObject(foods)
+        }
     }
-        
-        
-        Button(action: {
-          let  x = AddedFoods(name: "Pizza", totalCals: 1000, totalProtein: 200, totalCarbs: 320, totalFat: 56, id: "2")
-            foods.foods?.append(x)
+    }
 
-        }) {
-            Text("Enter").multilineTextAlignment(.center)
-                .foregroundColor(Color.blue)
-    }
-}
-    }
-}
 
 
 

@@ -49,8 +49,12 @@ struct myView:View{
     }
     
     var body: some View{
+        NavigationView{
+        List{
         ForEach(unwrappedFoods) {obj in
             Text(obj.name)
         }
+        }
+    }
     }
 }
