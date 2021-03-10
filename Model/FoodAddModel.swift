@@ -24,11 +24,12 @@ struct AddedFoods:Identifiable{
 class FoodAddModel: ObservableObject,Identifiable {
     
     @Published var foods : [AddedFoods]?
-    
+
     var id = UUID().uuidString
 
     init() {
         dummyData()
+        
     }
     
     func dummyData() {
@@ -39,10 +40,15 @@ class FoodAddModel: ObservableObject,Identifiable {
         obj.append(AddedFoods(name: "Noodles", totalCals: 231, totalProtein: 20, totalCarbs: 45, totalFat: 15))
         foods = obj
     }
+    
+    
+
 }
 
 struct myView:View{
     @EnvironmentObject var getFood:FoodAddModel
+    @EnvironmentObject var person: UserInfoModel
+
 
     var unwrappedFoods:[AddedFoods]{
         getFood.foods ?? []
@@ -50,17 +56,30 @@ struct myView:View{
     
     var body: some View{
         NavigationView{
-        List{
-        ForEach(unwrappedFoods) {obj in
-            let x = obj.totalCals
-            let b: String = String(x)
-            HStack{
-            Text(obj.name)
-            Text(b)
-            }
+            List{
+            ForEach(Array(unwrappedFoods.enumerated()), id: \.1.id) { (index, obj) in
+            
+                HStack{
+                            Text(obj.name)
+                            Button(action: {
+                                getFood.foods?.remove(at: index)
+                                person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals
+                            }) {
+                                Image(systemName: "minus").foregroundColor(.red)
+                            }
                 }
-        }
+                        
+            
+            
+            }
+            }
+            }
     }
     }
-}
+
+   
+    
+
+
+
 
