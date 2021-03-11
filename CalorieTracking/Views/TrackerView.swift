@@ -11,20 +11,38 @@ struct TrackerView: View {
     
     @EnvironmentObject var person: UserInfoModel
     @State private var downloadAmount = 50.0
-    
+    @State private var noGoalSet = true
 
+    
+    
 
     
     var body: some View {
+            
+       
+
         
             NavigationView{
+                
+                if(person.personDailyCalorieGoals.calorieGoal == 0 ||
+                    person.personDailyCalorieGoals.carbGoal == 0  ||
+                    person.personDailyCalorieGoals.proteinGoal == 0 ||
+                    person.personDailyCalorieGoals.fatGoal == 0 ){
+                    
+
+                    Text("Please set your macro goals")
+                    
+                    
+                }
+                else{
+                
                 Form{
                 Section(header: Text("Calories")){
+                   
                     VStack{
-                                Text("Calories: \(person.personCurrentCalorieProgress.calorieProgress, specifier: "%.0f") kcal")
-                               
-                
-        
+                        
+                        Text("Calories: \(person.personCurrentCalorieProgress.calorieProgress, specifier: "%.0f") kcal")
+                       
                         let CalorieProgress =  (person.personCurrentCalorieProgress.calorieProgress / person.personDailyCalorieGoals.calorieGoal) * 100
         
                         ProgressView( value: CalorieProgress, total: 100).scaleEffect(x: 1, y: 3, anchor: .top).shadow(color: .blue, radius: 4.0, x: 1.0, y: 2.0).padding(.bottom, 10)
@@ -83,7 +101,7 @@ struct TrackerView: View {
                 
                 
                 
-
+            }
             }
         
         

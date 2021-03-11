@@ -51,8 +51,8 @@ class UserInfoModel: ObservableObject {
     }
     
     @Published var personUserInfo = UserInfo.init(firstName: "",  height: 0, weight: 0, gender: "", age: 0, activityLevel: "", BMR: 0)
-    @Published var personDailyCalorieGoals = DailyCalorieGoals.init(calorieGoal: 2400, fatGoal: 40, proteinGoal: 40, carbGoal: 30)
-    @Published var personCurrentCalorieProgress = CurrentCalorieProgress.init(calorieProgress: 1200, fatProgress: 0, carbProgress: 0, proteinProgress: 0)
+    @Published var personDailyCalorieGoals = DailyCalorieGoals.init(calorieGoal: 2400, fatGoal: 40, proteinGoal: 40, carbGoal: 0)
+    @Published var personCurrentCalorieProgress = CurrentCalorieProgress.init(calorieProgress: 1200, fatProgress:   12, carbProgress: 5, proteinProgress: 30)
     
     
 }
