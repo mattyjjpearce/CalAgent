@@ -110,7 +110,7 @@ struct AddView: View{
                     
                     TextField("Exercise Title ", text: $newExerciseNameString)
                     
-                    TextField("Fat", text: $newExerciseCals).onReceive(Just(newExerciseCals)) { newValue in
+                    TextField("Total Cals", text: $newExerciseCals).onReceive(Just(newExerciseCals)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
                         if filtered != newValue {
                             self.newExerciseCals = filtered

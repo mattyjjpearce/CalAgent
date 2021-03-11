@@ -13,6 +13,9 @@ struct ProfileView: View {
     
     
     @EnvironmentObject var person: UserInfoModel
+    
+    @State private var showingSheet1 = false
+
 
     @State private var fatInputString = ""
     @State private var carbInputString = ""
@@ -93,6 +96,20 @@ struct ProfileView: View {
                     }
                     HStack {
                         Text("Activity Level")
+                        Button("") {
+                            self.showingSheet1.toggle()
+                        }
+                        Image(systemName: "info.circle").foregroundColor(.blue)
+                        .sheet(isPresented: $showingSheet1, content: {
+                            List{
+                            Text("Low: little or no exercise")
+                            Text("Medium: moderate exercise 3-5 days/week")
+                            Text("High: hard exercise 6-7 days/week")
+                            }
+                                
+                        })
+                        .foregroundColor(.black)
+                            
                         Picker("", selection: $selectedActivityLevel) {
 
                             ForEach(0..<activityLevel.count) { index in
@@ -210,9 +227,9 @@ struct ProfileView: View {
                             let proteinDouble: Double! = Double(proteinInputString)
                             person.personDailyCalorieGoals.proteinGoal = proteinDouble
                     
-                            fatInputString = "0" //resetting the local variable
-                            carbInputString = "0"
-                            proteinInputString = "0"
+                            fatInputString = "" //resetting the local variable
+                            carbInputString = ""
+                            proteinInputString = ""
                             
                             let fatCalories = fatDouble * 9
                             let carbCalories = carbDouble * 4
