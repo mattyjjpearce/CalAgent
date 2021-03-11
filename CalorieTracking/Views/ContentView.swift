@@ -34,7 +34,7 @@ struct ContentView: View {
             ).tag(1)
 
             
-            ProgressView().tabItem ({
+            AddView().tabItem ({
                 Text("Progress")
             }).tag(2)
             

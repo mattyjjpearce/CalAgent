@@ -15,7 +15,7 @@ struct TrackerView: View {
     var body: some View {
         HStack {
             Text("\(person.personUserInfo.firstName)")
-            Text("\(person.personDailyCalorieGoals.fatGoal)")
+            Text("\(person.personDailyCalorieGoals.calorieGoal)")
             }
     }
 }
