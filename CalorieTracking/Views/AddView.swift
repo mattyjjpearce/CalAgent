@@ -12,20 +12,33 @@ struct AddView: View{
     
     @EnvironmentObject var person: UserInfoModel
     @StateObject var foods: FoodAddModel
+    @State private var showingSheet = false
 
-    
+
     init() {
             _foods = StateObject(wrappedValue: FoodAddModel())
         }
-
-
+    
     var body: some View {
         VStack{
-        myView().environmentObject(foods)
+            Button("Delete Items"){
+                self.showingSheet.toggle()
+            }.sheet(isPresented: $showingSheet, content: {
+                        DeleteFoodView().environmentObject(foods)
+                            
+                
+            })
+            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
         }
+        
     }
     }
 
+struct secondView:View{
+    var body: some View{
+        Text("Hi")
+    }
+}
 
 
 

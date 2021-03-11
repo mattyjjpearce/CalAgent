@@ -45,36 +45,39 @@ class FoodAddModel: ObservableObject,Identifiable {
 
 }
 
-struct myView:View{
+struct DeleteFoodView:View{
     @EnvironmentObject var getFood:FoodAddModel
     @EnvironmentObject var person: UserInfoModel
-
 
     var unwrappedFoods:[AddedFoods]{
         getFood.foods ?? []
     }
     
     var body: some View{
-        NavigationView{
-            List{
-            ForEach(Array(unwrappedFoods.enumerated()), id: \.1.id) { (index, obj) in
-            
+        
+        List{
+        ForEach(Array(unwrappedFoods.enumerated()), id: \.1.id) { (index, obj) in
+            VStack{
                 HStack{
-                            Text(obj.name)
-                            Button(action: {
-                                getFood.foods?.remove(at: index)
-                                person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals
-                            }) {
-                                Image(systemName: "minus").foregroundColor(.red)
-                            }
-                }
+                    Text(obj.name)
+                    Spacer()
+                    Button(action: {
+                        getFood.foods?.remove(at: index)
+                        person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals
+                    }) {
+                        Image(systemName: "minus.square.fill").foregroundColor(.red)
+                            .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    }.buttonStyle(PlainButtonStyle())
+                    }
+                Text("Kcals: \(obj.totalCals, specifier: "%.0f") F: \(obj.totalFat, specifier: "%.0f") C: \(obj.totalCarbs, specifier: "%.0f") P: \(obj.totalProtein, specifier: "%.0f")").font(.system(size: 16))
+            }
                         
-            
-            
+    
+                }
             }
-            }
-            }
+       
     }
+      
     }
 
    
