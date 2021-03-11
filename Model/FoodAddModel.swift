@@ -59,17 +59,17 @@ struct DeleteFoodView:View{
         ForEach(Array(unwrappedFoods.enumerated()), id: \.1.id) { (index, obj) in
             VStack{
                 HStack{
-                    Text(obj.name)
+                    Text(obj.name).foregroundColor(.black)
                     Spacer()
                     Button(action: {
                         getFood.foods?.remove(at: index)
-                        person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals
+                        person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals //showing how to work this 
                     }) {
                         Image(systemName: "minus.square.fill").foregroundColor(.red)
                             .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     }.buttonStyle(PlainButtonStyle())
                     }
-                Text("Kcals: \(obj.totalCals, specifier: "%.0f") F: \(obj.totalFat, specifier: "%.0f") C: \(obj.totalCarbs, specifier: "%.0f") P: \(obj.totalProtein, specifier: "%.0f")").font(.system(size: 16))
+                Text("Kcals: \(obj.totalCals, specifier: "%.0f") F: \(obj.totalFat, specifier: "%.0f") C: \(obj.totalCarbs, specifier: "%.0f") P: \(obj.totalProtein, specifier: "%.0f")").font(.system(size: 16)).foregroundColor(.black)
             }
                         
     
