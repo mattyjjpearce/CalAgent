@@ -35,7 +35,7 @@ struct ContentView: View {
 
             
             AddView().tabItem ({
-                Text("Progress")
+                Text("Add")
             }).tag(2)
             
             MealView().tabItem ({

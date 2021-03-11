@@ -106,7 +106,9 @@ struct AddView: View{
                     .foregroundColor(.red)
                 
                 }
-                Section(header: Text("Add Exercises")){
+                Section(header: Text("Add Exercises")
+                
+                ){
                     
                     TextField("Exercise Title ", text: $newExerciseNameString)
                     

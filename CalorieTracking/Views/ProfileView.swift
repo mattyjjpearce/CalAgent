@@ -220,6 +220,9 @@ struct ProfileView: View {
                         }
                         Button(action: {
                             //converting the input from type string to Double
+                            
+                            if(fatInputString != "" || carbInputString != "" || proteinInputString != "" ){
+                                
                             let fatDouble: Double! = Double(fatInputString)
                             person.personDailyCalorieGoals.fatGoal = fatDouble
                             let carbDouble: Double! = Double(carbInputString)
@@ -237,8 +240,8 @@ struct ProfileView: View {
                             let totalCalorieGoal = fatCalories + carbCalories + proteinCalories
                             
                             person.personDailyCalorieGoals.calorieGoal = totalCalorieGoal
+                            }
                             
-
                         }) {
                             Text("Enter").multilineTextAlignment(.center)
                                 .foregroundColor(Color.blue)
