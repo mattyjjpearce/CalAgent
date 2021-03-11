@@ -220,27 +220,41 @@ struct ProfileView: View {
                         }
                         Button(action: {
                             //converting the input from type string to Double
+                            if(fatInputString == "" ){
+                            person.personDailyCalorieGoals.fatGoal = person.personDailyCalorieGoals.fatGoal
+                            }
+                            else{
+                                let fatDouble: Double! = Double(fatInputString)
+                                person.personDailyCalorieGoals.fatGoal = fatDouble
+                            }
                             
-                            if(fatInputString != "" || carbInputString != "" || proteinInputString != "" ){
-                                
-                            let fatDouble: Double! = Double(fatInputString)
-                            person.personDailyCalorieGoals.fatGoal = fatDouble
-                            let carbDouble: Double! = Double(carbInputString)
-                            person.personDailyCalorieGoals.carbGoal = carbDouble
-                            let proteinDouble: Double! = Double(proteinInputString)
-                            person.personDailyCalorieGoals.proteinGoal = proteinDouble
-                    
+                            if(carbInputString == "" ){
+                            person.personDailyCalorieGoals.carbGoal = person.personDailyCalorieGoals.carbGoal
+                            }
+                            else{
+                                let carbDouble: Double! = Double(carbInputString)
+                                person.personDailyCalorieGoals.carbGoal = carbDouble
+                            }
+                            
+                            if(proteinInputString == "" ){
+                            person.personDailyCalorieGoals.proteinGoal = person.personDailyCalorieGoals.proteinGoal
+                            }else{
+                                let proteinDouble: Double! = Double(proteinInputString)
+                                person.personDailyCalorieGoals.proteinGoal = proteinDouble
+                            }
+                            
+
                             fatInputString = "" //resetting the local variable
                             carbInputString = ""
                             proteinInputString = ""
                             
-                            let fatCalories = fatDouble * 9
-                            let carbCalories = carbDouble * 4
-                            let proteinCalories = proteinDouble * 4
+                            let fatCalories = person.personDailyCalorieGoals.fatGoal * 9
+                            let carbCalories = person.personDailyCalorieGoals.carbGoal * 4
+                            let proteinCalories = person.personDailyCalorieGoals.proteinGoal * 4
                             let totalCalorieGoal = fatCalories + carbCalories + proteinCalories
                             
                             person.personDailyCalorieGoals.calorieGoal = totalCalorieGoal
-                            }
+                            
                             
                         }) {
                             Text("Enter").multilineTextAlignment(.center)
