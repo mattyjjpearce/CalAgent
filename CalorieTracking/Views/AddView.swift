@@ -13,18 +13,25 @@ struct AddView: View{
     
     @EnvironmentObject var person: UserInfoModel
     @StateObject var foods: FoodAddModel
-    @State private var showingSheet = false
+    @StateObject var exercises: ExerciseAddModel
+
+    @State private var showingSheet1 = false
+    @State private var showingSheet2 = false
+
     
     @State private var newFoodNameString = ""
     @State private var newFoodFatString = ""
     @State private var newFoodProteinString = ""
     @State private var newFoodCarbString = ""
 
+    @State private var newExerciseNameString = ""
+    @State private var newExerciseCals = ""
 
 
 
     init() {
             _foods = StateObject(wrappedValue: FoodAddModel())
+            _exercises = StateObject(wrappedValue: ExerciseAddModel())
         }
     
     var body: some View {
@@ -90,15 +97,56 @@ struct AddView: View{
                     
                 }
                     Button("Delete Foods"){
-                        self.showingSheet.toggle()
-                    }.sheet(isPresented: $showingSheet, content: {
+                        self.showingSheet1.toggle()
+                    }.sheet(isPresented: $showingSheet1, content: {
                                 DeleteFoodView().environmentObject(foods)
                                     
                         
                     })
                     .foregroundColor(.red)
                 
-            }
+                }
+                Section(header: Text("Add Exercises")){
+                    
+                    TextField("Exercise Title ", text: $newExerciseNameString)
+                    
+                    TextField("Fat", text: $newExerciseCals).onReceive(Just(newExerciseCals)) { newValue in
+                        let filtered = newValue.filter { "0123456789".contains($0) }
+                        if filtered != newValue {
+                            self.newExerciseCals = filtered
+                        }
+}
+                    Button(action: {
+                        
+                        if(newExerciseCals != ""){
+                        
+                        //converting the input from type string to Double
+                        
+                        let exerciseCal: Double! = Double(newExerciseCals)
+                
+                        let newAddedExercise = AddedExercises(name: newExerciseNameString, totalCals: exerciseCal)
+                        
+                        exercises.exercises?.append(newAddedExercise)
+                        
+                        
+                        newExerciseNameString = ""
+                        newExerciseCals = "" //resetting the local variable
+                        
+                        }
+
+                    }) {
+                        Text("Enter").multilineTextAlignment(.center)
+                            .foregroundColor(Color.blue)
+                    }
+                    Button("Delete Exercises"){
+                        self.showingSheet2.toggle()
+                    }.sheet(isPresented: $showingSheet2, content: {
+                                DeleteExerciseView().environmentObject(exercises)
+                                    
+                        
+                    })
+                    .foregroundColor(.red)
+                }
         
         }
         }
