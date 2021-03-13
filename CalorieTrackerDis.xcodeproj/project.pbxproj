@@ -490,6 +490,7 @@
 				CODE_SIGN_ENTITLEMENTS = CalorieTrackerDis.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CalorieTracking/Preview Content\"";
+				DEVELOPMENT_TEAM = 5R6JL4L8V3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CalorieTracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -512,6 +513,7 @@
 				CODE_SIGN_ENTITLEMENTS = CalorieTrackerDis.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CalorieTracking/Preview Content\"";
+				DEVELOPMENT_TEAM = 5R6JL4L8V3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = CalorieTracking/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

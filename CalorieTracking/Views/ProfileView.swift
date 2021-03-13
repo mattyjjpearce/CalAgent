@@ -166,7 +166,8 @@ struct ProfileView: View {
                         }
                      }
                     
-                
+                    hideKeyboard()
+
                     person.personUserInfo.BMR = BMR
                 
 
@@ -255,6 +256,7 @@ struct ProfileView: View {
                             
                             person.personDailyCalorieGoals.calorieGoal = totalCalorieGoal
                             
+                            hideKeyboard()
                             
                         }) {
                             Text("Enter").multilineTextAlignment(.center)
@@ -266,6 +268,14 @@ struct ProfileView: View {
     }
     
 }
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
 
 //Debugging preview
 

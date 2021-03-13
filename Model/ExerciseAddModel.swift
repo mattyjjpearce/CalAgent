@@ -57,7 +57,7 @@ struct DeleteExerciseView:View{
                     Spacer()
                     Button(action: {
                         getExercises.exercises?.remove(at: index)
-                        person.personCurrentCalorieProgress.calorieProgress -=  obj.totalCals //showing how to work this
+                        person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals //showing how to work this
                     }) {
                         Image(systemName: "minus.square.fill").foregroundColor(.red)
                             .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
