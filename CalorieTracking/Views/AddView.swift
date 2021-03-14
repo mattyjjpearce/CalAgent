@@ -83,12 +83,22 @@ struct AddView: View{
                         let newAddedFood = AddedFoods(name: newFoodNameString, totalCals: newFoodCalories, totalProtein: fatDouble, totalCarbs: carbDouble, totalFat: fatDouble)
                         
                         foods.foods?.append(newAddedFood)
+                            
+                        person.personCurrentCalorieProgress.calorieProgress +=  newFoodCalories //showing how to work this
+                        person.personCurrentCalorieProgress.fatProgress +=  fatDouble //showing how to work this
+                        person.personCurrentCalorieProgress.proteinProgress +=  proteinDouble //showing how to work this
+                        person.personCurrentCalorieProgress.carbProgress +=  carbDouble //showing how to work this
+
+
                         
                         newFoodNameString = ""
                         newFoodFatString = "" //resetting the local variable
                         newFoodCarbString = ""
                         newFoodProteinString = ""
                         }
+                        
+                        hideKeyboard()
+
 
                     }) {
                         Text("Enter").multilineTextAlignment(.center)
@@ -106,7 +116,9 @@ struct AddView: View{
                     .foregroundColor(.red)
                 
                 }
-                Section(header: Text("Add Exercises")){
+                Section(header: Text("Add Exercises")
+                
+                ){
                     
                     TextField("Exercise Title ", text: $newExerciseNameString)
                     
@@ -128,11 +140,14 @@ struct AddView: View{
                         
                         exercises.exercises?.append(newAddedExercise)
                         
-                        
+                        person.personCurrentCalorieProgress.calorieProgress -=  exerciseCal //showing how to work this
+                            
                         newExerciseNameString = ""
                         newExerciseCals = "" //resetting the local variable
                         
                         }
+                        hideKeyboard()
+
 
                     }) {
                         Text("Enter").multilineTextAlignment(.center)
