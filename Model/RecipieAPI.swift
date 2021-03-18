@@ -9,13 +9,14 @@ import Foundation
 
 
 struct RecipieAPI: Codable  {
-    var title : String
-    var imageURL : String
-    var timeRequired : Int
-    var sourceURL : String
-    var ingredients : [String]
-    var instructions : [String]
-    var servings: Int
+    var calories : Int
+    var carbs : String
+    var fat : String
+    var id : Int
+    var image : String
+    var imageType : String
+    var protein : String
+    var title: String
 }
 
 
