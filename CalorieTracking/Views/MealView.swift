@@ -16,13 +16,27 @@ struct MealView: View {
 
     var body: some View {
        
-        
-        List(mealViewModel.nutrients, id: \.id) { item in
-                    VStack(alignment: .leading) {
-                        Text(item.title)
-                    }
+        ScrollView(.horizontal, showsIndicators: true){
+            HStack{
+                ForEach(mealViewModel.nutrients, id: \.id){
+                    item in
+                    VStack{
+                        Text(item.title).padding(15)
+                        Text("\(item.calories)")
+                        Text(item.fat)
+                        Text(item.carbs)
+                        Text(item.protein)
+                        loadingImages(url: item.image) .aspectRatio(contentMode: .fit)
+                            .frame(width: 300)
+                    }.overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(Color.blue, lineWidth: 4)
+                    ).padding()
+
                 }
-        
+            }
+        }.frame(height: 500)
+
     }
 }
 

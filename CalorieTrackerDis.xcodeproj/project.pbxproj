@@ -16,6 +16,7 @@
 		4D937DFE2600AF7C00087864 /* RecipieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937DFD2600AF7C00087864 /* RecipieAPI.swift */; };
 		4D937E1126022EAD00087864 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E1026022EAD00087864 /* NetworkServices.swift */; };
 		4D937E172602367200087864 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E162602367200087864 /* MealViewModel.swift */; };
+		4D937E1C2603AE1E00087864 /* loadingImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E1B2603AE1E00087864 /* loadingImages.swift */; };
 		4DBB3126256FC61A00E973EF /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3125256FC61A00E973EF /* App.swift */; };
 		4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3127256FC61A00E973EF /* ContentView.swift */; };
 		4DBB312A256FC61E00E973EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB3129256FC61E00E973EF /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		4D937DFD2600AF7C00087864 /* RecipieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipieAPI.swift; sourceTree = "<group>"; };
 		4D937E1026022EAD00087864 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		4D937E162602367200087864 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
+		4D937E1B2603AE1E00087864 /* loadingImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingImages.swift; sourceTree = "<group>"; };
 		4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieTrackerDis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBB3125256FC61A00E973EF /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		4DBB3127256FC61A00E973EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				4D937E1026022EAD00087864 /* NetworkServices.swift */,
+				4D937E1B2603AE1E00087864 /* loadingImages.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 			files = (
 				4DBB312F256FC61E00E973EF /* Persistence.swift in Sources */,
 				4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */,
+				4D937E1C2603AE1E00087864 /* loadingImages.swift in Sources */,
 				4DBB3159256FDCFF00E973EF /* ProfileView.swift in Sources */,
 				4D072FE825FA62120012876D /* ExerciseAddModel.swift in Sources */,
 				4D937E1126022EAD00087864 /* NetworkServices.swift in Sources */,

@@ -16,7 +16,7 @@ class MealViewModel: ObservableObject {
     }
     
     func fetchNutrients() {
-        NetworkServices.fetchNutrients(minCarbs: 10, maxCarbs: 50, number: 2) { (nutrients, error) in
+        NetworkServices.fetchNutrients(minCarbs: 10, maxCarbs: 50, number: 4) { (nutrients, error) in
             if let error = error {
                 print(error)
             } else {
