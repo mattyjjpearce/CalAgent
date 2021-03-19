@@ -42,6 +42,8 @@ struct ContentView: View {
                 Text("Meals")
             }).tag(3)
         }.accentColor(ColourManager.Colour3)
+        .environmentObject(MealViewModel()) // <<: Here!
+        .environmentObject(UserInfoModel.shared) // <<: Here!
 
         
         }
