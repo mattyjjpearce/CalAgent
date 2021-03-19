@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Alamofire
+import Combine //to use Just
+
 
 struct MealView: View {
     
@@ -14,8 +16,15 @@ struct MealView: View {
     @ObservedObject var mealViewModel: MealViewModel = MealViewModel()
     @State private var showingSheet1 = false
     @State private var showingSheet2 = false
+    @State private var showingAlert = false
 
 
+    @State private var fatInputString = ""
+    @State private var carbInputString = ""
+    @State private var proteinInputString = ""
+
+    
+    
     
     var body: some View {
        
@@ -25,15 +34,50 @@ struct MealView: View {
                 self.showingSheet1.toggle()
             }.sheet(isPresented: $showingSheet1, content: {
                 Form{
-                    Text("Hi")
+                    Text("Filter by Macronutrients")
+                    TextField("Fat g", text: $fatInputString ).keyboardType(.numberPad)
+                        .onReceive(Just(fatInputString)) { newValue in
+                                        let filtered = newValue.filter { "0123456789".contains($0) }
+                                        if filtered != newValue {
+                                            self.fatInputString = filtered
+                                        }
+                }
+                    TextField("Carb g", text: $carbInputString ).keyboardType(.numberPad)
+                        .onReceive(Just(carbInputString)) { newValue in
+                                        let filtered = newValue.filter { "0123456789".contains($0) }
+                                        if filtered != newValue {
+                                            self.carbInputString = filtered
+                                        }
+                }
+                    
+                    TextField("Protein g", text: $proteinInputString ).keyboardType(.numberPad)
+                        .onReceive(Just(proteinInputString)) { newValue in
+                                        let filtered = newValue.filter { "0123456789".contains($0) }
+                                        if filtered != newValue {
+                                            self.proteinInputString = filtered
+                                        }
+                }
                     
                     
                     
                     
                     Button("Done"){
+                        
+                        if(fatInputString != "" && carbInputString != "" && proteinInputString != ""){
+                        person.recipeNutrientsSearch.fat = Int(fatInputString)!
+                        person.recipeNutrientsSearch.carb = Int(carbInputString)!
+                        person.recipeNutrientsSearch.protein = Int(proteinInputString)!
+
+                        mealViewModel.fetchNutrients()
+                            
                         self.showingSheet1.toggle()
+                            
+                        }
+                        showingAlert = true 
+                    }.alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Invalid Input"), message: Text("Please enter a value in each field, or reset to remaining macros left"), dismissButton: .default(Text("Got it!")))
                     }
-                }
+                }.foregroundColor(.black)
                             
                 
             })
