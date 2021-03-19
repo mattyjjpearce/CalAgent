@@ -56,6 +56,7 @@ class UserInfoModel: ObservableObject {
         var fat: Int
         var carb: Int
         var protein: Int
+
     }
     
     @Published var personUserInfo = UserInfo.init(firstName: "",  height: 0, weight: 0, gender: "", age: 0, activityLevel: "", BMR: 0)

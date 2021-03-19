@@ -57,10 +57,7 @@ struct MealView: View {
                                             self.proteinInputString = filtered
                                         }
                 }
-                    
-                    
-                    
-                    
+                     
                     Button("Done"){
                         
                         if(fatInputString != "" && carbInputString != "" && proteinInputString != ""){
@@ -72,24 +69,62 @@ struct MealView: View {
                             
                         self.showingSheet1.toggle()
                             
+                        }else{
+                        showingAlert = true
                         }
-                        showingAlert = true 
                     }.alert(isPresented: $showingAlert) {
                         Alert(title: Text("Invalid Input"), message: Text("Please enter a value in each field, or reset to remaining macros left"), dismissButton: .default(Text("Got it!")))
+
                     }
                 }.foregroundColor(.black)
-                            
-                
             })
             .font(.custom("Inter-Medium", size: 16))
             .foregroundColor(Color.white)
             .frame(width: 50, height: 25)
             .cornerRadius(10)
-
             .background(Color.gray)
                 
-            
-                
+                Button("Reset"){
+                    let fat = person.personDailyCalorieGoals.fatGoal - person.personCurrentCalorieProgress.fatProgress
+                    let carb = person.personDailyCalorieGoals.carbGoal - person.personCurrentCalorieProgress.carbProgress
+                    let protein = person.personDailyCalorieGoals.proteinGoal - person.personCurrentCalorieProgress.proteinProgress
+
+
+                    if(fat < 0){
+                        person.recipeNutrientsSearch.fat = 1
+                    }else{
+                    person.recipeNutrientsSearch.fat = Int(fat)
+                    }
+                    
+                    if(carb < 0){
+                        person.recipeNutrientsSearch.carb = 1
+
+                    }else{
+                        person.recipeNutrientsSearch.carb = Int(carb)
+
+                    }
+                    if(protein < 0){
+                    person.recipeNutrientsSearch.protein = 1
+                        print("protein is 0: ")
+
+                    }else{
+                    person.recipeNutrientsSearch.protein = Int(protein)
+                    }
+                   
+
+                    
+                    
+                    
+                    
+                    
+                    mealViewModel.fetchNutrients()
+                    
+                }.font(.custom("Inter-Medium", size: 16))
+                .foregroundColor(Color.white)
+                .frame(width: 50, height: 25)
+                .cornerRadius(10)
+                .background(Color.gray)
+ 
                 Spacer()
             }
             
@@ -128,6 +163,7 @@ struct MealView: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color.black, lineWidth: 4))
         }.frame(width: 350)
+        
     }
 }
 

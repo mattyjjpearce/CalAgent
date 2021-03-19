@@ -35,13 +35,13 @@ class MealViewModel: ObservableObject {
         let protein = person.personDailyCalorieGoals.proteinGoal - person.personCurrentCalorieProgress.proteinProgress
         person.recipeNutrientsSearch.protein = Int(protein)
 
-//        let x = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 1")
-//        let x2 = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 2")
-//
-//        nutrients.append(x)
-//        nutrients.append(x2)
+        let x = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 1")
+        let x2 = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 2")
+
+        nutrients.append(x)
+        nutrients.append(x2)
         
-        fetchNutrients()
+  //     fetchNutrients()
 
 
     }

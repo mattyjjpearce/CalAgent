@@ -88,8 +88,8 @@ struct AddView: View{
                         person.personCurrentCalorieProgress.fatProgress +=  fatDouble //showing how to work this
                         person.personCurrentCalorieProgress.proteinProgress +=  proteinDouble //showing how to work this
                         person.personCurrentCalorieProgress.carbProgress +=  carbDouble //showing how to work this
-
-
+                            
+                        
                         
                         newFoodNameString = ""
                         newFoodFatString = "" //resetting the local variable
@@ -141,6 +141,7 @@ struct AddView: View{
                         exercises.exercises?.append(newAddedExercise)
                         
                         person.personCurrentCalorieProgress.calorieProgress -=  exerciseCal //showing how to work this
+                            
                             
                         newExerciseNameString = ""
                         newExerciseCals = "" //resetting the local variable
