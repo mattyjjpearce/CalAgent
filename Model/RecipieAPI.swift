@@ -7,6 +7,10 @@
 
 import Foundation
 
+//struct Response : Decodable {
+//    let offset, number: Int
+//    let results : [RecipieAPI]
+//}
 
 struct RecipieAPI: Codable  {
     var calories : Int
