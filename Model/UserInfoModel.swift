@@ -48,7 +48,6 @@ class UserInfoModel: ObservableObject {
         var fatProgress: Double
         var carbProgress: Double
         var proteinProgress: Double
-
     }
     
     struct SearchRecipeCalories: Identifiable{
@@ -56,7 +55,6 @@ class UserInfoModel: ObservableObject {
         var fat: Int
         var carb: Int
         var protein: Int
-
     }
     
     @Published var personUserInfo = UserInfo.init(firstName: "",  height: 0, weight: 0, gender: "", age: 0, activityLevel: "", BMR: 0)
@@ -65,5 +63,4 @@ class UserInfoModel: ObservableObject {
     
     @Published var  recipeNutrientsSearch = SearchRecipeCalories.init(fat: 0, carb: 0, protein: 0)
     
-
 }

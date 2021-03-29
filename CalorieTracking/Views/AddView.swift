@@ -11,6 +11,8 @@ import Combine
 
 struct AddView: View{
     
+    @ObservedObject var viewModel: AddViewModel = AddViewModel()
+    
     @EnvironmentObject var person: UserInfoModel
     @StateObject var foods: FoodAddModel
     @StateObject var exercises: ExerciseAddModel
@@ -74,22 +76,19 @@ struct AddView: View{
                         let proteinDouble: Double! = Double(newFoodProteinString)
                 
                      
-                        
-                        let fatCalories = fatDouble * 9
-                        let carbCalories = carbDouble * 4
-                        let proteinCalories = proteinDouble * 4
-                        let newFoodCalories = fatCalories + carbCalories + proteinCalories
-                        
-                        let newAddedFood = AddedFoods(name: newFoodNameString, totalCals: newFoodCalories, totalProtein: fatDouble, totalCarbs: carbDouble, totalFat: fatDouble)
+                            let nutritionFunction = nutritionFunctions() //creating a nutritionObject to use cals function
+                            let cals = nutritionFunction.macrosToCals(fat: fatDouble, protein: carbDouble, carbs: proteinDouble)
+          
+                        let newAddedFood = AddedFoods(name: newFoodNameString, totalCals: cals, totalProtein: proteinDouble, totalCarbs: carbDouble, totalFat: fatDouble)
                         
                         foods.foods?.append(newAddedFood)
                             
-                        person.personCurrentCalorieProgress.calorieProgress +=  newFoodCalories //showing how to work this
-                        person.personCurrentCalorieProgress.fatProgress +=  fatDouble //showing how to work this
-                        person.personCurrentCalorieProgress.proteinProgress +=  proteinDouble //showing how to work this
-                        person.personCurrentCalorieProgress.carbProgress +=  carbDouble //showing how to work this
-                            
+                        person.personCurrentCalorieProgress.calorieProgress +=  cals
+                        person.personCurrentCalorieProgress.fatProgress +=  fatDouble
+                        person.personCurrentCalorieProgress.proteinProgress +=  proteinDouble
+                        person.personCurrentCalorieProgress.carbProgress +=  carbDouble 
                         
+                            viewModel.addCalorieTrackerDate(id: UUID(), calorieProgress: cals, fatProgress: fatDouble, carbProgress: carbDouble, proteinProgress: proteinDouble)
                         
                         newFoodNameString = ""
                         newFoodFatString = "" //resetting the local variable

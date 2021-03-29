@@ -12,17 +12,22 @@ import Combine //to use Just
 
 struct MealView: View {
     
+    @StateObject var foods: FoodAddModel
+
+    
     @EnvironmentObject var person: UserInfoModel
     @ObservedObject var mealViewModel: MealViewModel = MealViewModel()
     @State private var showingSheet1 = false
     @State private var showingSheet2 = false
     @State private var showingAlert = false
-
-
+    
     @State private var fatInputString = ""
     @State private var carbInputString = ""
     @State private var proteinInputString = ""
-
+   
+    init() {
+            _foods = StateObject(wrappedValue: FoodAddModel())
+        }
     
     
     
@@ -150,15 +155,35 @@ struct MealView: View {
                         }
                         
                       
-                        Button("Press"){ //Selecting one of the items to View in more detail and add
-                            print("This id: \(item.id)")
+                        Button("Add to Macros"){ //Selecting one of the items to View in more detail and add
+                          
+                            let nutritionFunction = nutritionFunctions() //creating a nutritionObject to use cals function
+                            
+                            
+                            let fat = nutritionFunction.stringToDoubleGrams(input: item.fat)
+                            let protein = nutritionFunction.stringToDoubleGrams(input: item.protein)
+                            let carbs = nutritionFunction.stringToDoubleGrams(input: item.carbs)
+
+                            let calories = Double(item.calories)
+                            
+                            person.personCurrentCalorieProgress.calorieProgress += calories
+                            person.personCurrentCalorieProgress.fatProgress += fat
+                            person.personCurrentCalorieProgress.carbProgress += carbs
+                            person.personCurrentCalorieProgress.proteinProgress += protein
+                            
+                            
+                            let newAddedFood = AddedFoods(name: item.title, totalCals: calories, totalProtein: protein, totalCarbs: carbs, totalFat: fat)
+                            
+                            foods.foods?.append(newAddedFood)
+                            
+                                
                         }.accentColor(.blue)
                             
                     }.frame(width: 300, height: 200)
                     Divider().frame(height: 10).background(Color.blue)
                 }
             }
-        }.frame(width: 350, height: 500)
+        }.frame(width: 350, height: 550)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color.black, lineWidth: 4))

@@ -41,15 +41,13 @@ class MealViewModel: ObservableObject {
         nutrients.append(x)
         nutrients.append(x2)
         
-  //     fetchNutrients()
+   //    fetchNutrients()
 
 
     }
     
     func fetchNutrients() {
     
-
-
         NetworkServices.fetchNutrients(maxProtein: self.person.recipeNutrientsSearch.protein , maxFat: self.person.recipeNutrientsSearch.fat,  maxCarbs: self.person.recipeNutrientsSearch.carb, number: 10) { (nutrients, error) in
             if let error = error {
                 print(error)

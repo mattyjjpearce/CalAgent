@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct navigationPracticeApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let persistenceController = PersistenceController.shared
     //make an instance of user model data as a property
     var person = UserInfoModel()
