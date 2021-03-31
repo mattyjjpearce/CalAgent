@@ -88,7 +88,9 @@ struct AddView: View{
                         person.personCurrentCalorieProgress.proteinProgress +=  proteinDouble
                         person.personCurrentCalorieProgress.carbProgress +=  carbDouble 
                         
-                            viewModel.addCalorieTrackerDate(id: UUID(), calorieProgress: cals, fatProgress: fatDouble, carbProgress: carbDouble, proteinProgress: proteinDouble)
+                        
+                            
+//                        viewModel.addCalorieTrackerDate(id: UUID(), calorieProgress: cals, fatProgress: fatDouble, carbProgress: carbDouble, proteinProgress: proteinDouble)
                         
                         newFoodNameString = ""
                         newFoodFatString = "" //resetting the local variable

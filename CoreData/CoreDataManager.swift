@@ -26,14 +26,16 @@ class CoreDataManager {
 
 //MARK:- CalorieTracker Insert/Update/Delete
 extension CoreDataManager {
-    func addCalorieTrackerData(id: UUID, calorieProgress: Double, fatProgress: Double, carbProgress: Double, proteinProgress: Double, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
-        let calorieProgressEntity = NSEntityDescription.insertNewObject(forEntityName: "CalorieProgress", into: managedContext) as? CalorieProgress
-        calorieProgressEntity?.id = id
-        calorieProgressEntity?.calorieProgress = calorieProgress
-        calorieProgressEntity?.fatProgress = fatProgress
-        calorieProgressEntity?.carbProgress = carbProgress
-        calorieProgressEntity?.proteinProgress = proteinProgress
-        calorieProgressEntity?.createdAt = Date()
+    func addUserSettingsData(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
+        let userSettingsEntity = NSEntityDescription.insertNewObject(forEntityName: "UserSettings", into: managedContext) as? UserSettings
+        userSettingsEntity?.id = id
+        userSettingsEntity?.firstName = firstName
+        userSettingsEntity?.height = height
+        userSettingsEntity?.weight = weight
+        userSettingsEntity?.gender = gender
+        userSettingsEntity?.age = age
+        userSettingsEntity?.activityLevel = activityLevel
+        userSettingsEntity?.bmr = bmr
         
         do {
             try managedContext.save()
@@ -44,8 +46,8 @@ extension CoreDataManager {
     }
     
     func fetchCalorieTrackerData(completionHandler: @escaping (_ succeed: Any?, _ error: Error?) -> Void) {
-        var progresses = [CalorieProgress]()
-        let progressRequest: NSFetchRequest<CalorieProgress> = NSFetchRequest<CalorieProgress>(entityName: "CalorieProgress")
+        var progresses = [UserSettings]()
+        let progressRequest: NSFetchRequest<UserSettings> = NSFetchRequest<UserSettings>(entityName: "UserSetitngs")
         
         do {
             progresses = try managedContext.fetch(progressRequest)

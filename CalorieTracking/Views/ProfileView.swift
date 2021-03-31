@@ -11,7 +11,8 @@ import Combine //to use Just
 
 struct ProfileView: View {
     
-    
+    @ObservedObject var viewModel: AddViewModel = AddViewModel()
+
     @EnvironmentObject var person: UserInfoModel
     
     @State private var showingSheet1 = false
@@ -48,7 +49,7 @@ struct ProfileView: View {
             Form{
                 Section{
                 TextField("Name ", text: $person.personUserInfo.firstName)
-                    Text("Caloric needs: \(self.person.personUserInfo.BMR, specifier: "%.0f") Kcal")
+                    Text("Caloric needs: \(self.person.personUserInfo.bmr, specifier: "%.0f") Kcal")
             }
                
                 
@@ -168,8 +169,10 @@ struct ProfileView: View {
                     
                     hideKeyboard()
 
-                    person.personUserInfo.BMR = BMR
-                
+                    person.personUserInfo.bmr = BMR
+                    
+                    viewModel.addCalorieTrackerDate(id: UUID(), firstName: person.personUserInfo.firstName, height: person.personUserInfo.height, weight: person.personUserInfo.weight, gender: person.personUserInfo.gender, age: person.personUserInfo.age, activityLevel: person.personUserInfo.activityLevel, bmr: person.personUserInfo.bmr)
+                    
 
                 }) {
                     Text("Enter").multilineTextAlignment(.center)

@@ -9,14 +9,16 @@ import Foundation
 
 class AddViewModel: ObservableObject {
     
-    @Published var progresses = [CalorieProgress]()
+    @Published var userSettings = [CalorieProgress]()
+
     
     init() {
-        fetchProgresses()
+      //  fetchProgresses()
     }
     
-    func addCalorieTrackerDate(id: UUID, calorieProgress: Double, fatProgress: Double, carbProgress: Double, proteinProgress: Double) {
-        CoreDataManager.shared.addCalorieTrackerData(id: id, calorieProgress: carbProgress, fatProgress: fatProgress, carbProgress: carbProgress, proteinProgress: proteinProgress) { (isAdded, error) in
+    //Creating the data
+    func addCalorieTrackerDate(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double) {
+        CoreDataManager.shared.addUserSettingsData(id: id, firstName: firstName, height: height, weight: weight, gender: gender, age: age, activityLevel: activityLevel, bmr: bmr) { (isAdded, error) in
             if let error = error {
                 print(error)
             } else {
@@ -25,13 +27,14 @@ class AddViewModel: ObservableObject {
         }
     }
     
+    //fetching the data
     func fetchProgresses() {
-        CoreDataManager.shared.fetchCalorieTrackerData { (progresses, error) in
+        CoreDataManager.shared.fetchCalorieTrackerData { (userSettings, error) in
             if let error = error {
                 print(error)
             }
-            if let progresses = progresses as? [CalorieProgress] {
-                self.progresses = progresses
+            if let userSettings = userSettings as? [CalorieProgress] {
+                self.userSettings = userSettings
             }
         }
     }
