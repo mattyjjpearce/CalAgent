@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AddViewModel: ObservableObject {
+class UserSettingsViewModel: ObservableObject {
     
     @Published var userSettings = [UserSettings]()
 
@@ -18,7 +18,7 @@ class AddViewModel: ObservableObject {
     }
     
     //Creating the data
-    func addCalorieTrackerDate(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double) {
+    func addUserSettingData(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double) {
         CoreDataManager.shared.addUserSettingsData(id: id, firstName: firstName, height: height, weight: weight, gender: gender, age: age, activityLevel: activityLevel, bmr: bmr) { (isAdded, error) in
             if let error = error {
                 print(error)
@@ -30,8 +30,8 @@ class AddViewModel: ObservableObject {
     }
     
     //fetching the data
-    func fetchProgresses() -> [UserSettings] {
-        CoreDataManager.shared.fetchCalorieTrackerData { (userSettings, error) in
+    func fetchUserSettingData() -> [UserSettings] {
+        CoreDataManager.shared.fetchUserSettingData { (userSettings, error) in
             if let error = error {
                 print(error)
             }
