@@ -31,9 +31,9 @@
 		4DBB3163256FDF6E00E973EF /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3162256FDF6E00E973EF /* MealView.swift */; };
 		4DBB3168256FDF8600E973EF /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3167256FDF8600E973EF /* AddView.swift */; };
 		4DDB498F2611E1E9007A3842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB498E2611E1E9007A3842 /* AppDelegate.swift */; };
-		4DDB49982611E304007A3842 /* CalorieTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB49962611E304007A3842 /* CalorieTracker.xcdatamodeld */; };
 		4DDB499D2611E5C8007A3842 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB499C2611E5C8007A3842 /* CoreDataManager.swift */; };
 		4DDB49A22611EB0F007A3842 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB49A12611EB0F007A3842 /* AddViewModel.swift */; };
+		4DDB49AA2614C0B2007A3842 /* CalorieTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DDB49962611E304007A3842 /* CalorieTracker.xcdatamodeld */; };
 		9A5EE819C32191F940BC4557 /* Pods_CalorieTrackerDisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 418C04723AD490051623D5E2 /* Pods_CalorieTrackerDisTests.framework */; };
 		FCBBBF4DA0977214C66ECBEB /* Pods_CalorieTrackerDis_CalorieTrackerDisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093E610BF922F199D177F4A9 /* Pods_CalorieTrackerDis_CalorieTrackerDisUITests.framework */; };
 /* End PBXBuildFile section */
@@ -514,8 +514,8 @@
 				4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */,
 				4D937E1C2603AE1E00087864 /* loadingImages.swift in Sources */,
 				4DBB3159256FDCFF00E973EF /* ProfileView.swift in Sources */,
-				4DDB49982611E304007A3842 /* CalorieTracker.xcdatamodeld in Sources */,
 				4D072FE825FA62120012876D /* ExerciseAddModel.swift in Sources */,
+				4DDB49AA2614C0B2007A3842 /* CalorieTracker.xcdatamodeld in Sources */,
 				4D937E1126022EAD00087864 /* NetworkServices.swift in Sources */,
 				4D6CE889260A54F5002AEF08 /* nutritionFunctions.swift in Sources */,
 				4D072FE325F77D320012876D /* FoodAddModel.swift in Sources */,

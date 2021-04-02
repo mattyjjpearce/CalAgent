@@ -28,7 +28,8 @@ struct AddView: View{
 
     @State private var newExerciseNameString = ""
     @State private var newExerciseCals = ""
-
+    
+  
 
 
     init() {

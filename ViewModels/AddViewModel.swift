@@ -9,11 +9,12 @@ import Foundation
 
 class AddViewModel: ObservableObject {
     
-    @Published var userSettings = [CalorieProgress]()
+    @Published var userSettings = [UserSettings]()
 
     
     init() {
-      //  fetchProgresses()
+    //    print(fetchProgresses().count)
+
     }
     
     //Creating the data
@@ -23,19 +24,25 @@ class AddViewModel: ObservableObject {
                 print(error)
             } else {
                 print("Data has been added!")
+                print(gender)
             }
         }
     }
     
     //fetching the data
-    func fetchProgresses() {
+    func fetchProgresses() -> [UserSettings] {
         CoreDataManager.shared.fetchCalorieTrackerData { (userSettings, error) in
             if let error = error {
                 print(error)
             }
-            if let userSettings = userSettings as? [CalorieProgress] {
+            if let userSettings = userSettings as? [UserSettings] {
                 self.userSettings = userSettings
             }
         }
+        return userSettings
+    }
+    
+    func deleteUserData(){
+        CoreDataManager.shared.deleteUserSettingData()
     }
 }

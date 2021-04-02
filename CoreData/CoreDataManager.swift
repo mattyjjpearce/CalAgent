@@ -19,7 +19,7 @@ class CoreDataManager {
     
     var managedContext: NSManagedObjectContext
     
-    init(managedObjectContext: NSManagedObjectContext) {
+  private init(managedObjectContext: NSManagedObjectContext) {
         managedContext = managedObjectContext
     }
 }
@@ -39,6 +39,7 @@ extension CoreDataManager {
         
         do {
             try managedContext.save()
+            print("context saved")
             completionHandler(true, nil)
         } catch let error {
             completionHandler(false, error)
@@ -47,7 +48,7 @@ extension CoreDataManager {
     
     func fetchCalorieTrackerData(completionHandler: @escaping (_ succeed: Any?, _ error: Error?) -> Void) {
         var progresses = [UserSettings]()
-        let progressRequest: NSFetchRequest<UserSettings> = NSFetchRequest<UserSettings>(entityName: "UserSetitngs")
+        let progressRequest: NSFetchRequest<UserSettings> = NSFetchRequest<UserSettings>(entityName: "UserSettings")
         
         do {
             progresses = try managedContext.fetch(progressRequest)
@@ -56,4 +57,16 @@ extension CoreDataManager {
             completionHandler(nil, error)
         }
     }
+    
+    func deleteUserSettingData(){
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "UserSettings")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+        do {
+            try managedContext.execute(deleteRequest)
+        } catch _ as NSError {
+    }
+    }
+    
+    
 }

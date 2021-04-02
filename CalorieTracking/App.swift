@@ -18,7 +18,7 @@ struct navigationPracticeApp: App {
 
         WindowGroup {
             ContentView()
-                //pass into conent view with the following 
+                //pass into content view with the following environment objects / variables 
                 .environmentObject(person)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
 

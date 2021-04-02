@@ -7,22 +7,23 @@
 
 import SwiftUI
 
+import CoreData
+
+
+
 struct ContentView: View {
 
-    
     //Instantiating an object of UserInfo Model (referenced in App.swift too 
     @EnvironmentObject var person: UserInfoModel
     
-
     
+
     init() {
         //Setting appearance of UI colour
         UITabBar.appearance().backgroundColor = ColourManager.UIColour1
     }
     
     var body: some View {
-        
-        
         TabView {
             ProfileView().tabItem ({
                 Text("Profile")
