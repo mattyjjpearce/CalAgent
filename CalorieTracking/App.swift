@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct navigationPracticeApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let persistenceController = PersistenceController.shared
     //make an instance of user model data as a property
     var person = UserInfoModel()
@@ -17,7 +18,7 @@ struct navigationPracticeApp: App {
 
         WindowGroup {
             ContentView()
-                //pass into conent view with the following 
+                //pass into content view with the following environment objects / variables 
                 .environmentObject(person)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
 

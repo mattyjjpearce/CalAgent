@@ -67,6 +67,10 @@ struct DeleteFoodView:View{
                         person.personCurrentCalorieProgress.fatProgress -=  obj.totalFat
                         person.personCurrentCalorieProgress.proteinProgress -=  obj.totalProtein
                         person.personCurrentCalorieProgress.carbProgress -=  obj.totalCarbs
+                    
+                        
+                        
+                        
                     }) {
                         Image(systemName: "minus.square.fill").foregroundColor(.red)
                             .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

@@ -26,24 +26,29 @@ class MealViewModel: ObservableObject {
     
     init() {
         
-    
-
-        let x = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 1")
-        let x2 = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 2")
-
-        nutrients.append(x)
-        nutrients.append(x2)
+//        let fat = person.personDailyCalorieGoals.fatGoal - person.personCurrentCalorieProgress.fatProgress
+//        person.recipeNutrientsSearch.fat = Int(fat)
+//        
+//        let carb = person.personDailyCalorieGoals.carbGoal - person.personCurrentCalorieProgress.carbProgress
+//        person.recipeNutrientsSearch.carb = Int(carb)
+//        
+//        let protein = person.personDailyCalorieGoals.proteinGoal - person.personCurrentCalorieProgress.proteinProgress
+//        person.recipeNutrientsSearch.protein = Int(protein)
+//
+//        let x = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 1")
+//        let x2 = RecipieAPI(calories: 200, carbs: "5g", fat: "5g", id: 200, image: "imagelink", imageType: "imagetype", protein: "5g", title: "Dummy 2")
+//
+//        nutrients.append(x)
+//        nutrients.append(x2)
         
- //       fetchNutrients()
+       fetchNutrients()
 
 
     }
     
     func fetchNutrients() {
-       
-        let x = Int(self.person.personDailyCalorieGoals.fatGoal)
-
-        NetworkServices.fetchNutrients(maxProtein: x , maxFat: 200,  maxCarbs: 300, number: 10) { (nutrients, error) in
+    
+        NetworkServices.fetchNutrients(maxProtein: self.person.recipeNutrientsSearch.protein , maxFat: self.person.recipeNutrientsSearch.fat,  maxCarbs: self.person.recipeNutrientsSearch.carb, number: 10) { (nutrients, error) in
             if let error = error {
                 print(error)
             } else {

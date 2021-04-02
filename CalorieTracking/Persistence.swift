@@ -7,6 +7,8 @@
 
 import CoreData
 
+//container that encapsulates the coreData stack
+
 struct PersistenceController {
     static let shared = PersistenceController()
 
@@ -31,7 +33,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "navigationPractice")
+        container = NSPersistentContainer(name: "CalorieTracker")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

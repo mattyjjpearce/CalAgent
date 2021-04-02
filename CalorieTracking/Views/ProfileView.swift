@@ -11,7 +11,10 @@ import Combine //to use Just
 
 struct ProfileView: View {
     
-    
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @ObservedObject var viewModel: AddViewModel = AddViewModel()
+
     @EnvironmentObject var person: UserInfoModel
     
     @State private var showingSheet1 = false
@@ -26,29 +29,60 @@ struct ProfileView: View {
     @State private var weightInputString = ""
 
 
-    @State var selectedGender = 0
+    @State var selectedGender = 0.00
     let genders = ["Male", "Female"]
 
-    var activityLevel = ["Low", "Medium", "High"]
-    @State var selectedActivityLevel = 0
+    @State var activityLevel = ["Low", "Medium", "High"]
+    @State var selectedActivityLevel = 0.00
+    @State var chosenActivityLevel = ""
    
     @State var BMR = 0.00
-
-
-
-
     
-
+    @State var userName = ""
+    
+    
+    
+    @FetchRequest(
+            entity: UserSettings.entity(),
+            sortDescriptors: [])
+    private var userSettingEntity: FetchedResults<UserSettings>
+    
+//    init(){
+//
+////        let x = viewModel.fetchProgresses()
+////        let y = userSettingEntity.count
+////
+////        print(y)
+////        print(x.count)
+////        if(!x.isEmpty){
+////            print("id: \(x[0].id)")
+////
+////      person.personUserInfo.firstName = x[0].firstName!
+////      ageInputString = String(x[0].age)
+////      heightInputString = String(x[0].height)
+////      weightInputString = String(x[0].weight)
+////      selectedGender = Double(x[0].age)
+////      chosenActivityLevel = x[0].activityLevel!
+////      BMR = x[0].bmr
+//
+//        }
+    
+    
+    init(){
+       let x = viewModel.fetchProgresses()
+        print(viewModel.userSettings.first?.firstName)
+    }
+   
     
     var body: some View {
-        
-        
         
         VStack{ //vertical stack for the form
             Form{
                 Section{
-                TextField("Name ", text: $person.personUserInfo.firstName)
-                    Text("Caloric needs: \(self.person.personUserInfo.BMR, specifier: "%.0f") Kcal")
+                    TextField("\(viewModel.userSettings.first?.firstName ?? "Name")" , text: $userName)
+                   // Text("Caloric needs: \(self.person.personUserInfo.bmr, specifier: "%.0f") Kcal")
+                    Text("Caloric needs: \(viewModel.userSettings.first?.bmr ?? 0, specifier: "%.0f") Kcal")
+
             }
                
                 
@@ -57,7 +91,7 @@ struct ProfileView: View {
 
                 Section(header: Text("Personal Settings")){
                 VStack{ //manual input (fat)
-                    TextField("Age", text: $ageInputString ).keyboardType(.numberPad)
+                    TextField("Age: \(viewModel.userSettings.first?.age ?? 0, specifier: "%.0f")", text: $ageInputString ).keyboardType(.numberPad)
                         .onReceive(Just(ageInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -66,7 +100,7 @@ struct ProfileView: View {
                         }
                 }
                 VStack{ //manual input (carbs
-                    TextField("Height cm", text: $heightInputString ).keyboardType(.numberPad)
+                    TextField("Height cm: \(viewModel.userSettings.first?.height ?? 0, specifier: "%.0f")", text: $heightInputString ).keyboardType(.numberPad)
                         .onReceive(Just(heightInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -76,7 +110,7 @@ struct ProfileView: View {
   
                 }
                 VStack{ //manual input (carbs
-                    TextField("Weight (KG)", text: $weightInputString ).keyboardType(.numberPad)
+                    TextField("Weight (KG): \(viewModel.userSettings.first?.weight ?? 0, specifier: "%.0f")", text: $weightInputString ).keyboardType(.numberPad)
                         .onReceive(Just(weightInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -122,8 +156,12 @@ struct ProfileView: View {
 
          
                 Button(action: {
+                    
+                    
                         //Checking that the textFields are not empty
-                    if(ageInputString != "" || heightInputString != "" || weightInputString != "" ){
+                    if(ageInputString != "" || heightInputString != "" || weightInputString != ""){
+                    
+                    person.personUserInfo.firstName = userName
                         //converting the input from type string to Double
                     let ageDouble: Double! = Double(ageInputString)
                     person.personUserInfo.age = ageDouble
@@ -154,22 +192,36 @@ struct ProfileView: View {
                         switch selectedActivityLevel {
                         case 0:
                             person.personUserInfo.activityLevel = "Low"
+                            chosenActivityLevel = "Low"
+
                             BMR = 1.2 * BMR
                         case 1:
                             person.personUserInfo.activityLevel = "Medium"
+                            chosenActivityLevel = "Medium"
+
                             BMR = 1.55 * BMR
                         case 2:
                             person.personUserInfo.activityLevel = "High"
+                            chosenActivityLevel = "High"
                             BMR = 1.725 * BMR
                         default:
                             ""
                         }
+                        
+                        hideKeyboard()
+                        person.personUserInfo.firstName = userName
+                        person.personUserInfo.bmr = BMR
+                        
+                        viewModel.deleteUserData()
+                      
+                 
+                       
+                        viewModel.addCalorieTrackerDate(id: UUID(), firstName: person.personUserInfo.firstName, height: person.personUserInfo.height, weight: person.personUserInfo.weight, gender: person.personUserInfo.gender, age: person.personUserInfo.age, activityLevel: person.personUserInfo.activityLevel, bmr: person.personUserInfo.bmr)
+                        
+                        
                      }
                     
-                    hideKeyboard()
-
-                    person.personUserInfo.BMR = BMR
-                
+                 
 
                 }) {
                     Text("Enter").multilineTextAlignment(.center)
@@ -271,6 +323,8 @@ struct ProfileView: View {
 
 #if canImport(UIKit)
 extension View {
+    
+    
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
