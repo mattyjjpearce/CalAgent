@@ -115,13 +115,7 @@ struct MealView: View {
                     }else{
                     person.recipeNutrientsSearch.protein = Int(protein)
                     }
-                   
-
-                    
-                    
-                    
-                    
-                    
+   
                     mealViewModel.fetchNutrients()
                     
                 }.font(.custom("Inter-Medium", size: 16))
@@ -188,6 +182,35 @@ struct MealView: View {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color.black, lineWidth: 4))
         }.frame(width: 350)
+        .onAppear(){
+            let fat = person.personDailyCalorieGoals.fatGoal - person.personCurrentCalorieProgress.fatProgress
+            let carb = person.personDailyCalorieGoals.carbGoal - person.personCurrentCalorieProgress.carbProgress
+            let protein = person.personDailyCalorieGoals.proteinGoal - person.personCurrentCalorieProgress.proteinProgress
+
+
+            if(fat < 0){
+                person.recipeNutrientsSearch.fat = 1
+            }else{
+            person.recipeNutrientsSearch.fat = Int(fat)
+            }
+            
+            if(carb < 0){
+                person.recipeNutrientsSearch.carb = 1
+
+            }else{
+                person.recipeNutrientsSearch.carb = Int(carb)
+
+            }
+            if(protein < 0){
+            person.recipeNutrientsSearch.protein = 1
+                print("protein is 0: ")
+
+            }else{
+            person.recipeNutrientsSearch.protein = Int(protein)
+            }
+           
+            mealViewModel.fetchNutrients()
+        }
         
     }
 }
