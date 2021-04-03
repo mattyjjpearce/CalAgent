@@ -43,38 +43,12 @@ struct ProfileView: View {
     @State var userName = ""
     
     
-    
-//    @FetchRequest(
-//            entity: UserSettings.entity(),
-//            sortDescriptors: [])
-//    private var userSettingEntity: FetchedResults<UserSettings>
-    
-//    init(){
-//
-////        let x = viewModel.fetchProgresses()
-////        let y = userSettingEntity.count
-////
-////        print(y)
-////        print(x.count)
-////        if(!x.isEmpty){
-////            print("id: \(x[0].id)")
-////
-////      person.personUserInfo.firstName = x[0].firstName!
-////      ageInputString = String(x[0].age)
-////      heightInputString = String(x[0].height)
-////      weightInputString = String(x[0].weight)
-////      selectedGender = Double(x[0].age)
-////      chosenActivityLevel = x[0].activityLevel!
-////      BMR = x[0].bmr
-//
-//        }
+
     
     
     init(){
-       let x = userSettingViewModel.fetchUserSettingData()
-       let y = calorieGoalViewModel.fetchCalorieGoals()
-        print(calorieGoalViewModel.calorieGoals.first?.calorieGoal)
-        print(userSettingViewModel.userSettings.first?.firstName)
+        _ = userSettingViewModel.fetchUserSettingData()
+        _ = calorieGoalViewModel.fetchCalorieGoals()
     }
    
     
@@ -237,9 +211,9 @@ struct ProfileView: View {
                 
                 
                 
-                Section(header: Text("Macro Goals: \(calorieGoalViewModel.calorieGoals.first?.calorieGoal ?? 0, specifier: "%.0f") kcal")){
+                Section(header: Text("Macro Goals: \(person.personDailyCalorieGoals.calorieGoal, specifier: "%.0f") kcal")){
                         VStack{ //manual input (fat)
-                            TextField("Fat Goal: \(calorieGoalViewModel.calorieGoals.first?.fatGoal ?? 0, specifier: "%.0f")g", text: $fatInputString ).keyboardType(.numberPad)
+                            TextField("Fat Goal: \(person.personDailyCalorieGoals.fatGoal, specifier: "%.0f")g", text: $fatInputString ).keyboardType(.numberPad)
                                 .onReceive(Just(fatInputString)) { newValue in
                                                 let filtered = newValue.filter { "0123456789".contains($0) }
                                                 if filtered != newValue {
@@ -248,7 +222,7 @@ struct ProfileView: View {
                                 }
                         }
                         VStack{ //manual input (carbs
-                            TextField("Carb Goal: \(calorieGoalViewModel.calorieGoals.first?.carbGoal ?? 0, specifier: "%.0f")g", text: $carbInputString ).keyboardType(.numberPad)
+                            TextField("Carb Goal: \(person.personDailyCalorieGoals.carbGoal, specifier: "%.0f")g", text: $carbInputString ).keyboardType(.numberPad)
                                 .onReceive(Just(carbInputString)) { newValue in
                                                 let filtered = newValue.filter { "0123456789".contains($0) }
                                                 if filtered != newValue {
@@ -259,7 +233,7 @@ struct ProfileView: View {
                         }
                         VStack{ //manual input (carbs
 
-                            TextField("Protein Goal: \(calorieGoalViewModel.calorieGoals.first?.proteinGoal ?? 0, specifier: "%.0f")g", text: $proteinInputString ).keyboardType(.numberPad)
+                            TextField("Protein Goal: \(person.personDailyCalorieGoals.proteinGoal, specifier: "%.0f")g", text: $proteinInputString ).keyboardType(.numberPad)
                                 .onReceive(Just(proteinInputString)) { newValue in
                                                 let filtered = newValue.filter { "0123456789".contains($0) }
                                                 if filtered != newValue {
@@ -293,9 +267,7 @@ struct ProfileView: View {
                             }
                             
 
-                            fatInputString = "" //resetting the local variable
-                            carbInputString = ""
-                            proteinInputString = ""
+                      
                             
                             let fatCalories = person.personDailyCalorieGoals.fatGoal * 9
                             let carbCalories = person.personDailyCalorieGoals.carbGoal * 4
@@ -308,6 +280,7 @@ struct ProfileView: View {
                             calorieGoalViewModel.deleteUserData()
                             calorieGoalViewModel.addCalorieGoals(id: UUID(), calorieGoal: person.personDailyCalorieGoals.calorieGoal, fatGoal: person.personDailyCalorieGoals.fatGoal, carbGoal: person.personDailyCalorieGoals.fatGoal, proteinGoal: person.personDailyCalorieGoals.proteinGoal)
                             
+                            
                             hideKeyboard()
                             
                         }) {
@@ -315,6 +288,14 @@ struct ProfileView: View {
                                 .foregroundColor(Color.blue)
                         }
                     }
+            }
+        }.onAppear(){
+            if(!calorieGoalViewModel.calorieGoals.isEmpty){ //if there is no values in viewmodel
+            person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
+            person.personDailyCalorieGoals.fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
+            person.personDailyCalorieGoals.proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
+            person.personDailyCalorieGoals.carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
+
             }
         }
     }

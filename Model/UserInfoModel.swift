@@ -8,7 +8,7 @@
 import Foundation
 
 class UserInfoModel: ObservableObject {
-    
+
     static let shared: UserInfoModel = UserInfoModel() // <<: Here
 
     struct UserInfo: Identifiable {
