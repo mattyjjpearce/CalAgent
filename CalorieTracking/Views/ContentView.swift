@@ -17,10 +17,20 @@ struct ContentView: View {
     @EnvironmentObject var person: UserInfoModel
     
     
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
+    @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
 
     init() {
         //Setting appearance of UI colour
         UITabBar.appearance().backgroundColor = ColourManager.UIColour1
+        
+        
+//        let x = userSettingViewModel.fetchUserSettingData()
+//
+//        let y = calorieGoalViewModel.fetchCalorieGoals()
+        
     }
     
     var body: some View {

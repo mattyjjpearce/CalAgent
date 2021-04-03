@@ -11,7 +11,7 @@ import Combine
 
 struct AddView: View{
     
-    @ObservedObject var viewModel: AddViewModel = AddViewModel()
+    @ObservedObject var viewModel: UserSettingsViewModel = UserSettingsViewModel()
     
     @EnvironmentObject var person: UserInfoModel
     @StateObject var foods: FoodAddModel

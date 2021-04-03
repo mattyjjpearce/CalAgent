@@ -9,11 +9,38 @@ import SwiftUI
 
 struct TrackerView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+
+    
+    @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
+    @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
+    
     @EnvironmentObject var person: UserInfoModel
     @State private var downloadAmount = 50.0
     @State private var noGoalSet = true
     @State private var fatColour = Color.blue
+    
+    @State private var calorieGoal = 2000.00
+    @State private var fatGoal = 100.00
+    @State private var proteinGoal = 100.00
+    @State private var carbGoal = 100.00
 
+
+
+    
+    init(){
+        _ = userSettingViewModel.fetchUserSettingData()
+        _ = calorieGoalViewModel.fetchCalorieGoals()
+      
+//            calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
+//            fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
+//            proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
+//            carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
+//
+//        let nutritionFunction = nutritionFunctions()
+      //  nutritionFunction.setData()
+        
+    }
 
     
     var body: some View {
@@ -125,68 +152,13 @@ struct TrackerView: View {
                     
                     
                 }.navigationBarTitle(Text("Daily Progress")).frame(width: .infinity, height: .infinity)
+      
                 
-                
-                
+                }
             }
-            }
         
         
-        
-//        VStack{
-//            //First Card
-//        VStack() {
-//                VStack(alignment: .leading) {
-//                        Text("Calories")
-//                                .font(.system(size: 26, weight: .bold, design: .default))
-//                                .foregroundColor(.white)
-//                            .padding(.bottom, 10)
-//
-//
-//        }
-//            VStack(){
-//            Text("Calories: \(person.personCurrentCalorieProgress.calorieProgress, specifier: "%.0f") kcal").foregroundColor(.white)
-//            Text("Fat: \(person.personCurrentCalorieProgress.fatProgress, specifier: "%.0f")g").foregroundColor(.white)
-//            Text("Carbs: \(person.personCurrentCalorieProgress.proteinProgress, specifier: "%.0f")g").foregroundColor(.white)
-//            Text("Carbs: \(person.personCurrentCalorieProgress.carbProgress, specifier: "%.0f")g").foregroundColor(.white)
-//            }
-//            VStack(alignment: .leading) {
-//
-//                let CalorieProgress =  (person.personCurrentCalorieProgress.calorieProgress / person.personDailyCalorieGoals.calorieGoal) * 100
-//
-//                Text("\(CalorieProgress, specifier: "%.0f")%").foregroundColor(.white)
-//            ProgressView( value: CalorieProgress, total: 100).scaleEffect(x: 1, y: 3, anchor: .center)
-//            }
-//
-//                .padding()
-//    }
-//
-//        .frame(maxWidth: 380, alignment: .center)
-//        .background(Color(.blue).opacity(0.7))
-//        .cornerRadius(15)
-//
-//            //Second card
-//            VStack(alignment: .center) {
-//                    VStack(alignment: .leading) {
-//                            Text("Calories")
-//                                    .font(.system(size: 26, weight: .bold, design: .default))
-//                                    .foregroundColor(.white)
-//
-//            }
-//                Text("Hi").foregroundColor(.white)
-//                .padding()
-//
-//
-//
-//        }
-//
-//            .frame(maxWidth: 380, alignment: .center)
-//            .background(Color(.blue).opacity(0.7))
-//            .cornerRadius(15)
-//            .padding(.top, 30) //padding between cards
-//
-//        }.padding(15)
-        
+      
         
         
 }

@@ -7,9 +7,20 @@
 
 import Foundation
 
+import HealthKit
+import SwiftUI
+import Combine //to use Just
+
 
 class nutritionFunctions{
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
+    @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
+
+
+    @EnvironmentObject var person: UserInfoModel
 
 
 func macrosToCals(fat: Double, protein: Double, carbs: Double) -> Double {
@@ -29,5 +40,9 @@ func macrosToCals(fat: Double, protein: Double, carbs: Double) -> Double {
       let output = Double(input)!
     
         return output
+    }
+    
+    func setData(){
+        person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first?.calorieGoal ?? 0
     }
 }
