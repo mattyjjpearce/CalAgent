@@ -101,7 +101,11 @@ struct AddView: View{
                             calorieProgressViewModel.deleteUserData()
                             
                             calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
-                            
+                           
+                            newFoodProteinString = ""
+                            newFoodFatString = ""
+                            newFoodNameString = ""
+                            newFoodCarbString = ""
 
                    
                         }
