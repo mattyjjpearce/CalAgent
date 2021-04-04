@@ -114,13 +114,15 @@ extension CoreDataManager {
     
     
     
-    func addCalorieProgressData(id: UUID, calorieProgress: Double, fatProgress: Double, proteinProgress: Double, carbProgress: Double, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
+    func addCalorieProgressData(id: UUID, calorieProgress: Double, fatProgress: Double, proteinProgress: Double, carbProgress: Double, created: Date, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
         let calorieProgressEntity = NSEntityDescription.insertNewObject(forEntityName: "CalorieProgressEntity", into: managedContext) as? CalorieProgressEntity
         calorieProgressEntity?.id = id
         calorieProgressEntity?.calorieProgress = calorieProgress
         calorieProgressEntity?.fatProgress = fatProgress
         calorieProgressEntity?.proteinProgress = proteinProgress
         calorieProgressEntity?.carbProgress = carbProgress
+        calorieProgressEntity?.created = created
+
        
         
         do {
