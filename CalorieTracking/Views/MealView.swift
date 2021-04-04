@@ -218,7 +218,7 @@ struct MealView: View {
             person.recipeNutrientsSearch.protein = Int(protein)
             }
            
-          //  mealViewModel.fetchNutrients() uncomment when done 
+        mealViewModel.fetchNutrients() 
         }
         
     }
