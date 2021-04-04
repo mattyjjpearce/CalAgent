@@ -41,7 +41,26 @@ struct TrackerView: View {
     
     var body: some View {
  
+        
             NavigationView{
+                VStack{
+                    HStack{
+                        Spacer()
+                Button("Reset") {
+                    
+                    person.personCurrentCalorieProgress.calorieProgress = 0.00
+                    person.personCurrentCalorieProgress.fatProgress = 0.00
+                    person.personCurrentCalorieProgress.carbProgress = 0.00
+                    person.personCurrentCalorieProgress.proteinProgress = 0.00
+
+                    calorieProgressViewModel.deleteUserData()
+                    
+                    calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress: person.personCurrentCalorieProgress.calorieProgress, fatProgress: person.personCurrentCalorieProgress.fatProgress, carbProgress: person.personCurrentCalorieProgress.carbProgress, proteinPogress: person.personCurrentCalorieProgress.proteinProgress, created: Date())
+
+                
+                }.foregroundColor(.red)
+                .padding(.trailing, 20)
+                    }
 
                 Form{
                 Section(header: Text("Calories")){
@@ -134,21 +153,11 @@ struct TrackerView: View {
                         
 
                     }
+                
                     
                     
                 }.navigationBarTitle(Text("Daily Progress")).frame(width: .infinity, height: .infinity)
-                .toolbar {
-                                    Button("Reset") {
-                                        
-                                        person.personCurrentCalorieProgress.calorieProgress = 0.00
-                                        person.personCurrentCalorieProgress.fatProgress = 0.00
-                                        person.personCurrentCalorieProgress.carbProgress = 0.00
-                                        person.personCurrentCalorieProgress.proteinProgress = 0.00
-
-                                        calorieProgressViewModel.deleteUserData()
-                                        
-                                        calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress: person.personCurrentCalorieProgress.calorieProgress, fatProgress: person.personCurrentCalorieProgress.fatProgress, carbProgress: person.personCurrentCalorieProgress.carbProgress, proteinPogress: person.personCurrentCalorieProgress.proteinProgress, created: Date())
-                                    }
+              
                 }
                 
                 
