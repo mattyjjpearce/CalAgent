@@ -11,7 +11,12 @@ import Combine
 
 struct AddView: View{
     
+    @Environment(\.managedObjectContext) private var viewContext
+
+    
     @ObservedObject var viewModel: UserSettingsViewModel = UserSettingsViewModel()
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
     
     @EnvironmentObject var person: UserInfoModel
     @StateObject var foods: FoodAddModel
@@ -35,6 +40,8 @@ struct AddView: View{
     init() {
             _foods = StateObject(wrappedValue: FoodAddModel())
             _exercises = StateObject(wrappedValue: ExerciseAddModel())
+        _ = calorieProgressViewModel.fetchCalorieGoals()
+
         }
     
     var body: some View {
@@ -87,16 +94,16 @@ struct AddView: View{
                         person.personCurrentCalorieProgress.calorieProgress +=  cals
                         person.personCurrentCalorieProgress.fatProgress +=  fatDouble
                         person.personCurrentCalorieProgress.proteinProgress +=  proteinDouble
-                        person.personCurrentCalorieProgress.carbProgress +=  carbDouble 
-                        
-                        
+                        person.personCurrentCalorieProgress.carbProgress +=  carbDouble
                             
-//                        viewModel.addCalorieTrackerDate(id: UUID(), calorieProgress: cals, fatProgress: fatDouble, carbProgress: carbDouble, proteinProgress: proteinDouble)
-                        
-                        newFoodNameString = ""
-                        newFoodFatString = "" //resetting the local variable
-                        newFoodCarbString = ""
-                        newFoodProteinString = ""
+                                                    
+                            
+                            calorieProgressViewModel.deleteUserData()
+                            
+                            calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
+                            
+
+                   
                         }
                         
                         hideKeyboard()
@@ -143,7 +150,9 @@ struct AddView: View{
                         exercises.exercises?.append(newAddedExercise)
                         
                         person.personCurrentCalorieProgress.calorieProgress -=  exerciseCal //showing how to work this
-                            
+                           
+                            calorieProgressViewModel.deleteUserData()
+                            calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
                             
                         newExerciseNameString = ""
                         newExerciseCals = "" //resetting the local variable
@@ -168,6 +177,7 @@ struct AddView: View{
         
         }
         }
+        
         
     }
 }

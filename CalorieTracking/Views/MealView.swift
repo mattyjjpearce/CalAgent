@@ -13,6 +13,9 @@ import Combine //to use Just
 struct MealView: View {
     
     @StateObject var foods: FoodAddModel
+    
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
 
     
     @EnvironmentObject var person: UserInfoModel
@@ -169,6 +172,12 @@ struct MealView: View {
                             let newAddedFood = AddedFoods(name: item.title, totalCals: calories, totalProtein: protein, totalCarbs: carbs, totalFat: fat)
                             
                             foods.foods?.append(newAddedFood)
+                            
+                            
+                            calorieProgressViewModel.deleteUserData()
+                            
+                            calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
+                            
                             
                                 
                         }.accentColor(.blue)

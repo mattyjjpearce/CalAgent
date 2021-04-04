@@ -18,7 +18,7 @@ class CalorieProgressViewModel: ObservableObject {
     }
     
     //Creating the data
-    func addCalorieGoals(id: UUID, calorieProgress: Double, fatProgress: Double, carbProgress: Double, proteinPogress: Double, created: Date) {
+    func addCalorieProgressData(id: UUID, calorieProgress: Double, fatProgress: Double, carbProgress: Double, proteinPogress: Double, created: Date) {
         CoreDataManager.shared.addCalorieProgressData(id: id, calorieProgress: calorieProgress, fatProgress: fatProgress, proteinProgress: proteinPogress, carbProgress: carbProgress, created: created){ (isAdded, error) in
             if let error = error {
                 print(error)

@@ -19,6 +19,9 @@ struct AddedExercises:Identifiable{
 class ExerciseAddModel: ObservableObject,Identifiable {
     
     @Published var exercises : [AddedExercises]?
+    
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
 
     var id = UUID().uuidString
 
@@ -46,7 +49,8 @@ struct DeleteExerciseView:View{
     var unwrappedExercises:[AddedExercises]{
         getExercises.exercises ?? []
     }
-    
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
     var body: some View{
         
         List{
@@ -58,6 +62,13 @@ struct DeleteExerciseView:View{
                     Button(action: {
                         getExercises.exercises?.remove(at: index)
                         person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals //showing how to work this
+                        
+                        calorieProgressViewModel.deleteUserData()
+                        
+                        calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
+                    
+                        
+                        
                     }) {
                         Image(systemName: "minus.square.fill").foregroundColor(.red)
                             .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)

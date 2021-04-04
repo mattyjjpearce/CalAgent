@@ -14,8 +14,11 @@ struct TrackerView: View {
     
     @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
     @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
     
     @EnvironmentObject var person: UserInfoModel
+    
     @State private var downloadAmount = 50.0
     @State private var noGoalSet = true
     @State private var fatColour = Color.blue
@@ -31,15 +34,8 @@ struct TrackerView: View {
     init(){
         _ = userSettingViewModel.fetchUserSettingData()
         _ = calorieGoalViewModel.fetchCalorieGoals()
+        _ = calorieProgressViewModel.fetchCalorieGoals()
       
-//            calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
-//            fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
-//            proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
-//            carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
-//
-//        let nutritionFunction = nutritionFunctions()
-      //  nutritionFunction.setData()
-        
     }
 
     
@@ -155,8 +151,19 @@ struct TrackerView: View {
       
                 
                 }
+            }.onAppear(){
+                _ = calorieProgressViewModel.fetchCalorieGoals()
+
             }
-        
+
+
+            
+                
+            
+            .onDisappear(){
+                print(person.personCurrentCalorieProgress.calorieProgress)
+
+            }
         
       
         

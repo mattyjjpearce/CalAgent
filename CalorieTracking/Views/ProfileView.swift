@@ -15,6 +15,7 @@ struct ProfileView: View {
 
     @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
     @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
 
 
     @EnvironmentObject var person: UserInfoModel
@@ -49,6 +50,7 @@ struct ProfileView: View {
     init(){
         _ = userSettingViewModel.fetchUserSettingData()
         _ = calorieGoalViewModel.fetchCalorieGoals()
+        _ = calorieProgressViewModel.fetchCalorieGoals()
     }
    
     
@@ -290,11 +292,39 @@ struct ProfileView: View {
                     }
             }
         }.onAppear(){
+           
+            _ = calorieProgressViewModel.fetchCalorieGoals()
+
+            
             if(!calorieGoalViewModel.calorieGoals.isEmpty){ //if there is no values in viewmodel
+                
+                _ = calorieGoalViewModel.fetchCalorieGoals()
             person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
             person.personDailyCalorieGoals.fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
             person.personDailyCalorieGoals.proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
             person.personDailyCalorieGoals.carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
+            }
+            
+            
+            if(calorieProgressViewModel.calorieProgress.isEmpty){
+                calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress: 0.00, fatProgress: 0.00, carbProgress: 0.00, proteinPogress: 0.00, created: Date())
+                
+                _ = calorieProgressViewModel.fetchCalorieGoals()
+                
+                person.personCurrentCalorieProgress.calorieProgress = calorieProgressViewModel.calorieProgress.first!.calorieProgress
+                person.personCurrentCalorieProgress.fatProgress = calorieProgressViewModel.calorieProgress.first!.fatProgress
+                person.personCurrentCalorieProgress.carbProgress = calorieProgressViewModel.calorieProgress.first!.carbProgress
+                person.personCurrentCalorieProgress.proteinProgress = calorieProgressViewModel.calorieProgress.first!.proteinProgress
+                
+            }
+            else{
+                person.personCurrentCalorieProgress.calorieProgress = calorieProgressViewModel.calorieProgress.first!.calorieProgress
+                person.personCurrentCalorieProgress.fatProgress = calorieProgressViewModel.calorieProgress.first!.fatProgress
+                person.personCurrentCalorieProgress.carbProgress = calorieProgressViewModel.calorieProgress.first!.carbProgress
+                person.personCurrentCalorieProgress.proteinProgress = calorieProgressViewModel.calorieProgress.first!.proteinProgress
+                print("is not empty")
+                print("checking data model:", person.personCurrentCalorieProgress.calorieProgress)
+
 
             }
         }
