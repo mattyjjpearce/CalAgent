@@ -10,7 +10,7 @@ import Foundation
 
 class CalorieGoalsiewModel: ObservableObject {
     
-    @Published var calorieGoals = [CalorieGoals]()
+    @Published var calorieGoals = [CalorieGoalEntity]()
 
     
     init() {
@@ -30,12 +30,12 @@ class CalorieGoalsiewModel: ObservableObject {
     }
     
     //fetching the data
-    func fetchCalorieGoals() -> [CalorieGoals] {
+    func fetchCalorieGoals() -> [CalorieGoalEntity] {
         CoreDataManager.shared.fetchCalorieGoals { (calorieGoals, error) in
             if let error = error {
                 print(error)
             }
-            if let calorieGoals = calorieGoals as? [CalorieGoals] {
+            if let calorieGoals = calorieGoals as? [CalorieGoalEntity] {
                 self.calorieGoals = calorieGoals
             }
         }

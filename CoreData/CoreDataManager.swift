@@ -72,12 +72,12 @@ extension CoreDataManager {
     
     
     func addCalorieGoalsData(id: UUID, calorieGoal: Double, fatGoal: Double, proteinGoal: Double, carbGoal: Double, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
-        let calorieProgressEntity = NSEntityDescription.insertNewObject(forEntityName: "CalorieGoals", into: managedContext) as? CalorieGoals
-        calorieProgressEntity?.id = id
-        calorieProgressEntity?.calorieGoal = calorieGoal
-        calorieProgressEntity?.fatGoal = fatGoal
-        calorieProgressEntity?.proteinGoal = proteinGoal
-        calorieProgressEntity?.carbGoal = carbGoal
+        let calorieGoalEntity = NSEntityDescription.insertNewObject(forEntityName: "CalorieGoalEntity", into: managedContext) as? CalorieGoalEntity
+        calorieGoalEntity?.id = id
+        calorieGoalEntity?.calorieGoal = calorieGoal
+        calorieGoalEntity?.fatGoal = fatGoal
+        calorieGoalEntity?.proteinGoal = proteinGoal
+        calorieGoalEntity?.carbGoal = carbGoal
        
         
         do {
@@ -90,8 +90,8 @@ extension CoreDataManager {
     }
     
     func fetchCalorieGoals(completionHandler: @escaping (_ succeed: Any?, _ error: Error?) -> Void) {
-        var goals = [CalorieGoals]()
-        let calorieGoalRequest: NSFetchRequest<CalorieGoals> = NSFetchRequest<CalorieGoals>(entityName: "CalorieGoals")
+        var goals = [CalorieGoalEntity]()
+        let calorieGoalRequest: NSFetchRequest<CalorieGoalEntity> = NSFetchRequest<CalorieGoalEntity>(entityName: "CalorieGoalEntity")
         
         do {
             goals = try managedContext.fetch(calorieGoalRequest)
@@ -102,7 +102,50 @@ extension CoreDataManager {
     }
     
     func deleteCalorieGoals(){
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CalorieGoals")
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CalorieGoalEntity")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+    
+        do {
+            try managedContext.execute(deleteRequest)
+            print("Deleted from data manager successful")
+        } catch _ as NSError {
+    }
+    }
+    
+    
+    
+    func addCalorieProgressData(id: UUID, calorieProgress: Double, fatProgress: Double, proteinProgress: Double, carbProgress: Double, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
+        let calorieProgressEntity = NSEntityDescription.insertNewObject(forEntityName: "CalorieProgressEntity", into: managedContext) as? CalorieProgressEntity
+        calorieProgressEntity?.id = id
+        calorieProgressEntity?.calorieProgress = calorieProgress
+        calorieProgressEntity?.fatProgress = fatProgress
+        calorieProgressEntity?.proteinProgress = proteinProgress
+        calorieProgressEntity?.carbProgress = carbProgress
+       
+        
+        do {
+            try managedContext.save()
+            print("context saved for add calorieGoal")
+            completionHandler(true, nil)
+        } catch let error {
+            completionHandler(false, error)
+        }
+    }
+    
+    func fetchCalorieProgressData(completionHandler: @escaping (_ succeed: Any?, _ error: Error?) -> Void) {
+        var goals = [CalorieProgressEntity]()
+        let calorieGoalRequest: NSFetchRequest<CalorieProgressEntity> = NSFetchRequest<CalorieProgressEntity>(entityName: "CalorieProgressEntity")
+        
+        do {
+            goals = try managedContext.fetch(calorieGoalRequest)
+            completionHandler(goals, nil)
+        } catch let error {
+            completionHandler(nil, error)
+        }
+    }
+    
+    func deleteCalorieProgress(){
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CalorieProgressEntity")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
     
         do {

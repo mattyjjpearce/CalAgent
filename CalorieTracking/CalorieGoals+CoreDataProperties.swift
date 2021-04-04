@@ -17,10 +17,10 @@ extension CalorieGoals {
     }
 
     @NSManaged public var calorieGoal: Double
-    @NSManaged public var fatGoal: Double
     @NSManaged public var carbGoal: Double
-    @NSManaged public var proteinGoal: Double
+    @NSManaged public var fatGoal: Double
     @NSManaged public var id: UUID?
+    @NSManaged public var proteinGoal: Double
 
 }
 
