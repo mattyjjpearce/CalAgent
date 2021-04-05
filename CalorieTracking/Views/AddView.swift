@@ -185,19 +185,6 @@ struct AddView: View{
                     .foregroundColor(.red)
                 }
                 
-                Section(header: Text("Today's Step Count")){
-                    Form{
-                        Text("Step Count: \(person.personSteps.steps) ")
-                        Text("Calories burnt from Steps: \(person.personSteps.calories)" )
-                        Button("Add to daily Calories"){
-                            person.personSteps.addCalories = true 
-                        }
-                        .foregroundColor(.blue)
-                        
-                        
-
-                    }
-                }
         
         }
         }
