@@ -12,7 +12,6 @@ class MealViewModel: ObservableObject {
     
     @Published var nutrients: [RecipieAPI] = []
     
-//    @EnvironmentObject var person: UserInfoModel
     
     let person =  UserInfoModel.shared
 
@@ -33,6 +32,7 @@ class MealViewModel: ObservableObject {
     }
     
     func fetchNutrients() {
+    
     
         NetworkServices.fetchNutrients(maxProtein: self.person.recipeNutrientsSearch.protein , maxFat: self.person.recipeNutrientsSearch.fat,  maxCarbs: self.person.recipeNutrientsSearch.carb, number: 10) { (nutrients, error) in
             if let error = error {
