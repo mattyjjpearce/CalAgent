@@ -370,21 +370,7 @@ struct ProfileView: View {
             
             let personStepClass = nutritionFunctions()
             
-            if let healthStore = healthStore{
-                healthStore.requestAuthorization{
-                    success in
-                healthStore.getTodaysSteps{
-                        (result) in
-                        print("steps", result)
-                    person.personSteps.steps =  result
-                    person.personSteps.calories = personStepClass.stepsToCalories(input: result)
-                    
-               // change this to steps    person.personUserInfo.bmr = result
-                    
-                    }
-                }
-                
-            }
+        
             
             
             
@@ -399,6 +385,7 @@ struct ProfileView: View {
                 person.personUserInfo.gender = userSettingViewModel.userSettings.first!.gender ?? ""
                 person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
                 showingSteps = userSettingViewModel.userSettings.first!.useSteps
+                person.personUserInfo.useSteps = userSettingViewModel.userSettings.first!.useSteps
 
 
             }
@@ -439,6 +426,26 @@ struct ProfileView: View {
                 print("checking data model:", person.personCurrentCalorieProgress.calorieProgress)
 
 
+            }
+            if let healthStore = healthStore{
+                healthStore.requestAuthorization{
+                    success in
+                healthStore.getTodaysSteps{
+                        (result) in
+                        print("steps", result)
+                    person.personSteps.steps =  result
+                    person.personSteps.calories = personStepClass.stepsToCalories(input: result)
+                    
+                    if(person.personUserInfo.useSteps){
+                        person.personDailyCalorieGoals.calorieGoal = person.personDailyCalorieGoals.calorieGoal +  person.personSteps.calories
+                        print("Addition of step cals")
+                    }
+                    
+               // change this to steps    person.personUserInfo.bmr = result
+                    
+                    }
+                }
+                
             }
         }
     }
