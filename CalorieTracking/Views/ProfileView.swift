@@ -17,10 +17,19 @@ struct ProfileView: View {
     @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
     @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
 
-
+    
     @EnvironmentObject var person: UserInfoModel
     
     @State private var showingSheet1 = false
+    
+    @State private var showingSheetGender = false
+    
+    @State private var showingSheetActivity = false
+
+    @State private var showingSteps = false
+
+    
+
 
 
     @State private var fatInputString = ""
@@ -37,6 +46,10 @@ struct ProfileView: View {
 
     @State var activityLevel = ["Low", "Medium", "High"]
     @State var selectedActivityLevel = 0.00
+    @State var selectedSteps = 0.00
+    @State var stepsLevel = ["No", "Yes"]
+
+
     @State var chosenActivityLevel = ""
    
     @State var BMR = 0.00
@@ -45,18 +58,18 @@ struct ProfileView: View {
     
     
 
-    
+    private var healthStore: HealthStore?
     
     init(){
         _ = userSettingViewModel.fetchUserSettingData()
         _ = calorieGoalViewModel.fetchCalorieGoals()
         _ = calorieProgressViewModel.fetchCalorieGoals()
+        healthStore = HealthStore()
     }
    
     
     var body: some View {
         
-        VStack{ //vertical stack for the form
             Form{
                 Section{
                     TextField("Name: \(person.personUserInfo.firstName)" , text: $userName)
@@ -64,6 +77,55 @@ struct ProfileView: View {
                     Text("Caloric needs: \(person.personUserInfo.bmr, specifier: "%.0f") Kcal")
 
             }
+                
+                Section(header: Text("Activity Level:")){
+                    HStack {
+                        Text("Activity Level")
+                        Button("") {
+                            self.showingSheet1.toggle()
+                        }
+                        Image(systemName: "info.circle").foregroundColor(.blue)
+                        .sheet(isPresented: $showingSheet1, content: {
+                            List{
+                            Text("Low: little or no exercise - Select this option if you want to add calories burnt through daily step count and individual exercises")
+                            Text("Medium: moderate exercise 3-5 days/week")
+                            Text("High: hard exercise 6-7 days/week")
+                            }
+                                
+                        })
+                        .foregroundColor(.black)
+                    }
+                    
+                    Button("Activity Level: \(person.personUserInfo.activityLevel)"){
+                        
+                        self.showingSheetActivity.toggle()
+                    }.foregroundColor(.blue)
+
+                    .sheet(isPresented: $showingSheetActivity, content: {
+                        List{
+                            Button("Low"){
+                                person.personUserInfo.activityLevel = "Low"
+                                self.showingSheetActivity.toggle()
+
+                            }
+                            Button("Medium"){
+                                person.personUserInfo.activityLevel = "Medium"
+                                self.showingSheetActivity.toggle()
+
+                            }
+                            Button("High"){
+                                person.personUserInfo.activityLevel = "High"
+                                self.showingSheetActivity.toggle()
+
+                            }
+                        }
+
+                    })
+                    .foregroundColor(.black)
+                        
+                    }
+                    
+                
                
                 
 
@@ -100,37 +162,34 @@ struct ProfileView: View {
                     
                 }
                     HStack {
-                        Text("Select Gender")
-                        Picker("", selection: $selectedGender) {
+                        Button("Choose Gender: \(person.personUserInfo.gender)"){
+                            self.showingSheetGender.toggle()
+                        }.foregroundColor(.blue)
 
-                            ForEach(0..<genders.count) { index in
-                                Text(self.genders[index]).tag(index).font(.title)
-                            }
-                        }.pickerStyle(SegmentedPickerStyle())
-                    }
-                    HStack {
-                        Text("Activity Level")
-                        Button("") {
-                            self.showingSheet1.toggle()
-                        }
-                        Image(systemName: "info.circle").foregroundColor(.blue)
-                        .sheet(isPresented: $showingSheet1, content: {
+                        .sheet(isPresented: $showingSheetGender, content: {
                             List{
-                            Text("Low: little or no exercise")
-                            Text("Medium: moderate exercise 3-5 days/week")
-                            Text("High: hard exercise 6-7 days/week")
+                                Button("Male"){
+                                    person.personUserInfo.gender = "Male"
+                                    self.showingSheetGender.toggle()
+
+
+                                }
+                                Button("Female"){
+                                    person.personUserInfo.gender = "Female"
+                                    self.showingSheetGender.toggle()
+                                    print("chose female")
+
+
+                                }
                             }
-                                
+
                         })
                         .foregroundColor(.black)
-                            
-                        Picker("", selection: $selectedActivityLevel) {
-
-                            ForEach(0..<activityLevel.count) { index in
-                                Text(self.activityLevel[index]).tag(index).font(.title)
-                            }
-                        }.pickerStyle(SegmentedPickerStyle())
                     }
+                    
+                   
+                    Toggle("Use Steps for Calories", isOn: $showingSteps)
+                    
                     
                     
 
@@ -150,8 +209,8 @@ struct ProfileView: View {
                     let weightDouble: Double! = Double(weightInputString)
                     person.personUserInfo.weight = weightDouble
                     
-                        if(selectedGender == 0){
-                            person.personUserInfo.gender = "Male"
+                        if person.personUserInfo.gender == "Male" {
+                           
                             let weightBMR = (weightDouble * 10)
                             let heightBMR = (heightDouble *  6.25)
                             let ageBMR = (ageDouble * 5)
@@ -161,7 +220,6 @@ struct ProfileView: View {
                             
                             
                         }else{
-                            person.personUserInfo.gender = "Female"
                             let weightBMR = (weightDouble * 10)
                             let heightBMR = (heightDouble *  6.25)
                             let ageBMR = (ageDouble * 5)
@@ -188,15 +246,27 @@ struct ProfileView: View {
                             ""
                         }
                         
+                        switch selectedSteps{
+                        case 0:
+                            person.personUserInfo.useSteps = false
+
+                        case 1:
+                            person.personUserInfo.useSteps = true
+                        default:
+                            ""
+                        }
+                        
                         hideKeyboard()
                         person.personUserInfo.firstName = userName
                         person.personUserInfo.bmr = BMR
                         
                         userSettingViewModel.deleteUserData()
                       
-                 
+                        if showingSteps {
+                            person.personUserInfo.useSteps = true
+                        }
                        
-                        userSettingViewModel.addUserSettingData(id: UUID(), firstName: person.personUserInfo.firstName, height: person.personUserInfo.height, weight: person.personUserInfo.weight, gender: person.personUserInfo.gender, age: person.personUserInfo.age, activityLevel: person.personUserInfo.activityLevel, bmr: person.personUserInfo.bmr)
+                        userSettingViewModel.addUserSettingData(id: UUID(), firstName: person.personUserInfo.firstName, height: person.personUserInfo.height, weight: person.personUserInfo.weight, gender: person.personUserInfo.gender, age: person.personUserInfo.age, activityLevel: person.personUserInfo.activityLevel, bmr: person.personUserInfo.bmr, useSteps: person.personUserInfo.useSteps)
                         
                         
                      }
@@ -209,6 +279,8 @@ struct ProfileView: View {
                 }
                 
             }
+                
+            
                 
                 
                 
@@ -289,12 +361,17 @@ struct ProfileView: View {
                             Text("Enter").multilineTextAlignment(.center)
                                 .foregroundColor(Color.blue)
                         }
-                    }
-            }
+                }
+            
         }.onAppear(){
            
             _ = calorieProgressViewModel.fetchCalorieGoals()
             _ = userSettingViewModel.fetchUserSettingData()
+            
+            let personStepClass = nutritionFunctions()
+            
+        
+            
             
             
             if(!userSettingViewModel.userSettings.isEmpty){ //if there is no values in viewmodel
@@ -305,7 +382,11 @@ struct ProfileView: View {
                 person.personUserInfo.age = userSettingViewModel.userSettings.first!.age
                 person.personUserInfo.weight = userSettingViewModel.userSettings.first!.weight
                 person.personUserInfo.height = userSettingViewModel.userSettings.first!.height
-               
+                person.personUserInfo.gender = userSettingViewModel.userSettings.first!.gender ?? ""
+                person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
+                showingSteps = userSettingViewModel.userSettings.first!.useSteps
+                person.personUserInfo.useSteps = userSettingViewModel.userSettings.first!.useSteps
+
 
             }
 
@@ -318,6 +399,10 @@ struct ProfileView: View {
             person.personDailyCalorieGoals.fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
             person.personDailyCalorieGoals.proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
             person.personDailyCalorieGoals.carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
+            person.personUserInfo.gender = userSettingViewModel.userSettings.first!.gender ?? ""
+            person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
+
+
             }
             
             
@@ -341,6 +426,26 @@ struct ProfileView: View {
                 print("checking data model:", person.personCurrentCalorieProgress.calorieProgress)
 
 
+            }
+            if let healthStore = healthStore{
+                healthStore.requestAuthorization{
+                    success in
+                healthStore.getTodaysSteps{
+                        (result) in
+                        print("steps", result)
+                    person.personSteps.steps =  result
+                    person.personSteps.calories = personStepClass.stepsToCalories(input: result)
+                    
+                    if(person.personUserInfo.useSteps){
+                        person.personDailyCalorieGoals.calorieGoal = person.personDailyCalorieGoals.calorieGoal +  person.personSteps.calories
+                        print("Addition of step cals")
+                    }
+                    
+               // change this to steps    person.personUserInfo.bmr = result
+                    
+                    }
+                }
+                
             }
         }
     }

@@ -89,6 +89,15 @@ struct TrackerView: View {
                     
 
                 }
+                    if(person.personUserInfo.useSteps){
+                    Section(header: Text("Daily Steps")){
+                       
+                            Text("Step Count: \(person.personSteps.steps, specifier: "%.0f") ")
+                            Text("Calories burnt from Steps: \(person.personSteps.calories, specifier: "%.0f")" )
+                        
+                    }}
+                    
+                    
                     Section(header: Text("Fat")){
                         VStack{
                             Text("\(person.personCurrentCalorieProgress.fatProgress, specifier: "%.0f")g / \(person.personDailyCalorieGoals.fatGoal, specifier: "%.0f")g")
@@ -153,6 +162,8 @@ struct TrackerView: View {
                         
 
                     }
+                    
+                   
                 
                     
                     

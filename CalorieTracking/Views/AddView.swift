@@ -12,10 +12,14 @@ import Combine
 struct AddView: View{
     
     @Environment(\.managedObjectContext) private var viewContext
+    
+    
+    private var healthStore: HealthStore?
 
     
     @ObservedObject var viewModel: UserSettingsViewModel = UserSettingsViewModel()
     @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+    @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
 
     
     @EnvironmentObject var person: UserInfoModel
@@ -41,6 +45,8 @@ struct AddView: View{
             _foods = StateObject(wrappedValue: FoodAddModel())
             _exercises = StateObject(wrappedValue: ExerciseAddModel())
         _ = calorieProgressViewModel.fetchCalorieGoals()
+      
+        healthStore = HealthStore()
 
         }
     
@@ -178,6 +184,7 @@ struct AddView: View{
                     })
                     .foregroundColor(.red)
                 }
+                
         
         }
         }
