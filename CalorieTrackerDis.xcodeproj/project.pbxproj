@@ -41,6 +41,7 @@
 		4DE1BDC92619C37100D6499A /* CalorieGoalEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1BDC52619C37100D6499A /* CalorieGoalEntity+CoreDataClass.swift */; };
 		4DE1BDCA2619C37100D6499A /* CalorieGoalEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1BDC62619C37100D6499A /* CalorieGoalEntity+CoreDataProperties.swift */; };
 		4DE1BDCF2619C67700D6499A /* CalorieProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1BDCE2619C67700D6499A /* CalorieProgressViewModel.swift */; };
+		4DE1BDDB261AFE8400D6499A /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1BDDA261AFE8400D6499A /* HealthStore.swift */; };
 		9A5EE819C32191F940BC4557 /* Pods_CalorieTrackerDisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 418C04723AD490051623D5E2 /* Pods_CalorieTrackerDisTests.framework */; };
 		FCBBBF4DA0977214C66ECBEB /* Pods_CalorieTrackerDis_CalorieTrackerDisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093E610BF922F199D177F4A9 /* Pods_CalorieTrackerDis_CalorieTrackerDisUITests.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +105,7 @@
 		4DE1BDC52619C37100D6499A /* CalorieGoalEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalorieGoalEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4DE1BDC62619C37100D6499A /* CalorieGoalEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalorieGoalEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4DE1BDCE2619C67700D6499A /* CalorieProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieProgressViewModel.swift; sourceTree = "<group>"; };
+		4DE1BDDA261AFE8400D6499A /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		5C6FBDAD8C09884E9358963A /* Pods-CalorieTrackerDis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalorieTrackerDis.release.xcconfig"; path = "Target Support Files/Pods-CalorieTrackerDis/Pods-CalorieTrackerDis.release.xcconfig"; sourceTree = "<group>"; };
 		5FE7C1FAA06CEBA96A906E05 /* Pods-CalorieTrackerDis-CalorieTrackerDisUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CalorieTrackerDis-CalorieTrackerDisUITests.release.xcconfig"; path = "Target Support Files/Pods-CalorieTrackerDis-CalorieTrackerDisUITests/Pods-CalorieTrackerDis-CalorieTrackerDisUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6E4EE741BB213B5C7F21F11D /* Pods_CalorieTrackerDis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalorieTrackerDis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 			children = (
 				4D937E1026022EAD00087864 /* NetworkServices.swift */,
 				4D937E1B2603AE1E00087864 /* loadingImages.swift */,
+				4DE1BDDA261AFE8400D6499A /* HealthStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				4DDB49A22611EB0F007A3842 /* UserSettingsViewModel.swift in Sources */,
 				4D80DF3E25751E660033D5B0 /* ColourManager.swift in Sources */,
 				4DE1BDCA2619C37100D6499A /* CalorieGoalEntity+CoreDataProperties.swift in Sources */,
+				4DE1BDDB261AFE8400D6499A /* HealthStore.swift in Sources */,
 				4D80DF862576CB2B0033D5B0 /* UserInfoModel.swift in Sources */,
 				4DBB3163256FDF6E00E973EF /* MealView.swift in Sources */,
 				4DBB3132256FC61E00E973EF /* navigationPractice.xcdatamodeld in Sources */,

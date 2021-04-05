@@ -27,8 +27,7 @@ class CoreDataManager {
 //MARK:- CalorieTracker Insert/Update/Delete
 extension CoreDataManager {
     
-    
-    func addUserSettingsData(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
+    func addUserSettingsData(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double, useSteps: Bool, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
         let userSettingsEntity = NSEntityDescription.insertNewObject(forEntityName: "UserSettings", into: managedContext) as? UserSettings
         userSettingsEntity?.id = id
         userSettingsEntity?.firstName = firstName
@@ -38,7 +37,9 @@ extension CoreDataManager {
         userSettingsEntity?.age = age
         userSettingsEntity?.activityLevel = activityLevel
         userSettingsEntity?.bmr = bmr
+        userSettingsEntity?.useSteps = useSteps
         
+        print("Activity Level:", activityLevel)
         do {
             try managedContext.save()
             print("context saved")

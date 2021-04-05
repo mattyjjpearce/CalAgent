@@ -45,4 +45,9 @@ func macrosToCals(fat: Double, protein: Double, carbs: Double) -> Double {
     func setData(){
         person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first?.calorieGoal ?? 0
     }
+    
+    func stepsToCalories(input: Double) -> Double{
+        let result = input * 0.045
+        return result
+    }
 }

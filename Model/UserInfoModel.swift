@@ -20,6 +20,7 @@ class UserInfoModel: ObservableObject {
         var age: Double
         var activityLevel: String
         var bmr: Double
+        var useSteps: Bool
         
     }
     
@@ -57,10 +58,18 @@ class UserInfoModel: ObservableObject {
         var protein: Int
     }
     
-    @Published var personUserInfo = UserInfo.init(firstName: "",  height: 0, weight: 0, gender: "", age: 0, activityLevel: "", bmr: 0)
+    struct PersonSteps: Identifiable{
+        var id = UUID()
+        var steps: Double
+        var calories: Double
+        var totalCalorieGoalWithSteps: Double
+        var addCalories: Bool
+    }
+    
+    @Published var personUserInfo = UserInfo.init(firstName: "",  height: 0, weight: 0, gender: "", age: 0, activityLevel: "", bmr: 0, useSteps: false)
     @Published var personDailyCalorieGoals = DailyCalorieGoals.init(calorieGoal: 2400, fatGoal: 40, proteinGoal: 40, carbGoal: 40)
     @Published var personCurrentCalorieProgress = CurrentCalorieProgress.init(calorieProgress: 1200, fatProgress:   12, carbProgress: 5, proteinProgress: 30)
     
     @Published var  recipeNutrientsSearch = SearchRecipeCalories.init(fat: 0, carb: 0, protein: 0)
-    
+    @Published var personSteps = PersonSteps.init(steps: 0.00, calories: 0.00, totalCalorieGoalWithSteps: 0.00, addCalories: false)
 }
