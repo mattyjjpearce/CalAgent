@@ -13,6 +13,9 @@ import Combine //to use Just
 struct MealView: View {
     
     @StateObject var foods: FoodAddModel
+    
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
 
     
     @EnvironmentObject var person: UserInfoModel
@@ -27,6 +30,7 @@ struct MealView: View {
    
     init() {
             _foods = StateObject(wrappedValue: FoodAddModel())
+
         }
     
     
@@ -170,6 +174,12 @@ struct MealView: View {
                             
                             foods.foods?.append(newAddedFood)
                             
+                            
+                            calorieProgressViewModel.deleteUserData()
+                            
+                            calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
+                            
+                            
                                 
                         }.accentColor(.blue)
                             
@@ -183,6 +193,8 @@ struct MealView: View {
                 .stroke(Color.black, lineWidth: 4))
         }.frame(width: 350)
         .onAppear(){
+
+
             let fat = person.personDailyCalorieGoals.fatGoal - person.personCurrentCalorieProgress.fatProgress
             let carb = person.personDailyCalorieGoals.carbGoal - person.personCurrentCalorieProgress.carbProgress
             let protein = person.personDailyCalorieGoals.proteinGoal - person.personCurrentCalorieProgress.proteinProgress
@@ -206,10 +218,13 @@ struct MealView: View {
                 print("protein is 0: ")
 
             }else{
-            person.recipeNutrientsSearch.protein = Int(protein)
-            }
-           
+                person.recipeNutrientsSearch.protein = Int(protein)
+
+                            }
+            print("recipe search:", person.recipeNutrientsSearch.fat, person.recipeNutrientsSearch.carb, person.recipeNutrientsSearch.protein)
             mealViewModel.fetchNutrients()
+
+           
         }
         
     }

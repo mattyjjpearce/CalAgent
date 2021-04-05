@@ -15,6 +15,7 @@ struct ProfileView: View {
 
     @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
     @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
 
 
     @EnvironmentObject var person: UserInfoModel
@@ -49,6 +50,7 @@ struct ProfileView: View {
     init(){
         _ = userSettingViewModel.fetchUserSettingData()
         _ = calorieGoalViewModel.fetchCalorieGoals()
+        _ = calorieProgressViewModel.fetchCalorieGoals()
     }
    
     
@@ -57,9 +59,9 @@ struct ProfileView: View {
         VStack{ //vertical stack for the form
             Form{
                 Section{
-                    TextField("\(userSettingViewModel.userSettings.first?.firstName ?? "Name")" , text: $userName)
+                    TextField("Name: \(person.personUserInfo.firstName)" , text: $userName)
                    // Text("Caloric needs: \(self.person.personUserInfo.bmr, specifier: "%.0f") Kcal")
-                    Text("Caloric needs: \(userSettingViewModel.userSettings.first?.bmr ?? 0, specifier: "%.0f") Kcal")
+                    Text("Caloric needs: \(person.personUserInfo.bmr, specifier: "%.0f") Kcal")
 
             }
                
@@ -69,7 +71,7 @@ struct ProfileView: View {
 
                 Section(header: Text("Personal Settings")){
                 VStack{ //manual input (fat)
-                    TextField("Age: \(userSettingViewModel.userSettings.first?.age ?? 0, specifier: "%.0f")", text: $ageInputString ).keyboardType(.numberPad)
+                    TextField("Age: \(person.personUserInfo.age, specifier: "%.0f")", text: $ageInputString ).keyboardType(.numberPad)
                         .onReceive(Just(ageInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -78,7 +80,7 @@ struct ProfileView: View {
                         }
                 }
                 VStack{ //manual input (carbs
-                    TextField("Height: \(userSettingViewModel.userSettings.first?.height ?? 0, specifier: "%.0f")cm", text: $heightInputString ).keyboardType(.numberPad)
+                    TextField("Height: \(person.personUserInfo.height, specifier: "%.0f")cm", text: $heightInputString ).keyboardType(.numberPad)
                         .onReceive(Just(heightInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -88,7 +90,7 @@ struct ProfileView: View {
   
                 }
                 VStack{ //manual input (carbs
-                    TextField("Weight: \(userSettingViewModel.userSettings.first?.weight ?? 0, specifier: "%.0f")kg", text: $weightInputString ).keyboardType(.numberPad)
+                    TextField("Weight: \(person.personUserInfo.weight, specifier: "%.0f")kg", text: $weightInputString ).keyboardType(.numberPad)
                         .onReceive(Just(weightInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -290,11 +292,54 @@ struct ProfileView: View {
                     }
             }
         }.onAppear(){
+           
+            _ = calorieProgressViewModel.fetchCalorieGoals()
+            _ = userSettingViewModel.fetchUserSettingData()
+            
+            
+            if(!userSettingViewModel.userSettings.isEmpty){ //if there is no values in viewmodel
+                
+                _ = userSettingViewModel.fetchUserSettingData()
+                person.personUserInfo.firstName = userSettingViewModel.userSettings.first!.firstName ?? ""
+                person.personUserInfo.bmr = userSettingViewModel.userSettings.first!.bmr
+                person.personUserInfo.age = userSettingViewModel.userSettings.first!.age
+                person.personUserInfo.weight = userSettingViewModel.userSettings.first!.weight
+                person.personUserInfo.height = userSettingViewModel.userSettings.first!.height
+               
+
+            }
+
+
+            
             if(!calorieGoalViewModel.calorieGoals.isEmpty){ //if there is no values in viewmodel
+                
+                _ = calorieGoalViewModel.fetchCalorieGoals()
             person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
             person.personDailyCalorieGoals.fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
             person.personDailyCalorieGoals.proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
             person.personDailyCalorieGoals.carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
+            }
+            
+            
+            if(calorieProgressViewModel.calorieProgress.isEmpty){
+                calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress: 0.00, fatProgress: 0.00, carbProgress: 0.00, proteinPogress: 0.00, created: Date())
+                
+                _ = calorieProgressViewModel.fetchCalorieGoals()
+                
+                person.personCurrentCalorieProgress.calorieProgress = calorieProgressViewModel.calorieProgress.first!.calorieProgress
+                person.personCurrentCalorieProgress.fatProgress = calorieProgressViewModel.calorieProgress.first!.fatProgress
+                person.personCurrentCalorieProgress.carbProgress = calorieProgressViewModel.calorieProgress.first!.carbProgress
+                person.personCurrentCalorieProgress.proteinProgress = calorieProgressViewModel.calorieProgress.first!.proteinProgress
+                
+            }
+            else{
+                person.personCurrentCalorieProgress.calorieProgress = calorieProgressViewModel.calorieProgress.first!.calorieProgress
+                person.personCurrentCalorieProgress.fatProgress = calorieProgressViewModel.calorieProgress.first!.fatProgress
+                person.personCurrentCalorieProgress.carbProgress = calorieProgressViewModel.calorieProgress.first!.carbProgress
+                person.personCurrentCalorieProgress.proteinProgress = calorieProgressViewModel.calorieProgress.first!.proteinProgress
+                print("is not empty")
+                print("checking data model:", person.personCurrentCalorieProgress.calorieProgress)
+
 
             }
         }

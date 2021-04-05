@@ -14,8 +14,11 @@ struct TrackerView: View {
     
     @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
     @ObservedObject var calorieGoalViewModel: CalorieGoalsiewModel = CalorieGoalsiewModel()
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
     
     @EnvironmentObject var person: UserInfoModel
+    
     @State private var downloadAmount = 50.0
     @State private var noGoalSet = true
     @State private var fatColour = Color.blue
@@ -31,35 +34,34 @@ struct TrackerView: View {
     init(){
         _ = userSettingViewModel.fetchUserSettingData()
         _ = calorieGoalViewModel.fetchCalorieGoals()
+        _ = calorieProgressViewModel.fetchCalorieGoals()
       
-//            calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
-//            fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
-//            proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
-//            carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
-//
-//        let nutritionFunction = nutritionFunctions()
-      //  nutritionFunction.setData()
-        
     }
 
     
     var body: some View {
  
+        
             NavigationView{
-                
-                
-                if(person.personDailyCalorieGoals.calorieGoal == 0 ||
-                    person.personDailyCalorieGoals.carbGoal == 0  ||
-                    person.personDailyCalorieGoals.proteinGoal == 0 ||
-                    person.personDailyCalorieGoals.fatGoal == 0 ){
+                VStack{
+                    HStack{
+                        Spacer()
+                Button("Reset") {
                     
+                    person.personCurrentCalorieProgress.calorieProgress = 0.00
+                    person.personCurrentCalorieProgress.fatProgress = 0.00
+                    person.personCurrentCalorieProgress.carbProgress = 0.00
+                    person.personCurrentCalorieProgress.proteinProgress = 0.00
 
-                    Text("Please set your macro goals")
+                    calorieProgressViewModel.deleteUserData()
                     
-                    
-                }
-                else{
+                    calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress: person.personCurrentCalorieProgress.calorieProgress, fatProgress: person.personCurrentCalorieProgress.fatProgress, carbProgress: person.personCurrentCalorieProgress.carbProgress, proteinPogress: person.personCurrentCalorieProgress.proteinProgress, created: Date())
+
                 
+                }.foregroundColor(.red)
+                .padding(.trailing, 20)
+                    }
+
                 Form{
                 Section(header: Text("Calories")){
                    
@@ -79,6 +81,8 @@ struct TrackerView: View {
                             Text("\(CalorieProgress, specifier: "%.0f")%")
                             
                         }
+                        
+
                         
                        
                     }.frame(width: .infinity, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -149,14 +153,26 @@ struct TrackerView: View {
                         
 
                     }
+                
                     
                     
                 }.navigationBarTitle(Text("Daily Progress")).frame(width: .infinity, height: .infinity)
-      
-                
+              
                 }
+                
+                
+            }.onAppear(){
+                _ = calorieProgressViewModel.fetchCalorieGoals()
+
             }
-        
+
+
+            
+                
+            
+            .onDisappear(){
+
+            }
         
       
         

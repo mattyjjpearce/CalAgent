@@ -24,6 +24,9 @@ struct AddedFoods:Identifiable{
 class FoodAddModel: ObservableObject,Identifiable {
     
     @Published var foods : [AddedFoods]?
+    
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
 
     var id = UUID().uuidString
 
@@ -53,6 +56,10 @@ struct DeleteFoodView:View{
         getFood.foods ?? []
     }
     
+    
+    @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
+
+    
     var body: some View{
         
         List{
@@ -67,6 +74,11 @@ struct DeleteFoodView:View{
                         person.personCurrentCalorieProgress.fatProgress -=  obj.totalFat
                         person.personCurrentCalorieProgress.proteinProgress -=  obj.totalProtein
                         person.personCurrentCalorieProgress.carbProgress -=  obj.totalCarbs
+                        
+                        
+                        calorieProgressViewModel.deleteUserData()
+                        
+                        calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
                     
                         
                         
