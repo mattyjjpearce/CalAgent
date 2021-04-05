@@ -436,12 +436,13 @@ struct ProfileView: View {
                     person.personSteps.steps =  result
                     person.personSteps.calories = personStepClass.stepsToCalories(input: result)
                     
+                    
+                    //If the user has allowed steps to be added to calorie count, add to calorieGoal for the day. 
                     if(person.personUserInfo.useSteps){
                         person.personDailyCalorieGoals.calorieGoal = person.personDailyCalorieGoals.calorieGoal +  person.personSteps.calories
                         print("Addition of step cals")
                     }
                     
-               // change this to steps    person.personUserInfo.bmr = result
                     
                     }
                 }
