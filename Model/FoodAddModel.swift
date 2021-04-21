@@ -93,7 +93,7 @@ struct DeleteFoodView:View{
                         
     
                 }
-            }
+        }.accessibility(identifier: "foodListIdentifier")
        
     }
       

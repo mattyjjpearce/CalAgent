@@ -14,6 +14,7 @@
 		4D80DF3E25751E660033D5B0 /* ColourManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF3D25751E660033D5B0 /* ColourManager.swift */; };
 		4D80DF6B257550EF0033D5B0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D80DF6A257550EF0033D5B0 /* HealthKit.framework */; };
 		4D80DF862576CB2B0033D5B0 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */; };
+		4D91EEE126301C0800AE42B6 /* CalorieTrackerDisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91EEE026301C0800AE42B6 /* CalorieTrackerDisUITests.swift */; };
 		4D937DFE2600AF7C00087864 /* RecipieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937DFD2600AF7C00087864 /* RecipieAPI.swift */; };
 		4D937E1126022EAD00087864 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E1026022EAD00087864 /* NetworkServices.swift */; };
 		4D937E172602367200087864 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E162602367200087864 /* MealViewModel.swift */; };
@@ -26,8 +27,6 @@
 		4DBB312D256FC61E00E973EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB312C256FC61E00E973EF /* Preview Assets.xcassets */; };
 		4DBB312F256FC61E00E973EF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB312E256FC61E00E973EF /* Persistence.swift */; };
 		4DBB3132256FC61E00E973EF /* navigationPractice.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3130256FC61E00E973EF /* navigationPractice.xcdatamodeld */; };
-		4DBB313D256FC61E00E973EF /* navigationPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB313C256FC61E00E973EF /* navigationPracticeTests.swift */; };
-		4DBB3148256FC61E00E973EF /* navigationPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3147256FC61E00E973EF /* navigationPracticeUITests.swift */; };
 		4DBB3159256FDCFF00E973EF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3158256FDCFF00E973EF /* ProfileView.swift */; };
 		4DBB315E256FDD1D00E973EF /* TrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB315D256FDD1D00E973EF /* TrackerView.swift */; };
 		4DBB3163256FDF6E00E973EF /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3162256FDF6E00E973EF /* MealView.swift */; };
@@ -42,24 +41,15 @@
 		4DE1BDCA2619C37100D6499A /* CalorieGoalEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1BDC62619C37100D6499A /* CalorieGoalEntity+CoreDataProperties.swift */; };
 		4DE1BDCF2619C67700D6499A /* CalorieProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1BDCE2619C67700D6499A /* CalorieProgressViewModel.swift */; };
 		4DE1BDDB261AFE8400D6499A /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1BDDA261AFE8400D6499A /* HealthStore.swift */; };
-		9A5EE819C32191F940BC4557 /* Pods_CalorieTrackerDisTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 418C04723AD490051623D5E2 /* Pods_CalorieTrackerDisTests.framework */; };
-		FCBBBF4DA0977214C66ECBEB /* Pods_CalorieTrackerDis_CalorieTrackerDisUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093E610BF922F199D177F4A9 /* Pods_CalorieTrackerDis_CalorieTrackerDisUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4DBB3139256FC61E00E973EF /* PBXContainerItemProxy */ = {
+		4D91EEE326301C0800AE42B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4DBB311A256FC61A00E973EF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 4DBB3121256FC61A00E973EF;
-			remoteInfo = navigationPractice;
-		};
-		4DBB3144256FC61E00E973EF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4DBB311A256FC61A00E973EF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4DBB3121256FC61A00E973EF;
-			remoteInfo = navigationPractice;
+			remoteInfo = CalorieTrackerDis;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -72,6 +62,9 @@
 		4D80DF3D25751E660033D5B0 /* ColourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourManager.swift; sourceTree = "<group>"; };
 		4D80DF6A257550EF0033D5B0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		4D91EEDE26301C0800AE42B6 /* CalorieTrackerDisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalorieTrackerDisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D91EEE026301C0800AE42B6 /* CalorieTrackerDisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieTrackerDisUITests.swift; sourceTree = "<group>"; };
+		4D91EEE226301C0800AE42B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D937DFD2600AF7C00087864 /* RecipieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipieAPI.swift; sourceTree = "<group>"; };
 		4D937E1026022EAD00087864 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		4D937E162602367200087864 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
@@ -86,12 +79,6 @@
 		4DBB312E256FC61E00E973EF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		4DBB3131256FC61E00E973EF /* navigationPractice.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = navigationPractice.xcdatamodel; sourceTree = "<group>"; };
 		4DBB3133256FC61E00E973EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DBB3138256FC61E00E973EF /* CalorieTrackerDisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalorieTrackerDisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DBB313C256FC61E00E973EF /* navigationPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationPracticeTests.swift; sourceTree = "<group>"; };
-		4DBB313E256FC61E00E973EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DBB3143256FC61E00E973EF /* CalorieTrackerDisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalorieTrackerDisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DBB3147256FC61E00E973EF /* navigationPracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationPracticeUITests.swift; sourceTree = "<group>"; };
-		4DBB3149256FC61E00E973EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DBB3158256FDCFF00E973EF /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		4DBB315D256FDD1D00E973EF /* TrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerView.swift; sourceTree = "<group>"; };
 		4DBB3162256FDF6E00E973EF /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
@@ -116,28 +103,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4D91EEDB26301C0800AE42B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DBB311F256FC61A00E973EF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4D80DF6B257550EF0033D5B0 /* HealthKit.framework in Frameworks */,
 				372630434EE2751578C158EA /* Pods_CalorieTrackerDis.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DBB3135256FC61E00E973EF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A5EE819C32191F940BC4557 /* Pods_CalorieTrackerDisTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DBB3140256FC61E00E973EF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FCBBBF4DA0977214C66ECBEB /* Pods_CalorieTrackerDis_CalorieTrackerDisUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +142,15 @@
 				418C04723AD490051623D5E2 /* Pods_CalorieTrackerDisTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4D91EEDF26301C0800AE42B6 /* CalorieTrackerDisUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4D91EEE026301C0800AE42B6 /* CalorieTrackerDisUITests.swift */,
+				4D91EEE226301C0800AE42B6 /* Info.plist */,
+			);
+			path = CalorieTrackerDisUITests;
 			sourceTree = "<group>";
 		};
 		4D937E0F26022E7B00087864 /* Services */ = {
@@ -197,8 +184,7 @@
 				4D937E0F26022E7B00087864 /* Services */,
 				4D80DF29257299AC0033D5B0 /* Model */,
 				4DBB3124256FC61A00E973EF /* CalorieTracking */,
-				4DBB313B256FC61E00E973EF /* navigationPracticeTests */,
-				4DBB3146256FC61E00E973EF /* navigationPracticeUITests */,
+				4D91EEDF26301C0800AE42B6 /* CalorieTrackerDisUITests */,
 				4DBB3123256FC61A00E973EF /* Products */,
 				4D80DF69257550EF0033D5B0 /* Frameworks */,
 				A69B2A5E65EC28A47F9F8EC5 /* Pods */,
@@ -209,8 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */,
-				4DBB3138256FC61E00E973EF /* CalorieTrackerDisTests.xctest */,
-				4DBB3143256FC61E00E973EF /* CalorieTrackerDisUITests.xctest */,
+				4D91EEDE26301C0800AE42B6 /* CalorieTrackerDisUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,24 +226,6 @@
 				4DBB312C256FC61E00E973EF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4DBB313B256FC61E00E973EF /* navigationPracticeTests */ = {
-			isa = PBXGroup;
-			children = (
-				4DBB313C256FC61E00E973EF /* navigationPracticeTests.swift */,
-				4DBB313E256FC61E00E973EF /* Info.plist */,
-			);
-			path = navigationPracticeTests;
-			sourceTree = "<group>";
-		};
-		4DBB3146256FC61E00E973EF /* navigationPracticeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				4DBB3147256FC61E00E973EF /* navigationPracticeUITests.swift */,
-				4DBB3149256FC61E00E973EF /* Info.plist */,
-			);
-			path = navigationPracticeUITests;
 			sourceTree = "<group>";
 		};
 		4DDB498D2611E183007A3842 /* CoreData */ = {
@@ -298,6 +265,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4D91EEDD26301C0800AE42B6 /* CalorieTrackerDisUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4D91EEE526301C0800AE42B6 /* Build configuration list for PBXNativeTarget "CalorieTrackerDisUITests" */;
+			buildPhases = (
+				4D91EEDA26301C0800AE42B6 /* Sources */,
+				4D91EEDB26301C0800AE42B6 /* Frameworks */,
+				4D91EEDC26301C0800AE42B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4D91EEE426301C0800AE42B6 /* PBXTargetDependency */,
+			);
+			name = CalorieTrackerDisUITests;
+			productName = CalorieTrackerDisUITests;
+			productReference = 4D91EEDE26301C0800AE42B6 /* CalorieTrackerDisUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		4DBB3121256FC61A00E973EF /* CalorieTrackerDis */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4DBB314C256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalorieTrackerDis" */;
@@ -317,64 +302,21 @@
 			productReference = 4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4DBB3137256FC61E00E973EF /* CalorieTrackerDisTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4DBB314F256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalorieTrackerDisTests" */;
-			buildPhases = (
-				B49D05BD78839DBC39EDAFEB /* [CP] Check Pods Manifest.lock */,
-				4DBB3134256FC61E00E973EF /* Sources */,
-				4DBB3135256FC61E00E973EF /* Frameworks */,
-				4DBB3136256FC61E00E973EF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4DBB313A256FC61E00E973EF /* PBXTargetDependency */,
-			);
-			name = CalorieTrackerDisTests;
-			productName = navigationPracticeTests;
-			productReference = 4DBB3138256FC61E00E973EF /* CalorieTrackerDisTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		4DBB3142256FC61E00E973EF /* CalorieTrackerDisUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4DBB3152256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalorieTrackerDisUITests" */;
-			buildPhases = (
-				770DAF318ACE5E1458BFA57F /* [CP] Check Pods Manifest.lock */,
-				4DBB313F256FC61E00E973EF /* Sources */,
-				4DBB3140256FC61E00E973EF /* Frameworks */,
-				4DBB3141256FC61E00E973EF /* Resources */,
-				66281F22F6AF0A45F5EA4229 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4DBB3145256FC61E00E973EF /* PBXTargetDependency */,
-			);
-			name = CalorieTrackerDisUITests;
-			productName = navigationPracticeUITests;
-			productReference = 4DBB3143256FC61E00E973EF /* CalorieTrackerDisUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4DBB311A256FC61A00E973EF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1220;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					4D91EEDD26301C0800AE42B6 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 4DBB3121256FC61A00E973EF;
+					};
 					4DBB3121256FC61A00E973EF = {
 						CreatedOnToolsVersion = 12.2;
-					};
-					4DBB3137256FC61E00E973EF = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 4DBB3121256FC61A00E973EF;
-					};
-					4DBB3142256FC61E00E973EF = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 4DBB3121256FC61A00E973EF;
 					};
 				};
 			};
@@ -392,33 +334,25 @@
 			projectRoot = "";
 			targets = (
 				4DBB3121256FC61A00E973EF /* CalorieTrackerDis */,
-				4DBB3137256FC61E00E973EF /* CalorieTrackerDisTests */,
-				4DBB3142256FC61E00E973EF /* CalorieTrackerDisUITests */,
+				4D91EEDD26301C0800AE42B6 /* CalorieTrackerDisUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4D91EEDC26301C0800AE42B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DBB3120256FC61A00E973EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				4DBB312D256FC61E00E973EF /* Preview Assets.xcassets in Resources */,
 				4DBB312A256FC61E00E973EF /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DBB3136256FC61E00E973EF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DBB3141256FC61E00E973EF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,45 +381,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		66281F22F6AF0A45F5EA4229 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CalorieTrackerDis-CalorieTrackerDisUITests/Pods-CalorieTrackerDis-CalorieTrackerDisUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CalorieTrackerDis-CalorieTrackerDisUITests/Pods-CalorieTrackerDis-CalorieTrackerDisUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CalorieTrackerDis-CalorieTrackerDisUITests/Pods-CalorieTrackerDis-CalorieTrackerDisUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		770DAF318ACE5E1458BFA57F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CalorieTrackerDis-CalorieTrackerDisUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A20CE48A085A237DDD586BAF /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -503,31 +398,17 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CalorieTrackerDis/Pods-CalorieTrackerDis-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B49D05BD78839DBC39EDAFEB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CalorieTrackerDisTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4D91EEDA26301C0800AE42B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D91EEE126301C0800AE42B6 /* CalorieTrackerDisUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4DBB311E256FC61A00E973EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,38 +445,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4DBB3134256FC61E00E973EF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4DBB313D256FC61E00E973EF /* navigationPracticeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4DBB313F256FC61E00E973EF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4DBB3148256FC61E00E973EF /* navigationPracticeUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4DBB313A256FC61E00E973EF /* PBXTargetDependency */ = {
+		4D91EEE426301C0800AE42B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4DBB3121256FC61A00E973EF /* CalorieTrackerDis */;
-			targetProxy = 4DBB3139256FC61E00E973EF /* PBXContainerItemProxy */;
-		};
-		4DBB3145256FC61E00E973EF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4DBB3121256FC61A00E973EF /* CalorieTrackerDis */;
-			targetProxy = 4DBB3144256FC61E00E973EF /* PBXContainerItemProxy */;
+			targetProxy = 4D91EEE326301C0800AE42B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		4D91EEE626301C0800AE42B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalorieTrackerDisUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MatthewPearce.CalorieTrackerDisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalorieTrackerDis;
+			};
+			name = Debug;
+		};
+		4D91EEE726301C0800AE42B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CalorieTrackerDisUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.MatthewPearce.CalorieTrackerDisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CalorieTrackerDis;
+			};
+			name = Release;
+		};
 		4DBB314A256FC61E00E973EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -760,93 +658,18 @@
 			};
 			name = Release;
 		};
-		4DBB3150256FC61E00E973EF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C317F781D7340F6AFC97F0FD /* Pods-CalorieTrackerDisTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = navigationPracticeTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MatthewPearce.navigationPracticeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalorieTrackerDis.app/CalorieTrackerDis";
-			};
-			name = Debug;
-		};
-		4DBB3151256FC61E00E973EF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4944003CD6F95F5E9D4BCDF /* Pods-CalorieTrackerDisTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = navigationPracticeTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MatthewPearce.navigationPracticeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalorieTrackerDis.app/CalorieTrackerDis";
-			};
-			name = Release;
-		};
-		4DBB3153256FC61E00E973EF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7EA9BE0A959F8794A4036F0 /* Pods-CalorieTrackerDis-CalorieTrackerDisUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = navigationPracticeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MatthewPearce.navigationPracticeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = navigationPractice;
-			};
-			name = Debug;
-		};
-		4DBB3154256FC61E00E973EF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FE7C1FAA06CEBA96A906E05 /* Pods-CalorieTrackerDis-CalorieTrackerDisUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = navigationPracticeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MatthewPearce.navigationPracticeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = navigationPractice;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4D91EEE526301C0800AE42B6 /* Build configuration list for PBXNativeTarget "CalorieTrackerDisUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D91EEE626301C0800AE42B6 /* Debug */,
+				4D91EEE726301C0800AE42B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4DBB311D256FC61A00E973EF /* Build configuration list for PBXProject "CalorieTrackerDis" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -861,24 +684,6 @@
 			buildConfigurations = (
 				4DBB314D256FC61E00E973EF /* Debug */,
 				4DBB314E256FC61E00E973EF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4DBB314F256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalorieTrackerDisTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4DBB3150256FC61E00E973EF /* Debug */,
-				4DBB3151256FC61E00E973EF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4DBB3152256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalorieTrackerDisUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4DBB3153256FC61E00E973EF /* Debug */,
-				4DBB3154256FC61E00E973EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
