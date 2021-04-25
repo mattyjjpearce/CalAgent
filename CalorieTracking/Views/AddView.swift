@@ -54,7 +54,7 @@ struct AddView: View{
         VStack{
             Form{
                 Section(header: Text("Add Food / Meals")){
-                    TextField("Food Title ", text: $newFoodNameString)
+                    TextField("Food Title ", text: $newFoodNameString).accessibility(identifier: "foodNameTextField")
                    
                     
                     TextField("Fat", text: $newFoodFatString).onReceive(Just(newFoodFatString)) { newValue in
@@ -62,14 +62,14 @@ struct AddView: View{
                         if filtered != newValue {
                             self.newFoodFatString = filtered
                         }
-}
+                    }.accessibility(identifier: "newFoodFatTextField")
     
                     TextField("Carbs", text: $newFoodCarbString).onReceive(Just(newFoodCarbString)) { newValue in
                         let filtered = newValue.filter { "0123456789".contains($0) }
                         if filtered != newValue {
                             self.newFoodCarbString = filtered
                         }
-}
+}.accessibility(identifier: "newFoodCarbTextField")
                     
                     
                     
@@ -78,7 +78,7 @@ struct AddView: View{
                         if filtered != newValue {
                             self.newFoodProteinString = filtered
                         }
-}
+}.accessibility(identifier: "newFoodProteinTextField")
                     
                     Button(action: {
                         
@@ -122,6 +122,7 @@ struct AddView: View{
                     }) {
                         Text("Enter").multilineTextAlignment(.center)
                             .foregroundColor(Color.blue)
+                            .accessibility(identifier: "newFoodButton")
                     
                     
                 }

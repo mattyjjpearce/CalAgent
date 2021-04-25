@@ -22,15 +22,13 @@ struct ProfileView: View {
     
     @State private var showingSheet1 = false
     
+    @State private var showSheetStepsInfo = false
+
     @State private var showingSheetGender = false
     
     @State private var showingSheetActivity = false
 
     @State private var showingSteps = false
-
-    
-
-
 
     @State private var fatInputString = ""
     @State private var carbInputString = ""
@@ -56,8 +54,6 @@ struct ProfileView: View {
     
     @State var userName = ""
     
-    
-
     private var healthStore: HealthStore?
     
     init(){
@@ -66,13 +62,12 @@ struct ProfileView: View {
         _ = calorieProgressViewModel.fetchCalorieGoals()
         healthStore = HealthStore()
     }
-   
     
     var body: some View {
         
             Form{
                 Section{
-                    TextField("Name: \(person.personUserInfo.firstName)" , text: $userName)
+                    TextField("Name: \(person.personUserInfo.firstName)" , text: $userName).accessibility(identifier: "personNameTextField")
                    // Text("Caloric needs: \(self.person.personUserInfo.bmr, specifier: "%.0f") Kcal")
                     Text("Caloric needs: \(person.personUserInfo.bmr, specifier: "%.0f") Kcal")
 
@@ -111,29 +106,21 @@ struct ProfileView: View {
                             Button("Medium"){
                                 person.personUserInfo.activityLevel = "Medium"
                                 self.showingSheetActivity.toggle()
-
                             }
                             Button("High"){
                                 person.personUserInfo.activityLevel = "High"
                                 self.showingSheetActivity.toggle()
-
                             }
                         }
-
                     })
                     .foregroundColor(.black)
-                        
                     }
-                    
-                
-               
-                
-
-                
+     
 
                 Section(header: Text("Personal Settings")){
                 VStack{ //manual input (fat)
                     TextField("Age: \(person.personUserInfo.age, specifier: "%.0f")", text: $ageInputString ).keyboardType(.numberPad)
+                        .accessibility(identifier: "personAgeTextField")
                         .onReceive(Just(ageInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -143,6 +130,7 @@ struct ProfileView: View {
                 }
                 VStack{ //manual input (carbs
                     TextField("Height: \(person.personUserInfo.height, specifier: "%.0f")cm", text: $heightInputString ).keyboardType(.numberPad)
+                        .accessibility(identifier: "personHeightTextField")
                         .onReceive(Just(heightInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -153,6 +141,7 @@ struct ProfileView: View {
                 }
                 VStack{ //manual input (carbs
                     TextField("Weight: \(person.personUserInfo.weight, specifier: "%.0f")kg", text: $weightInputString ).keyboardType(.numberPad)
+                        .accessibility(identifier: "personWeightTextField")
                         .onReceive(Just(weightInputString)) { newValue in
                                         let filtered = newValue.filter { "0123456789".contains($0) }
                                         if filtered != newValue {
@@ -187,16 +176,23 @@ struct ProfileView: View {
                         .foregroundColor(.black)
                     }
                     
-                   
-                    Toggle("Use Steps for Calories", isOn: $showingSteps)
-                    
-                    
-                    
-
+                    HStack{
+                        Button("") {
+                            self.showSheetStepsInfo.toggle()
+                        }
+                        Image(systemName: "info.circle").foregroundColor(.blue)
+                        .sheet(isPresented: $showSheetStepsInfo, content: {
+                            List{
+                        Text("Toggle this on, to add the calories burnt throughout the day to your totalCalorieGoal for the day. It resets every day! ")
+                            }
+                            
+                                
+                        })
+                        .foregroundColor(.black)
+                        Toggle("Use Steps for Calories", isOn: $showingSteps).accessibility(identifier: "toggle")
+                    }
          
                 Button(action: {
-                    
-                    
                         //Checking that the textFields are not empty
                     if(ageInputString != "" || heightInputString != "" || weightInputString != ""){
                     
@@ -267,27 +263,18 @@ struct ProfileView: View {
                         }
                        
                         userSettingViewModel.addUserSettingData(id: UUID(), firstName: person.personUserInfo.firstName, height: person.personUserInfo.height, weight: person.personUserInfo.weight, gender: person.personUserInfo.gender, age: person.personUserInfo.age, activityLevel: person.personUserInfo.activityLevel, bmr: person.personUserInfo.bmr, useSteps: person.personUserInfo.useSteps)
-                        
-                        
                      }
-                    
-                 
-
                 }) {
                     Text("Enter").multilineTextAlignment(.center)
                         .foregroundColor(Color.blue)
                 }
-                
             }
-                
-            
-                
-                
-                
+
                 
                 Section(header: Text("Macro Goals: \(person.personDailyCalorieGoals.calorieGoal, specifier: "%.0f") kcal")){
                         VStack{ //manual input (fat)
                             TextField("Fat Goal: \(person.personDailyCalorieGoals.fatGoal, specifier: "%.0f")g", text: $fatInputString ).keyboardType(.numberPad)
+                                .accessibility(identifier: "fatGoalTextField")
                                 .onReceive(Just(fatInputString)) { newValue in
                                                 let filtered = newValue.filter { "0123456789".contains($0) }
                                                 if filtered != newValue {
@@ -297,17 +284,19 @@ struct ProfileView: View {
                         }
                         VStack{ //manual input (carbs
                             TextField("Carb Goal: \(person.personDailyCalorieGoals.carbGoal, specifier: "%.0f")g", text: $carbInputString ).keyboardType(.numberPad)
+                                .accessibility(identifier: "carbGoalTextField")
+
                                 .onReceive(Just(carbInputString)) { newValue in
                                                 let filtered = newValue.filter { "0123456789".contains($0) }
                                                 if filtered != newValue {
                                                     self.carbInputString = filtered
                                                 }
                         }
-                          
                         }
                         VStack{ //manual input (carbs
 
                             TextField("Protein Goal: \(person.personDailyCalorieGoals.proteinGoal, specifier: "%.0f")g", text: $proteinInputString ).keyboardType(.numberPad)
+                                .accessibility(identifier: "proteinGoalTextField")
                                 .onReceive(Just(proteinInputString)) { newValue in
                                                 let filtered = newValue.filter { "0123456789".contains($0) }
                                                 if filtered != newValue {
@@ -339,9 +328,7 @@ struct ProfileView: View {
                                 let proteinDouble: Double! = Double(proteinInputString)
                                 person.personDailyCalorieGoals.proteinGoal = proteinDouble
                             }
-                            
 
-                      
                             
                             let fatCalories = person.personDailyCalorieGoals.fatGoal * 9
                             let carbCalories = person.personDailyCalorieGoals.carbGoal * 4
@@ -370,10 +357,7 @@ struct ProfileView: View {
             
             let personStepClass = nutritionFunctions()
             
-        
-            
-            
-            
+
             if(!userSettingViewModel.userSettings.isEmpty){ //if there is no values in viewmodel
                 
                 _ = userSettingViewModel.fetchUserSettingData()
@@ -386,14 +370,9 @@ struct ProfileView: View {
                 person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
                 showingSteps = userSettingViewModel.userSettings.first!.useSteps
                 person.personUserInfo.useSteps = userSettingViewModel.userSettings.first!.useSteps
-
-
             }
-
-
             
             if(!calorieGoalViewModel.calorieGoals.isEmpty){ //if there is no values in viewmodel
-                
                 _ = calorieGoalViewModel.fetchCalorieGoals()
             person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
             person.personDailyCalorieGoals.fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
@@ -401,8 +380,6 @@ struct ProfileView: View {
             person.personDailyCalorieGoals.carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
             person.personUserInfo.gender = userSettingViewModel.userSettings.first!.gender ?? ""
             person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
-
-
             }
             
             
@@ -436,12 +413,13 @@ struct ProfileView: View {
                     person.personSteps.steps =  result
                     person.personSteps.calories = personStepClass.stepsToCalories(input: result)
                     
+                    
+                    //If the user has allowed steps to be added to calorie count, add to calorieGoal for the day. 
                     if(person.personUserInfo.useSteps){
                         person.personDailyCalorieGoals.calorieGoal = person.personDailyCalorieGoals.calorieGoal +  person.personSteps.calories
                         print("Addition of step cals")
                     }
                     
-               // change this to steps    person.personUserInfo.bmr = result
                     
                     }
                 }
