@@ -225,7 +225,7 @@ struct MealView: View {
             mealViewModel.fetchRecipeFromAPI()
 
            
-        }
+        }.background(ColourManager.Colour1)
         
     }
 }

@@ -169,7 +169,7 @@ struct TrackerView: View {
                     
                 }.navigationBarTitle(Text("Daily Progress")).frame(width: .infinity, height: .infinity)
               
-                }
+                }.background(ColourManager.Colour1)
                 
                 
             }.onAppear(){

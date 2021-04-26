@@ -188,7 +188,7 @@ struct AddView: View{
                 
         
         }
-        }
+        }.background(ColourManager.Colour1)
         
         
     }
