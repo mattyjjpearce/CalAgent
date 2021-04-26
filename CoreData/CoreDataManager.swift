@@ -12,7 +12,7 @@ import CoreData
 class CoreDataManager {
     
     static let shared: CoreDataManager = {
-        let appDelegate = AppDelegate.instance!
+        let appDelegate = AppDelegate.instance! //instantiating an instance of addDelegate
         let instance = CoreDataManager(managedObjectContext: appDelegate.persistanceContainer.viewContext)
         return instance
     }()
@@ -27,6 +27,7 @@ class CoreDataManager {
 //MARK:- CalorieTracker Insert/Update/Delete
 extension CoreDataManager {
     
+    //Function for adding User Settings to
     func addUserSettingsData(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double, useSteps: Bool, completionHandler: @escaping (_ succeed: Bool, _ error: Error?) -> Void) {
         let userSettingsEntity = NSEntityDescription.insertNewObject(forEntityName: "UserSettings", into: managedContext) as? UserSettings
         userSettingsEntity?.id = id
@@ -49,6 +50,7 @@ extension CoreDataManager {
         }
     }
     
+    //Fetching the users settings from Core-Data
     func fetchUserSettingData(completionHandler: @escaping (_ succeed: Any?, _ error: Error?) -> Void) {
         var progresses = [UserSettings]()
         let progressRequest: NSFetchRequest<UserSettings> = NSFetchRequest<UserSettings>(entityName: "UserSettings")
@@ -61,6 +63,7 @@ extension CoreDataManager {
         }
     }
     
+    //Deleting User Settings 
     func deleteUserSettingData(){
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "UserSettings")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)

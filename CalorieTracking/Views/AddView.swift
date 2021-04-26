@@ -129,7 +129,7 @@ struct AddView: View{
                     Button("Delete Foods"){
                         self.showingSheet1.toggle()
                     }.sheet(isPresented: $showingSheet1, content: {
-                                DeleteFoodView().environmentObject(foods)
+                                FoodView().environmentObject(foods)
                                     
                         
                     })

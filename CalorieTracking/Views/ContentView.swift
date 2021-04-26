@@ -6,10 +6,7 @@
 //
 
 import SwiftUI
-
 import CoreData
-
-
 
 struct ContentView: View {
 
@@ -25,36 +22,50 @@ struct ContentView: View {
     init() {
         //Setting appearance of UI colour
         UITabBar.appearance().backgroundColor = ColourManager.UIColour1
-        
-        
-//        let x = userSettingViewModel.fetchUserSettingData()
-//
-//        let y = calorieGoalViewModel.fetchCalorieGoals()
-        
     }
     
     var body: some View {
         TabView {
             ProfileView().tabItem ({
+                VStack{
+                    Image(systemName: "person.crop.circle.fill").foregroundColor(.red)
+                        .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Text("Profile")
+                }
             }).tag(0)
             
+            
             TrackerView().tabItem ({
+                VStack{
+                     Image(systemName: "eye.circle.fill").foregroundColor(.red)
+                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Text("Tracker")
+                }
             }
             ).tag(1)
-
+            
+            
             
             AddView().tabItem ({
-                Text("Add")
+                VStack{
+                     Image(systemName: "plus.app.fill").foregroundColor(.red)
+                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Text("Add")
+                }
             }).tag(2)
             
+            
+            
             MealView().tabItem ({
-                Text("Meals")
+                VStack{
+                    Image(systemName: "bag.fill").foregroundColor(.red)
+                        .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Text("Meals")
+                }
             }).tag(3)
         }.accentColor(ColourManager.Colour3)
         .environmentObject(MealViewModel()) // <<: Here!
-        .environmentObject(UserInfoModel.shared) // <<: Here!
+        .environmentObject(UserInfoModel.shared) // Sharing the
 
         
         }

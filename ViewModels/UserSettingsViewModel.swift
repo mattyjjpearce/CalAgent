@@ -10,12 +10,7 @@ import Foundation
 class UserSettingsViewModel: ObservableObject {
     
     @Published var userSettings = [UserSettings]()
-
     
-    init() {
-    //    print(fetchProgresses().count)
-
-    }
     
     //Creating the data
     func addUserSettingData(id: UUID, firstName: String, height: Double, weight: Double, gender: String, age: Double, activityLevel: String, bmr: Double, useSteps: Bool) {
@@ -42,6 +37,7 @@ class UserSettingsViewModel: ObservableObject {
         return userSettings
     }
     
+    //Deleteting the user setting data from core-data 
     func deleteUserData(){
         CoreDataManager.shared.deleteUserSettingData()
     }

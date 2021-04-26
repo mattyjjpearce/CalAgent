@@ -74,7 +74,7 @@ struct MealView: View {
                         person.recipeNutrientsSearch.carb = Int(carbInputString)!
                         person.recipeNutrientsSearch.protein = Int(proteinInputString)!
 
-                        mealViewModel.fetchNutrients()
+                        mealViewModel.fetchRecipeFromAPI()
                             
                         self.showingSheet1.toggle()
                             
@@ -120,7 +120,7 @@ struct MealView: View {
                     person.recipeNutrientsSearch.protein = Int(protein)
                     }
    
-                    mealViewModel.fetchNutrients()
+                    mealViewModel.fetchRecipeFromAPI()
                     
                 }.font(.custom("Inter-Medium", size: 16))
                 .foregroundColor(Color.white)
@@ -222,7 +222,7 @@ struct MealView: View {
 
                             }
             print("recipe search:", person.recipeNutrientsSearch.fat, person.recipeNutrientsSearch.carb, person.recipeNutrientsSearch.protein)
-            mealViewModel.fetchNutrients()
+            mealViewModel.fetchRecipeFromAPI()
 
            
         }

@@ -12,7 +12,7 @@ import Foundation
 //    let results : [RecipieAPI]
 //}
 
-struct RecipieAPI: Codable  {
+struct RecipeAPI: Codable  {
     var calories : Int
     var carbs : String
     var fat : String

@@ -13,10 +13,6 @@ class CalorieGoalsiewModel: ObservableObject {
     @Published var calorieGoals = [CalorieGoalEntity]()
 
     
-    init() {
-
-    }
-    
     //Creating the data
     func addCalorieGoals(id: UUID, calorieGoal: Double, fatGoal: Double, carbGoal: Double, proteinGoal: Double) {
         CoreDataManager.shared.addCalorieGoalsData(id: id, calorieGoal: calorieGoal, fatGoal: fatGoal, proteinGoal: proteinGoal, carbGoal: carbGoal)   { (isAdded, error) in
