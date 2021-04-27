@@ -7,7 +7,7 @@
 
 import HealthKit
 import SwiftUI
-import Combine //to use Just
+import Combine
 
 struct ProfileView: View {
     
@@ -62,7 +62,7 @@ struct ProfileView: View {
         _ = calorieProgressViewModel.fetchCalorieGoals()
         healthStore = HealthStore()
         
-   //    UITableView.appearance().backgroundColor = .clear
+   //    UITableView.appearance().backgroundColor = .clear  - uncomment if wanting to change background colour of view
 
     }
     
@@ -71,11 +71,8 @@ struct ProfileView: View {
             Form{
                 Section{
                     TextField("Name: \(person.personUserInfo.firstName)" , text: $userName).accessibility(identifier: "personNameTextField")
-                   // Text("Caloric needs: \(self.person.personUserInfo.bmr, specifier: "%.0f") Kcal")
                     Text("Caloric needs: \(person.personUserInfo.bmr, specifier: "%.0f") Kcal")
-
-            }
-                
+                }
                 Section(header: Text("Activity Level:")){
                     HStack {
                         Text("Activity Level")
@@ -89,39 +86,37 @@ struct ProfileView: View {
                             Text("Medium: moderate exercise 3-5 days/week")
                             Text("High: hard exercise 6-7 days/week")
                             }
-                                
                         })
                         .foregroundColor(.black)
                     }
                     
                     Button("Activity Level: \(person.personUserInfo.activityLevel)"){
-                        
-                        self.showingSheetActivity.toggle()
-                    }.foregroundColor(.blue)
+                            
+                            self.showingSheetActivity.toggle()
+                        }.foregroundColor(.blue)
 
-                    .sheet(isPresented: $showingSheetActivity, content: {
-                        List{
-                            Button("Low"){
-                                person.personUserInfo.activityLevel = "Low"
-                                self.showingSheetActivity.toggle()
+                        .sheet(isPresented: $showingSheetActivity, content: {
+                            List{
+                                Button("Low"){
+                                    person.personUserInfo.activityLevel = "Low"
+                                    self.showingSheetActivity.toggle()
 
+                                }
+                                Button("Medium"){
+                                    person.personUserInfo.activityLevel = "Medium"
+                                    self.showingSheetActivity.toggle()
+                                }
+                                Button("High"){
+                                    person.personUserInfo.activityLevel = "High"
+                                    self.showingSheetActivity.toggle()
+                                }
                             }
-                            Button("Medium"){
-                                person.personUserInfo.activityLevel = "Medium"
-                                self.showingSheetActivity.toggle()
-                            }
-                            Button("High"){
-                                person.personUserInfo.activityLevel = "High"
-                                self.showingSheetActivity.toggle()
-                            }
-                        }
-                    })
-                    .foregroundColor(.black)
-                    }
+                        })
+                        .foregroundColor(.black)
+                }
      
-
                 Section(header: Text("Personal Settings")){
-                VStack{ //manual input (fat)
+                VStack{
                     TextField("Age: \(person.personUserInfo.age, specifier: "%.0f")", text: $ageInputString ).keyboardType(.numberPad)
                         .accessibility(identifier: "personAgeTextField")
                         .onReceive(Just(ageInputString)) { newValue in
@@ -131,7 +126,7 @@ struct ProfileView: View {
                                         }
                         }
                 }
-                VStack{ //manual input (carbs
+                VStack{
                     TextField("Height: \(person.personUserInfo.height, specifier: "%.0f")cm", text: $heightInputString ).keyboardType(.numberPad)
                         .accessibility(identifier: "personHeightTextField")
                         .onReceive(Just(heightInputString)) { newValue in
@@ -142,7 +137,7 @@ struct ProfileView: View {
                 }
   
                 }
-                VStack{ //manual input (carbs
+                VStack{
                     TextField("Weight: \(person.personUserInfo.weight, specifier: "%.0f")kg", text: $weightInputString ).keyboardType(.numberPad)
                         .accessibility(identifier: "personWeightTextField")
                         .onReceive(Just(weightInputString)) { newValue in
@@ -170,11 +165,8 @@ struct ProfileView: View {
                                     person.personUserInfo.gender = "Female"
                                     self.showingSheetGender.toggle()
                                     print("chose female")
-
-
                                 }
                             }
-
                         })
                         .foregroundColor(.black)
                     }
@@ -216,8 +208,6 @@ struct ProfileView: View {
                             let bmr = 5 + weightBMR + heightBMR - ageBMR
                             BMR = bmr
                                 
-                            
-                            
                         }else{
                             let weightBMR = (weightDouble * 10)
                             let heightBMR = (heightDouble *  6.25)
@@ -332,7 +322,6 @@ struct ProfileView: View {
                                 person.personDailyCalorieGoals.proteinGoal = proteinDouble
                             }
 
-                            
                             let fatCalories = person.personDailyCalorieGoals.fatGoal * 9
                             let carbCalories = person.personDailyCalorieGoals.carbGoal * 4
                             let proteinCalories = person.personDailyCalorieGoals.proteinGoal * 4
@@ -343,7 +332,6 @@ struct ProfileView: View {
                             
                             calorieGoalViewModel.deleteUserData()
                             calorieGoalViewModel.addCalorieGoals(id: UUID(), calorieGoal: person.personDailyCalorieGoals.calorieGoal, fatGoal: person.personDailyCalorieGoals.fatGoal, carbGoal: person.personDailyCalorieGoals.fatGoal, proteinGoal: person.personDailyCalorieGoals.proteinGoal)
-                            
                             
                             hideKeyboard()
                             
@@ -385,7 +373,6 @@ struct ProfileView: View {
             person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
             }
             
-            
             if(calorieProgressViewModel.calorieProgress.isEmpty){
                 calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress: 0.00, fatProgress: 0.00, carbProgress: 0.00, proteinPogress: 0.00, created: Date())
                 
@@ -395,7 +382,6 @@ struct ProfileView: View {
                 person.personCurrentCalorieProgress.fatProgress = calorieProgressViewModel.calorieProgress.first!.fatProgress
                 person.personCurrentCalorieProgress.carbProgress = calorieProgressViewModel.calorieProgress.first!.carbProgress
                 person.personCurrentCalorieProgress.proteinProgress = calorieProgressViewModel.calorieProgress.first!.proteinProgress
-                
             }
             else{
                 person.personCurrentCalorieProgress.calorieProgress = calorieProgressViewModel.calorieProgress.first!.calorieProgress
@@ -404,10 +390,9 @@ struct ProfileView: View {
                 person.personCurrentCalorieProgress.proteinProgress = calorieProgressViewModel.calorieProgress.first!.proteinProgress
                 print("is not empty")
                 print("checking data model:", person.personCurrentCalorieProgress.calorieProgress)
-
-
             }
-            if let healthStore = healthStore{
+            
+            if let healthStore = healthStore{ //Requesting authorization to the healthstore
                 healthStore.requestAuthorization{
                     success in
                 healthStore.getTodaysSteps{
@@ -416,27 +401,20 @@ struct ProfileView: View {
                     person.personSteps.steps =  result
                     person.personSteps.calories = personStepClass.stepsToCalories(input: result)
                     
-                    
-                    //If the user has allowed steps to be added to calorie count, add to calorieGoal for the day. 
+                    //If the user has allowed steps to be added to calorie count, add to calorieGoal for the day.
                     if(person.personUserInfo.useSteps){
                         person.personDailyCalorieGoals.calorieGoal = person.personDailyCalorieGoals.calorieGoal +  person.personSteps.calories
                         print("Addition of step cals")
                     }
-                    
-                    
-                    }
                 }
-                
+                }
             }
         }//.background(ColourManager.Colour1)
     }
-    
 }
 
-#if canImport(UIKit)
+#if canImport(UIKit) //Function to hide the keyboard after input 
 extension View {
-    
-    
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }

@@ -10,16 +10,13 @@ import CoreData
 
 //@UIApplicationMain
 class AppDelegate: NSObject, UIApplicationDelegate {
-   
-    static private(set) var instance: AppDelegate! = nil
     
+    static private(set) var instance: AppDelegate! = nil
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         AppDelegate.instance = self
         return true
     }
-    
     //MARK:- CoreData Stack
-    
     lazy var persistanceContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "CalorieTracker")
         container.loadPersistentStores { (storeDescription, error) in
