@@ -12,8 +12,6 @@ struct ContentView: View {
 
     //Instantiating an object of UserInfo Model (referenced in App.swift too 
     @EnvironmentObject var person: UserInfoModel
-    
-    
     @Environment(\.managedObjectContext) private var viewContext
 
     @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
@@ -25,6 +23,7 @@ struct ContentView: View {
     }
     
     var body: some View {
+        //TabView for all the main views
         TabView {
             ProfileView().tabItem ({
                 VStack{
@@ -33,7 +32,6 @@ struct ContentView: View {
                 Text("Profile")
                 }
             }).tag(0)
-            
             
             TrackerView().tabItem ({
                 VStack{
@@ -44,8 +42,6 @@ struct ContentView: View {
             }
             ).tag(1)
             
-            
-            
             AddView().tabItem ({
                 VStack{
                      Image(systemName: "plus.app.fill").foregroundColor(.red)
@@ -53,8 +49,6 @@ struct ContentView: View {
                     Text("Add")
                 }
             }).tag(2)
-            
-            
             
             MealView().tabItem ({
                 VStack{
@@ -64,13 +58,9 @@ struct ContentView: View {
                 }
             }).tag(3)
         }.accentColor(ColourManager.Colour3)
-        .environmentObject(MealViewModel()) // <<: Here!
-        .environmentObject(UserInfoModel.shared) // Sharing the
-
-        
-        }
-
+        .environmentObject(MealViewModel()) // <<: Adding the meal view model to the environment
+        .environmentObject(UserInfoModel.shared) // <<: adding the user info model to the environment
     }
-    
+}
    
 

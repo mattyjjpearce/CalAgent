@@ -29,7 +29,18 @@ class FoodAddModel: ObservableObject,Identifiable {
 
     var id = UUID().uuidString
 
+    init() {
+            dummyData()
+            
+        }
+        
+        func dummyData() {
+            var obj:[AddedFoods] = []
+            foods = obj
+        }
 }
+
+
 
 //View displaying the list of foods that have been added throughout the day 
 struct FoodView:View{

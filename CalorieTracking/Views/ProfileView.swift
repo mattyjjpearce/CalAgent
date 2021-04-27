@@ -62,7 +62,7 @@ struct ProfileView: View {
         _ = calorieProgressViewModel.fetchCalorieGoals()
         healthStore = HealthStore()
         
-        UITableView.appearance().backgroundColor = .clear
+   //    UITableView.appearance().backgroundColor = .clear
 
     }
     
@@ -428,7 +428,7 @@ struct ProfileView: View {
                 }
                 
             }
-        }.background(ColourManager.Colour1)
+        }//.background(ColourManager.Colour1)
     }
     
 }

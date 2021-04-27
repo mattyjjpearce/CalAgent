@@ -194,11 +194,6 @@ struct AddView: View{
     }
 }
 
-struct secondView:View{
-    var body: some View{
-        Text("Hi")
-    }
-}
 
 
 

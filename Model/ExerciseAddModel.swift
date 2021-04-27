@@ -15,6 +15,8 @@ struct AddedExercises:Identifiable{
 }
 
 
+
+
 //View displaying a list of all exercises the user has added
 class ExerciseAddModel: ObservableObject,Identifiable {
     
@@ -24,6 +26,16 @@ class ExerciseAddModel: ObservableObject,Identifiable {
 
 
     var id = UUID().uuidString
+    
+    init() {
+            dummyData()
+            
+        }
+        
+        func dummyData() {
+            var obj:[AddedExercises] = []
+            exercises = obj
+        }
 }
 
 struct DeleteExerciseView:View{

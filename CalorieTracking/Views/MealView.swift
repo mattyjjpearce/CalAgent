@@ -184,14 +184,11 @@ struct MealView: View {
                         }.accentColor(.blue)
                             
                     }.frame(width: 300, height: 200)
-                    Divider().frame(height: 10).background(Color.blue)
+                    Divider().frame(height: 10).background(Color.white)
                 }
             }
-        }.frame(width: 350, height: 550)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.black, lineWidth: 4))
-        }.frame(width: 350)
+        }.frame(width: .infinity, height: .infinity)
+        }.frame(width: .infinity)
         .onAppear(){
 
 
