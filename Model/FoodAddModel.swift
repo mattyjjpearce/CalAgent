@@ -33,7 +33,7 @@ class FoodAddModel: ObservableObject,Identifiable {
             dummyData()
             
         }
-        
+    
         func dummyData() {
             var obj:[AddedFoods] = []
             foods = obj

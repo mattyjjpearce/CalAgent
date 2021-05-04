@@ -20,6 +20,9 @@ struct ProfileView: View {
     
     @EnvironmentObject var person: UserInfoModel
     
+    @State private var userInfoIssue = false
+
+    
     @State private var showingSheet1 = false
     
     @State private var showSheetStepsInfo = false
@@ -188,9 +191,19 @@ struct ProfileView: View {
                     }
          
                 Button(action: {
-                        //Checking that the textFields are not empty
-                    if(ageInputString != "" || heightInputString != "" || weightInputString != ""){
                     
+                    if(Double(weightInputString) == nil || Double(heightInputString) == nil || Double(ageInputString) == nil ){
+                        
+                        userInfoIssue = true
+                        
+                        print("error - something inputted was nil")
+                        
+                    }
+                        //Checking that the textFields are not empty
+                    else if(ageInputString != "" || heightInputString != "" || weightInputString != ""){
+                    
+                        
+                        
                     person.personUserInfo.firstName = userName
                         //converting the input from type string to Double
                     let ageDouble: Double! = Double(ageInputString)
@@ -214,25 +227,19 @@ struct ProfileView: View {
                             let ageBMR = (ageDouble * 5)
                             let bmr = weightBMR + heightBMR - ageBMR - 161
                             BMR = bmr
-                            }
-                        
-                        switch selectedActivityLevel {
-                        case 0:
-                            person.personUserInfo.activityLevel = "Low"
-                            chosenActivityLevel = "Low"
-
-                            BMR = 1.2 * BMR
-                        case 1:
-                            person.personUserInfo.activityLevel = "Medium"
-                            chosenActivityLevel = "Medium"
-
-                            BMR = 1.55 * BMR
-                        case 2:
-                            person.personUserInfo.activityLevel = "High"
-                            chosenActivityLevel = "High"
-                            BMR = 1.725 * BMR
-                        default:
-                            ""
+                            
+                           
+                        }
+                     
+                        //Depending on activity level, adjusting the BMR appropriately
+                        if( person.personUserInfo.activityLevel == "Low"){
+                        BMR = 1.2 * BMR
+                        }
+                        else if (person.personUserInfo.activityLevel == "Medium"){
+                        BMR = 1.55 * BMR
+                        }
+                        else if(person.personUserInfo.activityLevel == "High"){
+                        BMR = 1.725 * BMR
                         }
                         
                         switch selectedSteps{
@@ -256,12 +263,16 @@ struct ProfileView: View {
                         }
                        
                         userSettingViewModel.addUserSettingData(id: UUID(), firstName: person.personUserInfo.firstName, height: person.personUserInfo.height, weight: person.personUserInfo.weight, gender: person.personUserInfo.gender, age: person.personUserInfo.age, activityLevel: person.personUserInfo.activityLevel, bmr: person.personUserInfo.bmr, useSteps: person.personUserInfo.useSteps)
-                     }
-                }) {
+                    }
+                })
+                {
                     Text("Enter").multilineTextAlignment(.center)
                         .foregroundColor(Color.blue)
                 }
-            }
+                }.alert(isPresented: $userInfoIssue) {
+                    
+                    Alert(title: Text("Error"), message: Text("Make sure all textfields are inputted properly"),dismissButton: .default(Text("Got it!")))
+                }
 
                 
                 Section(header: Text("Macro Goals: \(person.personDailyCalorieGoals.calorieGoal, specifier: "%.0f") kcal")){
@@ -349,7 +360,7 @@ struct ProfileView: View {
             let personStepClass = nutritionFunctions()
             
 
-            if(!userSettingViewModel.userSettings.isEmpty){ //if there is no values in viewmodel
+            if(!userSettingViewModel.userSettings.isEmpty){ //if there is values in Core Data
                 
                 _ = userSettingViewModel.fetchUserSettingData()
                 person.personUserInfo.firstName = userSettingViewModel.userSettings.first!.firstName ?? ""
