@@ -12,11 +12,7 @@ class CalorieProgressViewModel: ObservableObject {
     
     @Published var calorieProgress = [CalorieProgressEntity]()
 
-    
-    init() {
 
-    }
-    
     //Creating the data
     func addCalorieProgressData(id: UUID, calorieProgress: Double, fatProgress: Double, carbProgress: Double, proteinPogress: Double, created: Date) {
         CoreDataManager.shared.addCalorieProgressData(id: id, calorieProgress: calorieProgress, fatProgress: fatProgress, proteinProgress: proteinPogress, carbProgress: carbProgress, created: created){ (isAdded, error) in

@@ -15,12 +15,11 @@
 		4D80DF6B257550EF0033D5B0 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D80DF6A257550EF0033D5B0 /* HealthKit.framework */; };
 		4D80DF862576CB2B0033D5B0 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */; };
 		4D91EEE126301C0800AE42B6 /* CalorieTrackerDisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91EEE026301C0800AE42B6 /* CalorieTrackerDisUITests.swift */; };
-		4D937DFE2600AF7C00087864 /* RecipieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937DFD2600AF7C00087864 /* RecipieAPI.swift */; };
+		4D937DFE2600AF7C00087864 /* RecipeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937DFD2600AF7C00087864 /* RecipeAPI.swift */; };
 		4D937E1126022EAD00087864 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E1026022EAD00087864 /* NetworkServices.swift */; };
 		4D937E172602367200087864 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E162602367200087864 /* MealViewModel.swift */; };
 		4D937E1C2603AE1E00087864 /* loadingImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D937E1B2603AE1E00087864 /* loadingImages.swift */; };
 		4D991BDF26172F20000238F1 /* CalorieGoalsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D991BDE26172F20000238F1 /* CalorieGoalsViewModel.swift */; };
-		4D991BE726176E98000238F1 /* loadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D991BE626176E98000238F1 /* loadData.swift */; };
 		4DBB3126256FC61A00E973EF /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3125256FC61A00E973EF /* App.swift */; };
 		4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBB3127256FC61A00E973EF /* ContentView.swift */; };
 		4DBB312A256FC61E00E973EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DBB3129256FC61E00E973EF /* Assets.xcassets */; };
@@ -65,12 +64,11 @@
 		4D91EEDE26301C0800AE42B6 /* CalorieTrackerDisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalorieTrackerDisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D91EEE026301C0800AE42B6 /* CalorieTrackerDisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieTrackerDisUITests.swift; sourceTree = "<group>"; };
 		4D91EEE226301C0800AE42B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D937DFD2600AF7C00087864 /* RecipieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipieAPI.swift; sourceTree = "<group>"; };
+		4D937DFD2600AF7C00087864 /* RecipeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPI.swift; sourceTree = "<group>"; };
 		4D937E1026022EAD00087864 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		4D937E162602367200087864 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		4D937E1B2603AE1E00087864 /* loadingImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingImages.swift; sourceTree = "<group>"; };
 		4D991BDE26172F20000238F1 /* CalorieGoalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieGoalsViewModel.swift; sourceTree = "<group>"; };
-		4D991BE626176E98000238F1 /* loadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadData.swift; sourceTree = "<group>"; };
 		4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieTrackerDis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBB3125256FC61A00E973EF /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		4DBB3127256FC61A00E973EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,7 +126,7 @@
 				4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */,
 				4D072FE225F77D320012876D /* FoodAddModel.swift */,
 				4D072FE725FA62120012876D /* ExerciseAddModel.swift */,
-				4D937DFD2600AF7C00087864 /* RecipieAPI.swift */,
+				4D937DFD2600AF7C00087864 /* RecipeAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,7 +168,6 @@
 				4D6CE888260A54F5002AEF08 /* nutritionFunctions.swift */,
 				4DDB49A12611EB0F007A3842 /* UserSettingsViewModel.swift */,
 				4D991BDE26172F20000238F1 /* CalorieGoalsViewModel.swift */,
-				4D991BE626176E98000238F1 /* loadData.swift */,
 				4DE1BDCE2619C67700D6499A /* CalorieProgressViewModel.swift */,
 			);
 			path = ViewModels;
@@ -417,7 +414,6 @@
 				4DE1BDCF2619C67700D6499A /* CalorieProgressViewModel.swift in Sources */,
 				4DE1BDB92619C2F600D6499A /* CalorieTracker.xcdatamodeld in Sources */,
 				4DBB312F256FC61E00E973EF /* Persistence.swift in Sources */,
-				4D991BE726176E98000238F1 /* loadData.swift in Sources */,
 				4DBB3128256FC61A00E973EF /* ContentView.swift in Sources */,
 				4D937E1C2603AE1E00087864 /* loadingImages.swift in Sources */,
 				4DBB3159256FDCFF00E973EF /* ProfileView.swift in Sources */,
@@ -438,7 +434,7 @@
 				4DE1BDC72619C37100D6499A /* CalorieProgressEntity+CoreDataClass.swift in Sources */,
 				4DBB3168256FDF8600E973EF /* AddView.swift in Sources */,
 				4D937E172602367200087864 /* MealViewModel.swift in Sources */,
-				4D937DFE2600AF7C00087864 /* RecipieAPI.swift in Sources */,
+				4D937DFE2600AF7C00087864 /* RecipeAPI.swift in Sources */,
 				4DBB3126256FC61A00E973EF /* App.swift in Sources */,
 				4DDB499D2611E5C8007A3842 /* CoreDataManager.swift in Sources */,
 				4DBB315E256FDD1D00E973EF /* TrackerView.swift in Sources */,

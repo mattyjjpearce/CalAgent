@@ -1,5 +1,7 @@
 import SwiftUI
 
+//Class to turn the URL of the API image into an image to display to the user 
+
 struct loadingImages: View {
     private enum LoadState {
         case loading, success, failure

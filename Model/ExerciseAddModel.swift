@@ -12,10 +12,12 @@ struct AddedExercises:Identifiable{
     var name: String = ""
     var totalCals: Double = 0
     var id = UUID().uuidString
-   //Your other properties
 }
 
 
+
+
+//View displaying a list of all exercises the user has added
 class ExerciseAddModel: ObservableObject,Identifiable {
     
     @Published var exercises : [AddedExercises]?
@@ -24,22 +26,16 @@ class ExerciseAddModel: ObservableObject,Identifiable {
 
 
     var id = UUID().uuidString
-
+    
     init() {
-        dummyData()
+            dummyData()
+            
+        }
         
-    }
-    
-    func dummyData() {
-        var obj:[AddedExercises] = []
-        obj.append(AddedExercises(name: "Morning run", totalCals: 340))
-        obj.append(AddedExercises(name: "Walk", totalCals: 340))
-
-        exercises = obj
-    }
-    
-    
-
+        func dummyData() {
+            var obj:[AddedExercises] = []
+            exercises = obj
+        }
 }
 
 struct DeleteExerciseView:View{
@@ -60,15 +56,17 @@ struct DeleteExerciseView:View{
                     Text(obj.name).foregroundColor(.black)
                     Spacer()
                     Button(action: {
-                        getExercises.exercises?.remove(at: index)
-                        person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals //showing how to work this
+                        getExercises.exercises?.remove(at: index) //removing the exercise at that index
                         
+                        //changing the environment object to display the correct values
+                        person.personCurrentCalorieProgress.calorieProgress +=  obj.totalCals
+                        
+                        //Deleting the data from core-data
                         calorieProgressViewModel.deleteUserData()
                         
+                        //Adding the new values to core-data
                         calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
-                    
-                        
-                        
+               
                     }) {
                         Image(systemName: "minus.square.fill").foregroundColor(.red)
                             .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -76,11 +74,8 @@ struct DeleteExerciseView:View{
                     }
                 Text("Kcals: \(obj.totalCals, specifier: "%.0f")").font(.system(size: 16)).foregroundColor(.black)
             }
-                        
-    
                 }
             }
-       
     }
 }
       

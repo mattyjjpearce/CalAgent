@@ -10,63 +10,34 @@ import Alamofire
 
 class NetworkServices {
     
+    //API key to provided by Spoonacular
     static let apiKey: String = "8e8c3bcbd09c402cb0e3279db5db7cc2"
     
 
+    //Function to
     static func fetchNutrients(maxProtein: Int, maxFat: Int, maxCarbs: Int, number: Int, completionHandler: @escaping (_ response: Any?, _ error: Error?) -> Void) {
         
-    
         AF.request("https://api.spoonacular.com/recipes/findByNutrients?apiKey=\(NetworkServices.apiKey)&maxFat=\(maxFat)&maxProtein=\(maxProtein)&maxCarbs=\(maxCarbs)&number=\(number)", method: .get).responseJSON { (response) in
-            switch response.result {
-            case .success(_):
+            switch response.result { //Switch statement with result
+            case .success(_): //if successfull
                 
-                let decoder = JSONDecoder()
+                let decoder = JSONDecoder()  //Intantiating a JSONDecoder
                 
-                if let data = response.data {
-                    do {
-                        let nutrients = try decoder.decode([RecipieAPI].self, from: data)
-                        completionHandler(nutrients, nil)
-                    } catch let error {
-                        completionHandler(nil, error)
+                    if let data = response.data {
+                        do {
+                            let nutrients = try decoder.decode([RecipeAPI].self, from: data) //Decode the API request and use the RecipeAPI model to place inside variable nutrients
+                            
+                            completionHandler(nutrients, nil) //ensuring it happens 
+                        } catch let error {
+                            completionHandler(nil, error)
+                        }
                     }
-                }
                 
-            case .failure(let error):
+            case .failure(let error): //if unsuccessfull
                 completionHandler(nil, error)
             }
         }
     }
-    
-//    static func complexSearch(maxProtein: Int, maxFat: Int, maxCarbs: Int, number: Int, completionHandler: @escaping (_ response: Any?, _ error: Error?) -> Void) {
-//        
-//    
-//        AF.request("https://api.spoonacular.com/recipes/complexSearch?apiKey=\(NetworkServices.apiKey)&diet=pasta&&maxFat=\(maxFat)&maxProtein=\(maxProtein)&maxCarbs=\(maxCarbs)&number=\(number)", method: .get).responseJSON { (response) in
-//            switch response.result {
-//            case .success(_):
-//                
-//             //   let decoder = JSONDecoder()
-//                
-//                debugPrint(response)
-//                
-////                if let data = response.data {
-////                    do {
-////                        let nutrients = try decoder.decode([RecipieAPI].self, from: data)
-////                        completionHandler(nutrients, nil)
-////                    } catch let error {
-////                        completionHandler(nil, error)
-////                    }
-////                }
-//                
-//            case .failure(let error):
-//                completionHandler(nil, error)
-//            }
-//        }
-//    }
-    
-    
-    
+  
 }
 
-
-//let nutrients = try decoder.decode(Root.self, from: data)
-//completionHandler(nutrients.results, nil)

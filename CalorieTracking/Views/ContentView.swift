@@ -6,17 +6,12 @@
 //
 
 import SwiftUI
-
 import CoreData
-
-
 
 struct ContentView: View {
 
     //Instantiating an object of UserInfo Model (referenced in App.swift too 
     @EnvironmentObject var person: UserInfoModel
-    
-    
     @Environment(\.managedObjectContext) private var viewContext
 
     @ObservedObject var userSettingViewModel: UserSettingsViewModel = UserSettingsViewModel()
@@ -25,41 +20,47 @@ struct ContentView: View {
     init() {
         //Setting appearance of UI colour
         UITabBar.appearance().backgroundColor = ColourManager.UIColour1
-        
-        
-//        let x = userSettingViewModel.fetchUserSettingData()
-//
-//        let y = calorieGoalViewModel.fetchCalorieGoals()
-        
     }
     
     var body: some View {
+        //TabView for all the main views
         TabView {
             ProfileView().tabItem ({
+                VStack{
+                    Image(systemName: "person.crop.circle.fill").foregroundColor(.red)
+                        .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Text("Profile")
+                }
             }).tag(0)
             
             TrackerView().tabItem ({
+                VStack{
+                     Image(systemName: "eye.circle.fill").foregroundColor(.red)
+                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 Text("Tracker")
+                }
             }
             ).tag(1)
-
             
             AddView().tabItem ({
-                Text("Add")
+                VStack{
+                     Image(systemName: "plus.app.fill").foregroundColor(.red)
+                    .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Text("Add")
+                }
             }).tag(2)
             
             MealView().tabItem ({
-                Text("Meals")
+                VStack{
+                    Image(systemName: "bag.fill").foregroundColor(.red)
+                        .frame(width: 30, height: 30, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    Text("Meals")
+                }
             }).tag(3)
         }.accentColor(ColourManager.Colour3)
-        .environmentObject(MealViewModel()) // <<: Here!
-        .environmentObject(UserInfoModel.shared) // <<: Here!
-
-        
-        }
-
+        .environmentObject(MealViewModel()) // <<: Adding the meal view model to the environment
+        .environmentObject(UserInfoModel.shared) // <<: adding the user info model to the environment
     }
-    
+}
    
 

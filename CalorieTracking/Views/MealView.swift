@@ -16,8 +16,6 @@ struct MealView: View {
     
     @ObservedObject var calorieProgressViewModel: CalorieProgressViewModel = CalorieProgressViewModel()
 
-
-    
     @EnvironmentObject var person: UserInfoModel
     @ObservedObject var mealViewModel: MealViewModel = MealViewModel()
     @State private var showingSheet1 = false
@@ -32,15 +30,12 @@ struct MealView: View {
             _foods = StateObject(wrappedValue: FoodAddModel())
 
         }
-    
-    
-    
+   
     var body: some View {
-       
         VStack{
             HStack{
             Button("Filter"){
-                self.showingSheet1.toggle()
+                self.showingSheet1.toggle() //Show the filter sheet
             }.sheet(isPresented: $showingSheet1, content: {
                 Form{
                     Text("Filter by Macronutrients")
@@ -74,8 +69,10 @@ struct MealView: View {
                         person.recipeNutrientsSearch.carb = Int(carbInputString)!
                         person.recipeNutrientsSearch.protein = Int(proteinInputString)!
 
-                        mealViewModel.fetchNutrients()
-                            
+                        //fetching the recipes
+                        mealViewModel.fetchRecipeFromAPI()
+                        
+                        //toggling the sheet
                         self.showingSheet1.toggle()
                             
                         }else{
@@ -120,7 +117,7 @@ struct MealView: View {
                     person.recipeNutrientsSearch.protein = Int(protein)
                     }
    
-                    mealViewModel.fetchNutrients()
+                    mealViewModel.fetchRecipeFromAPI()
                     
                 }.font(.custom("Inter-Medium", size: 16))
                 .foregroundColor(Color.white)
@@ -151,13 +148,11 @@ struct MealView: View {
                                     .frame(width: 200, height:100)
                             }
                         }
-                        
                       
                         Button("Add to Macros"){ //Selecting one of the items to View in more detail and add
                           
                             let nutritionFunction = nutritionFunctions() //creating a nutritionObject to use cals function
-                            
-                            
+       
                             let fat = nutritionFunction.stringToDoubleGrams(input: item.fat)
                             let protein = nutritionFunction.stringToDoubleGrams(input: item.protein)
                             let carbs = nutritionFunction.stringToDoubleGrams(input: item.carbs)
@@ -169,36 +164,28 @@ struct MealView: View {
                             person.personCurrentCalorieProgress.carbProgress += carbs
                             person.personCurrentCalorieProgress.proteinProgress += protein
                             
-                            
+                            //Adding a new food
                             let newAddedFood = AddedFoods(name: item.title, totalCals: calories, totalProtein: protein, totalCarbs: carbs, totalFat: fat)
                             
                             foods.foods?.append(newAddedFood)
                             
-                            
+                            //Deleting calorie progress data in Core-Data
                             calorieProgressViewModel.deleteUserData()
                             
+                            //Adding calorie progress data in Core-Data
                             calorieProgressViewModel.addCalorieProgressData(id: UUID(), calorieProgress:  person.personCurrentCalorieProgress.calorieProgress, fatProgress:  person.personCurrentCalorieProgress.fatProgress, carbProgress:  person.personCurrentCalorieProgress.carbProgress, proteinPogress:  person.personCurrentCalorieProgress.proteinProgress, created: Date())
-                            
-                            
-                                
                         }.accentColor(.blue)
-                            
                     }.frame(width: 300, height: 200)
-                    Divider().frame(height: 10).background(Color.blue)
+                    Divider().frame(height: 10).background(Color.white)
                 }
             }
-        }.frame(width: 350, height: 550)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.black, lineWidth: 4))
-        }.frame(width: 350)
-        .onAppear(){
-
+        }.frame(width: .infinity, height: .infinity)
+        }.frame(width: .infinity)
+        .onAppear(){ //On appear method get's called evertyime the view gets loaded
 
             let fat = person.personDailyCalorieGoals.fatGoal - person.personCurrentCalorieProgress.fatProgress
             let carb = person.personDailyCalorieGoals.carbGoal - person.personCurrentCalorieProgress.carbProgress
             let protein = person.personDailyCalorieGoals.proteinGoal - person.personCurrentCalorieProgress.proteinProgress
-
 
             if(fat < 0){
                 person.recipeNutrientsSearch.fat = 1
@@ -220,17 +207,13 @@ struct MealView: View {
             }else{
                 person.recipeNutrientsSearch.protein = Int(protein)
 
-                            }
-            print("recipe search:", person.recipeNutrientsSearch.fat, person.recipeNutrientsSearch.carb, person.recipeNutrientsSearch.protein)
-            mealViewModel.fetchNutrients()
+            mealViewModel.fetchRecipeFromAPI()
 
-           
-        }
+            }
+        }.background(ColourManager.Colour1)
         
     }
 }
-
-
 
 struct MealView_Previews: PreviewProvider {
     static var previews: some View {
