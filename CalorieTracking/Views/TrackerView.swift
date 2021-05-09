@@ -142,6 +142,12 @@ struct TrackerView: View {
                 
             }.onAppear(){
                 _ = calorieProgressViewModel.fetchCalorieGoals()
+            person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
+            person.personDailyCalorieGoals.fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
+            person.personDailyCalorieGoals.proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
+            person.personDailyCalorieGoals.carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
+            person.personUserInfo.gender = userSettingViewModel.userSettings.first!.gender ?? ""
+            person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
             }
     }
 }
