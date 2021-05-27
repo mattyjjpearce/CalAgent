@@ -27,6 +27,11 @@ struct TrackerView: View {
     @State private var fatGoal = 100.00
     @State private var proteinGoal = 100.00
     @State private var carbGoal = 100.00
+    
+    
+    
+    @State private var calorieGoalWithSteps = 0.00
+
 
   
     init(){
@@ -63,11 +68,11 @@ struct TrackerView: View {
                 Section(header: Text("Calories")){
                    
                     VStack{
-                        Text("\(person.personCurrentCalorieProgress.calorieProgress, specifier: "%.0f") / \(person.personDailyCalorieGoals.calorieGoal, specifier: "%.0f") kcal")
+                        Text("\(person.personCurrentCalorieProgress.calorieProgress, specifier: "%.0f") / \(calorieGoalWithSteps, specifier: "%.0f") kcal")
                        
-                        let CalorieProgress =  (person.personCurrentCalorieProgress.calorieProgress / person.personDailyCalorieGoals.calorieGoal) * 100
+                        let CalorieProgress =  (person.personCurrentCalorieProgress.calorieProgress / calorieGoalWithSteps) * 100
                         
-                        if(person.personCurrentCalorieProgress.calorieProgress > person.personDailyCalorieGoals.calorieGoal){
+                        if(person.personCurrentCalorieProgress.calorieProgress > calorieGoalWithSteps){
                            
                             ProgressView( value: CalorieProgress, total: 100).scaleEffect(x: 1, y: 3, anchor: .top).shadow(color: .red, radius: 4.0, x: 1.0, y: 2.0).padding(.bottom, 10)
                             Text("\(CalorieProgress, specifier: "%.0f")%")
@@ -142,12 +147,9 @@ struct TrackerView: View {
                 
             }.onAppear(){
                 _ = calorieProgressViewModel.fetchCalorieGoals()
-            person.personDailyCalorieGoals.calorieGoal = calorieGoalViewModel.calorieGoals.first!.calorieGoal
-            person.personDailyCalorieGoals.fatGoal = calorieGoalViewModel.calorieGoals.first!.fatGoal
-            person.personDailyCalorieGoals.proteinGoal = calorieGoalViewModel.calorieGoals.first!.proteinGoal
-            person.personDailyCalorieGoals.carbGoal = calorieGoalViewModel.calorieGoals.first!.carbGoal
-            person.personUserInfo.gender = userSettingViewModel.userSettings.first!.gender ?? ""
-            person.personUserInfo.activityLevel = userSettingViewModel.userSettings.first!.activityLevel ?? ""
+                
+            
+                calorieGoalWithSteps = person.personDailyCalorieGoals.calorieGoal + person.personSteps.calories
             }
     }
 }
