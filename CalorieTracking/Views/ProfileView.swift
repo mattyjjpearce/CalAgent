@@ -49,6 +49,9 @@ struct ProfileView: View {
     @State var selectedActivityLevel = 0.00
     @State var selectedSteps = 0.00
     @State var stepsLevel = ["No", "Yes"]
+    
+    @State var calorieGoalWithSteps = 0.00
+
 
 
     @State var chosenActivityLevel = ""
@@ -414,7 +417,8 @@ struct ProfileView: View {
                     
                     //If the user has allowed steps to be added to calorie count, add to calorieGoal for the day.
                     if(person.personUserInfo.useSteps){
-                        person.personDailyCalorieGoals.calorieGoal = person.personDailyCalorieGoals.calorieGoal +  person.personSteps.calories
+                        
+                        calorieGoalWithSteps = person.personDailyCalorieGoals.calorieGoal + person.personSteps.calories
                         print("Addition of step cals")
                     }
                 }

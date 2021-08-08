@@ -61,7 +61,7 @@
 		4D80DF3D25751E660033D5B0 /* ColourManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourManager.swift; sourceTree = "<group>"; };
 		4D80DF6A257550EF0033D5B0 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		4D80DF852576CB2B0033D5B0 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
-		4D91EEDE26301C0800AE42B6 /* CalorieTrackerDisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalorieTrackerDisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D91EEDE26301C0800AE42B6 /* CalAgentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalAgentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D91EEE026301C0800AE42B6 /* CalorieTrackerDisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieTrackerDisUITests.swift; sourceTree = "<group>"; };
 		4D91EEE226301C0800AE42B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D937DFD2600AF7C00087864 /* RecipeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAPI.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		4D937E162602367200087864 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
 		4D937E1B2603AE1E00087864 /* loadingImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingImages.swift; sourceTree = "<group>"; };
 		4D991BDE26172F20000238F1 /* CalorieGoalsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieGoalsViewModel.swift; sourceTree = "<group>"; };
-		4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalorieTrackerDis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DBB3122256FC61A00E973EF /* CalAgent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalAgent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DBB3125256FC61A00E973EF /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		4DBB3127256FC61A00E973EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4DBB3129256FC61E00E973EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 		4DBB3123256FC61A00E973EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */,
-				4D91EEDE26301C0800AE42B6 /* CalorieTrackerDisUITests.xctest */,
+				4DBB3122256FC61A00E973EF /* CalAgent.app */,
+				4D91EEDE26301C0800AE42B6 /* CalAgentUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,9 +262,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4D91EEDD26301C0800AE42B6 /* CalorieTrackerDisUITests */ = {
+		4D91EEDD26301C0800AE42B6 /* CalAgentUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4D91EEE526301C0800AE42B6 /* Build configuration list for PBXNativeTarget "CalorieTrackerDisUITests" */;
+			buildConfigurationList = 4D91EEE526301C0800AE42B6 /* Build configuration list for PBXNativeTarget "CalAgentUITests" */;
 			buildPhases = (
 				4D91EEDA26301C0800AE42B6 /* Sources */,
 				4D91EEDB26301C0800AE42B6 /* Frameworks */,
@@ -275,14 +275,14 @@
 			dependencies = (
 				4D91EEE426301C0800AE42B6 /* PBXTargetDependency */,
 			);
-			name = CalorieTrackerDisUITests;
+			name = CalAgentUITests;
 			productName = CalorieTrackerDisUITests;
-			productReference = 4D91EEDE26301C0800AE42B6 /* CalorieTrackerDisUITests.xctest */;
+			productReference = 4D91EEDE26301C0800AE42B6 /* CalAgentUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		4DBB3121256FC61A00E973EF /* CalorieTrackerDis */ = {
+		4DBB3121256FC61A00E973EF /* CalAgent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4DBB314C256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalorieTrackerDis" */;
+			buildConfigurationList = 4DBB314C256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalAgent" */;
 			buildPhases = (
 				569E297175D0B6FC48E0F7AE /* [CP] Check Pods Manifest.lock */,
 				4DBB311E256FC61A00E973EF /* Sources */,
@@ -294,9 +294,9 @@
 			);
 			dependencies = (
 			);
-			name = CalorieTrackerDis;
+			name = CalAgent;
 			productName = navigationPractice;
-			productReference = 4DBB3122256FC61A00E973EF /* CalorieTrackerDis.app */;
+			productReference = 4DBB3122256FC61A00E973EF /* CalAgent.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -317,7 +317,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4DBB311D256FC61A00E973EF /* Build configuration list for PBXProject "CalorieTrackerDis" */;
+			buildConfigurationList = 4DBB311D256FC61A00E973EF /* Build configuration list for PBXProject "CalAgent" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -330,8 +330,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4DBB3121256FC61A00E973EF /* CalorieTrackerDis */,
-				4D91EEDD26301C0800AE42B6 /* CalorieTrackerDisUITests */,
+				4DBB3121256FC61A00E973EF /* CalAgent */,
+				4D91EEDD26301C0800AE42B6 /* CalAgentUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -446,7 +446,7 @@
 /* Begin PBXTargetDependency section */
 		4D91EEE426301C0800AE42B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4DBB3121256FC61A00E973EF /* CalorieTrackerDis */;
+			target = 4DBB3121256FC61A00E973EF /* CalAgent */;
 			targetProxy = 4D91EEE326301C0800AE42B6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -657,7 +657,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4D91EEE526301C0800AE42B6 /* Build configuration list for PBXNativeTarget "CalorieTrackerDisUITests" */ = {
+		4D91EEE526301C0800AE42B6 /* Build configuration list for PBXNativeTarget "CalAgentUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4D91EEE626301C0800AE42B6 /* Debug */,
@@ -666,7 +666,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DBB311D256FC61A00E973EF /* Build configuration list for PBXProject "CalorieTrackerDis" */ = {
+		4DBB311D256FC61A00E973EF /* Build configuration list for PBXProject "CalAgent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DBB314A256FC61E00E973EF /* Debug */,
@@ -675,7 +675,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4DBB314C256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalorieTrackerDis" */ = {
+		4DBB314C256FC61E00E973EF /* Build configuration list for PBXNativeTarget "CalAgent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4DBB314D256FC61E00E973EF /* Debug */,
