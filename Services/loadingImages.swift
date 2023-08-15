@@ -1,12 +1,14 @@
 import SwiftUI
 
-//Class to turn the URL of the API image into an image to display to the user 
-
-struct loadingImages: View {
+// A SwiftUI view to load and display images from a URL
+struct LoadingImages: View {
+    
+    // Enum to track the loading state of the image
     private enum LoadState {
         case loading, success, failure
     }
-
+    
+    // Observable object that handles loading the image data
     private class Loader: ObservableObject {
         var data = Data()
         var state = LoadState.loading
@@ -16,6 +18,7 @@ struct loadingImages: View {
                 fatalError("Invalid URL: \(url)")
             }
 
+            // Start a data task to load the image data from the URL
             URLSession.shared.dataTask(with: parsedURL) { data, response, error in
                 if let data = data, data.count > 0 {
                     self.data = data
@@ -24,14 +27,18 @@ struct loadingImages: View {
                     self.state = .failure
                 }
 
+                // Notify the UI that the data has changed
                 DispatchQueue.main.async {
                     self.objectWillChange.send()
                 }
             }.resume()
         }
     }
-
+    
+    // State object to manage the image loading process
     @StateObject private var loader: Loader
+    
+    // Images to show during different loading states
     var loading: Image
     var failure: Image
 
@@ -40,12 +47,14 @@ struct loadingImages: View {
             .resizable()
     }
 
+    // Initialize the view with a URL and optional loading/failure images
     init(url: String, loading: Image = Image(systemName: "photo"), failure: Image = Image(systemName: "multiply.circle")) {
         _loader = StateObject(wrappedValue: Loader(url: url))
         self.loading = loading
         self.failure = failure
     }
 
+    // Select the appropriate image based on the loading state
     private func selectImage() -> Image {
         switch loader.state {
         case .loading:
